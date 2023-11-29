@@ -1,0 +1,6 @@
+res://game_manager.tscn
+res://Main_Game.tscn
+res://PlayerController.gd
+res://GameManager.gd
+res://scenes/Main_Game.tscn
+res://scenes/game_manager.tscn

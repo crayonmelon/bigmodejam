@@ -1,0 +1,8 @@
+Node3D
+AnimationPlayer
+MeshInstance3D
+SubViewport
+Camera3D
+Sprite3D
+CollisionShape3D
+CharacterBody3D
