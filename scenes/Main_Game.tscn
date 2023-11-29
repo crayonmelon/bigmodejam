@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://dmb5wisxuvxdi"]
+[gd_scene load_steps=16 format=3 uid="uid://dmb5wisxuvxdi"]
 
 [ext_resource type="Script" path="res://scripts/PlayerController.gd" id="1_t1211"]
 [ext_resource type="Texture2D" uid="uid://ceknsi0wnwdiu" path="res://sprites/Citymap001.png" id="2_p2oiy"]
+[ext_resource type="Script" path="res://scenes/ObjectSpin.gd" id="3_qid2g"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8woo2"]
 sky_top_color = Color(0.784314, 0, 0.54902, 1)
@@ -94,8 +95,10 @@ _data = {
 }
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_6ms3y"]
+height = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vr2se"]
+shading_mode = 0
 albedo_texture = ExtResource("2_p2oiy")
 
 [node name="Main_Game" type="Node3D"]
@@ -107,7 +110,7 @@ environment = SubResource("Environment_0mt7r")
 script = ExtResource("1_t1211")
 
 [node name="Char_model" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(1.16463e-08, -0.00971627, 0.299843, -4.5275e-08, -0.299843, -0.00971627, 0.3, -4.4874e-08, -1.31065e-08, 0, 0, 0)
+transform = Transform3D(1.16463e-08, -0.00971625, 0.299843, -4.5275e-08, -0.299843, -0.00971625, 0.3, -4.4874e-08, -1.31065e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_26cjt")
 skeleton = NodePath("")
 
@@ -120,13 +123,15 @@ libraries = {
 }
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 7, 3)
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 7, 0)
 projection = 1
 size = 40.377
 
 [node name="SubViewport" type="SubViewport" parent="Camera3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, -1.81057, -114.48, 2.33946)
+transform = Transform3D(-1.96701e-06, -45, 1.96701e-06, 1.65174e-20, -1.96701e-06, -45, 45, -1.96701e-06, 8.59808e-14, 0, -24.48, 0)
 mesh = SubResource("CylinderMesh_6ms3y")
 surface_material_override/0 = SubResource("StandardMaterial3D_vr2se")
+script = ExtResource("3_qid2g")
+spin = Vector3(0.3, 0, 0)

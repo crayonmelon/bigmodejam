@@ -1,6 +1,4 @@
-res://game_manager.tscn
-res://Main_Game.tscn
-res://PlayerController.gd
-res://GameManager.gd
 res://scenes/Main_Game.tscn
+res://scripts/PlayerController.gd
 res://scenes/game_manager.tscn
+res://scenes/ObjectSpin.gd
