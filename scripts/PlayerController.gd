@@ -3,6 +3,9 @@ extends CharacterBody3D
 const SPEED = 10
 const HEAVEN_SPEED = 30
 
+@onready var ship_model = $ship_idle/plane_2
+
+
 func _ready():
 	_mode_Swap(GameManager.is_heaven)
 	GameManager.Swap_Mode.connect(_mode_Swap)
@@ -27,7 +30,7 @@ func heaven_control(delta):
 	velocity.z = 0
 	move_and_slide()
 	
-	$Char_model.rotation.x = lerp($Char_model.rotation.x, direction_hell.x, 10 * delta)
+	ship_model.rotation.x = lerp(ship_model.rotation.x, direction_hell.x, 10 * delta)
 	
 func hell_control(delta):
 	var input_dir = Input.get_vector("LEFT", "RIGHT", "UP", "DOWN")
@@ -39,7 +42,7 @@ func hell_control(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
-	$Char_model.rotation.x = lerp($Char_model.rotation.x, direction.x, 10 * delta)
+	ship_model.rotation.x = lerp(ship_model.rotation.x, direction.x, 10 * delta)
 	
 	move_and_slide()
 
