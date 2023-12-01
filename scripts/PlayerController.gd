@@ -41,7 +41,7 @@ func hell_control(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+	
 	ship_model.rotation.x = lerp(ship_model.rotation.x, direction.x, 10 * delta)
 	
 	move_and_slide()
