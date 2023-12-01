@@ -3,6 +3,12 @@ extends CharacterBody3D
 const SPEED = 10
 const HEAVEN_SPEED = 30
 
+@onready var ship_model = $ship_idle/plane_2
+@onready var animation_tree = $ship_idle/AnimationPlayer/AnimationTree
+
+@export var blend_animations: bool = false
+
+
 func _ready():
 	_mode_Swap(GameManager.is_heaven)
 	GameManager.Swap_Mode.connect(_mode_Swap)
@@ -27,7 +33,7 @@ func heaven_control(delta):
 	velocity.z = 0
 	move_and_slide()
 	
-	$Char_model.rotation.x = lerp($Char_model.rotation.x, direction_hell.x, 10 * delta)
+	ship_model.rotation.x = lerp(ship_model.rotation.x, direction_hell.x, 10 * delta)
 	
 func hell_control(delta):
 	var input_dir = Input.get_vector("LEFT", "RIGHT", "UP", "DOWN")
@@ -38,8 +44,14 @@ func hell_control(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
-	$Char_model.rotation.x = lerp($Char_model.rotation.x, direction.x, 10 * delta)
+	
+	ship_model.rotation.x = lerp(ship_model.rotation.x, direction.x, 10 * delta)
+	
+	if blend_animations:
+		animation_tree.set("parameters/blend_position", lerp(animation_tree.get("parameters/blend_position"), input_dir, 10 * delta))
+	else:
+		animation_tree.set("parameters/blend_position", input_dir)
+	
 	
 	move_and_slide()
 
