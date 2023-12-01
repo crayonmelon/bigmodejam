@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cipvv00ugvtnm"]
+[gd_scene load_steps=16 format=3 uid="uid://cipvv00ugvtnm"]
 
 [ext_resource type="PackedScene" uid="uid://cpnbohmnn2bop" path="res://scenes/player.tscn" id="1_j12px"]
 [ext_resource type="Texture2D" uid="uid://ijd0fkuaex6r" path="res://sprites/Citymap001.png" id="2_p2oiy"]
 [ext_resource type="Script" path="res://scripts/TextureScroll.gd" id="3_q0y32"]
+[ext_resource type="Texture2D" uid="uid://ch6cd47nam5ay" path="res://sprites/Cloud_layer_002.png" id="4_5jvtx"]
 [ext_resource type="Texture2D" uid="uid://x4dvcqh5ugfd" path="res://sprites/Cloud_layer_001.png" id="4_kgx1p"]
 [ext_resource type="Texture2D" uid="uid://b1wm2silwpsuw" path="res://sprites/icon.svg" id="5_7f0eh"]
 
@@ -25,16 +26,42 @@ uv1_scale = Vector3(5, 10, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bg0yt"]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0.392157)
-albedo_texture = ExtResource("4_kgx1p")
+albedo_texture = ExtResource("4_5jvtx")
 albedo_texture_force_srgb = true
+uv1_offset = Vector3(10.175, 0, 0)
+texture_filter = 0
+msdf_outline_size = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_acx64"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.392157)
+albedo_texture = ExtResource("4_5jvtx")
+albedo_texture_force_srgb = true
+uv1_offset = Vector3(11.585, 0, 0)
+texture_filter = 0
+msdf_outline_size = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xs54y"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.392157)
+albedo_texture = ExtResource("4_5jvtx")
+albedo_texture_force_srgb = true
+uv1_offset = Vector3(11.24, 0.525, 0)
 texture_filter = 0
 msdf_outline_size = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmtpb"]
 transparency = 1
-albedo_color = Color(1, 1, 1, 0.862745)
+albedo_color = Color(1, 1, 1, 0.392157)
 albedo_texture = ExtResource("4_kgx1p")
-albedo_texture_force_srgb = true
+texture_filter = 0
+msdf_outline_size = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ca05"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.388235)
+albedo_texture = ExtResource("4_kgx1p")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
 texture_filter = 0
 msdf_outline_size = 1.0
 
@@ -74,6 +101,29 @@ script = ExtResource("3_q0y32")
 scrollDirection = Vector3(0, -1, 0)
 scrollSpeed = 0.2
 texture_heaven = ExtResource("5_7f0eh")
+texture_hell = ExtResource("4_5jvtx")
+
+[node name="Cloud Layer3" type="MeshInstance3D" parent="Scenery"]
+transform = Transform3D(52.1809, 0, 0, 0, 26.0904, 0.445674, 0, -45.19, 0.25731, -0.0487404, 10.9234, 17.3058)
+mesh = SubResource("QuadMesh_b4e8v")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_acx64")
+script = ExtResource("3_q0y32")
+scrollDirection = Vector3(0, -1, 0)
+scrollSpeed = 0.4
+texture_heaven = ExtResource("5_7f0eh")
+texture_hell = ExtResource("4_5jvtx")
+
+[node name="Cloud Layer4" type="MeshInstance3D" parent="Scenery"]
+transform = Transform3D(52.1809, 0, 0, 0, 26.0904, 0.445674, 0, -45.19, 0.25731, -0.0487404, 10.9234, 17.3058)
+mesh = SubResource("QuadMesh_b4e8v")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_xs54y")
+script = ExtResource("3_q0y32")
+scrollDirection = Vector3(0, -1, 0)
+scrollSpeed = 0.4
+texture_heaven = ExtResource("5_7f0eh")
+texture_hell = ExtResource("4_5jvtx")
 
 [node name="Cloud Layer2" type="MeshInstance3D" parent="Scenery"]
 transform = Transform3D(-52.181, 0, 0, 0, 26.0905, 0.446003, 0, -45.1901, 0.2575, -0.0487404, 10.9234, 17.3058)
@@ -82,5 +132,15 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_fmtpb")
 script = ExtResource("3_q0y32")
 scrollDirection = Vector3(0, -1, 0)
+scrollSpeed = 0.5
+texture_heaven = ExtResource("5_7f0eh")
+
+[node name="Cloud Layer5" type="MeshInstance3D" parent="Scenery"]
+transform = Transform3D(52.181, -4.56181e-06, 0, -2.2809e-06, -26.0905, 0.446003, 3.95064e-06, 45.1901, 0.2575, -0.0487404, 10.9234, 17.3058)
+mesh = SubResource("QuadMesh_b4e8v")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_7ca05")
+script = ExtResource("3_q0y32")
+scrollDirection = Vector3(0, 1, 0)
 scrollSpeed = 0.5
 texture_heaven = ExtResource("5_7f0eh")
