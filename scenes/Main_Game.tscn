@@ -1,20 +1,51 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmb5wisxuvxdi"]
+[gd_scene load_steps=12 format=3 uid="uid://cipvv00ugvtnm"]
 
-[ext_resource type="PackedScene" uid="uid://og67fhivl8mn" path="res://scenes/player.tscn" id="1_j12px"]
+[ext_resource type="PackedScene" uid="uid://cpnbohmnn2bop" path="res://scenes/player.tscn" id="1_j12px"]
 [ext_resource type="Texture2D" uid="uid://ijd0fkuaex6r" path="res://sprites/Citymap001.png" id="2_p2oiy"]
-[ext_resource type="Script" path="res://scenes/ObjectSpin.gd" id="3_qid2g"]
+[ext_resource type="Script" path="res://scripts/TextureScroll.gd" id="3_q0y32"]
+[ext_resource type="Texture2D" uid="uid://x4dvcqh5ugfd" path="res://sprites/Cloud_layer_001.png" id="4_kgx1p"]
 
 [sub_resource type="Environment" id="Environment_0mt7r"]
 ambient_light_source = 2
 ambient_light_color = Color(0.909804, 0.909804, 0.909804, 1)
 tonemap_mode = 2
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_6ms3y"]
-height = 1.0
+[sub_resource type="TextMesh" id="TextMesh_iko7c"]
+text = "D"
+font_size = 127
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vr2se"]
 shading_mode = 0
 albedo_texture = ExtResource("2_p2oiy")
+uv1_scale = Vector3(5, 10, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_b4e8v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bg0yt"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.392157)
+albedo_texture = ExtResource("4_kgx1p")
+albedo_texture_force_srgb = true
+texture_filter = 0
+msdf_outline_size = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmtpb"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.862745)
+albedo_texture = ExtResource("4_kgx1p")
+albedo_texture_force_srgb = true
+texture_filter = 0
+msdf_outline_size = 1.0
+
+[sub_resource type="GDScript" id="GDScript_ed0wo"]
+script/source = "extends MeshInstance3D
+
+@export var scrollDirection: Vector3 = Vector3(1, 0, 0)
+@export var scrollSpeed: float = 5
+
+func _process(delta):
+	get_surface_override_material(0).uv1_offset += scrollDirection * scrollSpeed * delta
+"
 
 [node name="Main_Game" type="Node3D"]
 
@@ -22,18 +53,40 @@ albedo_texture = ExtResource("2_p2oiy")
 environment = SubResource("Environment_0mt7r")
 
 [node name="player" parent="." instance=ExtResource("1_j12px")]
-transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, -1.19209e-07, 3.55271e-15, 1, 0, 1.19209e-07, 0, 1, 0, 21.9182, 12.6545)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 12.6055, 21.7115)
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 34.5237, 34.366)
 projection = 1
 size = 40.377
 
 [node name="SubViewport" type="SubViewport" parent="Camera3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.96701e-06, -45, 1.96701e-06, 1.65174e-20, -1.96701e-06, -45, 45, -1.96701e-06, 8.59808e-14, 0, -24.48, 0)
-mesh = SubResource("CylinderMesh_6ms3y")
+[node name="Scenery" type="Node3D" parent="."]
+
+[node name="Ground" type="MeshInstance3D" parent="Scenery"]
+transform = Transform3D(1.31171e-05, 3.93402e-06, -851, 7.03858e-06, -45, -7.43967e-05, -80.512, -3.93402e-06, -0.000138645, 0, -24.48, 11.027)
+mesh = SubResource("TextMesh_iko7c")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_vr2se")
-script = ExtResource("3_qid2g")
-spin = Vector3(0.3, 0, 0)
+script = ExtResource("3_q0y32")
+scrollDirection = Vector3(-1, 0, 0)
+scrollSpeed = 0.1
+
+[node name="Cloud Layer" type="MeshInstance3D" parent="Scenery"]
+transform = Transform3D(52.1809, 0, 0, 0, 26.0904, 0.445674, 0, -45.19, 0.25731, -0.0487404, 10.9234, 17.3058)
+mesh = SubResource("QuadMesh_b4e8v")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_bg0yt")
+script = ExtResource("3_q0y32")
+scrollDirection = Vector3(0, -1, 0)
+scrollSpeed = 0.2
+
+[node name="Cloud Layer2" type="MeshInstance3D" parent="Scenery"]
+transform = Transform3D(-52.181, 0, 0, 0, 26.0905, 0.446003, 0, -45.1901, 0.2575, -0.0487404, 10.9234, 17.3058)
+mesh = SubResource("QuadMesh_b4e8v")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_fmtpb")
+script = SubResource("GDScript_ed0wo")
+scrollDirection = Vector3(0, -1, 0)
+scrollSpeed = 0.6

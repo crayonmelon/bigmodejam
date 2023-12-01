@@ -4,6 +4,9 @@ const SPEED = 10
 const HEAVEN_SPEED = 30
 
 @onready var ship_model = $ship_idle/plane_2
+@onready var animation_tree = $ship_idle/AnimationPlayer/AnimationTree
+
+@export var blend_animations: bool = false
 
 
 func _ready():
@@ -41,8 +44,14 @@ func hell_control(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+	
 	ship_model.rotation.x = lerp(ship_model.rotation.x, direction.x, 10 * delta)
+	
+	if blend_animations:
+		animation_tree.set("parameters/blend_position", lerp(animation_tree.get("parameters/blend_position"), input_dir, 10 * delta))
+	else:
+		animation_tree.set("parameters/blend_position", input_dir)
+	
 	
 	move_and_slide()
 
