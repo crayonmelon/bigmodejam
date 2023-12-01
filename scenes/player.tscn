@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://og67fhivl8mn"]
+[gd_scene load_steps=28 format=3 uid="uid://og67fhivl8mn"]
 
 [ext_resource type="Script" path="res://scripts/PlayerController.gd" id="1_0vmp4"]
 [ext_resource type="Texture2D" uid="uid://b1wm2silwpsuw" path="res://sprites/icon.svg" id="2_xde30"]
@@ -129,6 +129,44 @@ bind/18/pose = Transform3D(1, 0, -2.38419e-07, 0, 1, 0, 2.38419e-07, 0, 1, 6.980
 cull_mode = 2
 albedo_texture = ExtResource("2_xde30")
 
+[sub_resource type="Animation" id="Animation_7agt1"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D:hip.R")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.371525, 0.242475, -0.052525, 0.894475)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D:shin.L")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.414525, -0.065525, 0.693475, 0.585475)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D:thigh.L")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.188475, -0.409525, -0.449525, 0.771475)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D:core")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -0.949525, 0.312475, 0.010475, 0.033475)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Armature/Skeleton3D:hip.L")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.371836, 0.218408, -0.0904677, 0.897692)
+
 [sub_resource type="Animation" id="Animation_pgbv5"]
 resource_name = "metarig|metarig|metarigAction"
 length = 2.01667
@@ -252,37 +290,6 @@ tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = PackedFloat32Array(0, 1, 0, 1.42109e-14, 0, 1)
 
-[sub_resource type="Animation" id="Animation_7agt1"]
-length = 0.001
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Armature/Skeleton3D:hip.R")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, -0.371525, 0.242475, -0.052525, 0.894475)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Armature/Skeleton3D:shin.L")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, -0.414525, -0.065525, 0.693475, 0.585475)
-tracks/2/type = "rotation_3d"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Armature/Skeleton3D:thigh.L")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, 0.188475, -0.409525, -0.449525, 0.771475)
-tracks/3/type = "rotation_3d"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Armature/Skeleton3D:core")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = PackedFloat32Array(0, 1, -0.949525, 0.312475, 0.010475, 0.033475)
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1nw0b"]
 _data = {
 "RESET": SubResource("Animation_7agt1"),
@@ -293,6 +300,33 @@ _data = {
 "ship_move_left": ExtResource("5_5x55n"),
 "ship_move_right": ExtResource("6_0ifs6")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wo1pl"]
+animation = &"ship_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_36fjf"]
+animation = &"ship_move_backward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8d8ul"]
+animation = &"ship_move_forward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x6rmn"]
+animation = &"ship_move_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kauae"]
+animation = &"ship_move_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_7ealj"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_wo1pl")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_36fjf")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_8d8ul")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_x6rmn")
+blend_point_3/pos = Vector2(-1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_kauae")
+blend_point_4/pos = Vector2(1, 0)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ui5nb"]
 
@@ -321,7 +355,7 @@ mesh = SubResource("ArrayMesh_xo1ur")
 skeleton = NodePath("")
 
 [node name="Armature" type="Node3D" parent="ship_idle"]
-transform = Transform3D(0.972966, -0.23095, -1.18168e-09, 0.23095, 0.972966, 1.00951e-08, -1.18174e-09, -1.00951e-08, 1, -6.98019, 9.81892, -0.0563143)
+transform = Transform3D(0.972966, -0.23095, -1.18167e-09, 0.23095, 0.972966, 1.00951e-08, -1.18174e-09, -1.00951e-08, 1, -6.98019, 9.81892, -0.0563143)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="ship_idle/Armature"]
 transform = Transform3D(1, 0, 2.4869e-14, 0, 1, 0, -2.4869e-14, 0, 1, 7.35306, -0.861085, 3.20375e-07)
@@ -379,7 +413,7 @@ bones/7/parent = 6
 bones/7/rest = Transform3D(0.987062, -0.160239, 0.00562333, 0.160262, 0.984918, -0.065218, 0.00491193, 0.0652755, 0.997855, -2.17464e-07, 1.89069, 1.40353e-07)
 bones/7/enabled = true
 bones/7/position = Vector3(-2.17464e-07, 1.89069, 1.40353e-07)
-bones/7/rotation = Quaternion(-0.0057521, -0.0251608, 0.26344, 0.96433)
+bones/7/rotation = Quaternion(-0.00575208, -0.0251608, 0.26344, 0.96433)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/name = "foot.R"
 bones/8/parent = 7
@@ -407,7 +441,7 @@ bones/11/parent = -1
 bones/11/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.337975, 0.0458548)
 bones/11/enabled = true
 bones/11/position = Vector3(0, 0.337975, 0.0458548)
-bones/11/rotation = Quaternion(0.013176, -0.284418, -0.132414, 0.94942)
+bones/11/rotation = Quaternion(-0.0399443, -0.253596, -0.233077, 0.93796)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "upTorso"
 bones/12/parent = 11
@@ -428,7 +462,7 @@ bones/14/parent = 13
 bones/14/rest = Transform3D(1, 2.37262e-07, 2.14963e-07, -2.37262e-07, 0.0983797, 0.995149, 2.14963e-07, -0.995149, 0.0983797, 1.34327e-07, 1.51327, 1.09032e-07)
 bones/14/enabled = true
 bones/14/position = Vector3(1.34327e-07, 1.51327, 1.09032e-07)
-bones/14/rotation = Quaternion(-0.526736, 0.0478557, 0.156135, 0.834195)
+bones/14/rotation = Quaternion(-0.63854, 0.162744, 0.22491, 0.717772)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "foreArm.L"
 bones/15/parent = 14
@@ -449,7 +483,7 @@ bones/17/parent = 16
 bones/17/rest = Transform3D(1, -1.1863e-06, 1.07482e-06, 1.18631e-06, 0.0983797, -0.995149, 1.07481e-06, 0.995149, 0.0983797, 2.85238e-07, 1.51327, 1.30517e-06)
 bones/17/enabled = true
 bones/17/position = Vector3(2.85238e-07, 1.51327, 1.30517e-06)
-bones/17/rotation = Quaternion(0.531355, 0.0609708, -0.0582785, 0.84294)
+bones/17/rotation = Quaternion(0.517455, -0.0408777, 0.195379, 0.832104)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "foreArm.R"
 bones/18/parent = 17
@@ -467,7 +501,7 @@ bones/19/rotation = Quaternion(-0.127973, 0.208827, 0.0520269, 0.968146)
 bones/19/scale = Vector3(1, 1, 1)
 
 [node name="plane_2" type="BoneAttachment3D" parent="ship_idle/Armature/Skeleton3D"]
-transform = Transform3D(-2.41377, -1.78149, 0.00308122, 1.77728, -2.40771, 0.210252, 0.122381, -0.170992, -2.99262, -0.415271, -11.9496, -0.807375)
+transform = Transform3D(-2.41377, -1.78149, 0.00308122, 1.77728, -2.40771, 0.210252, 0.122381, -0.170992, -2.99262, -0.415272, -11.9496, -0.807375)
 bone_name = "plane_2"
 bone_idx = 10
 
@@ -483,6 +517,12 @@ speed_scale = 5.0
 libraries = {
 "": SubResource("AnimationLibrary_1nw0b")
 }
+
+[node name="AnimationTree" type="AnimationTree" parent="ship_idle/AnimationPlayer"]
+tree_root = SubResource("AnimationNodeBlendSpace2D_7ealj")
+anim_player = NodePath("..")
+active = true
+parameters/blend_position = Vector2(-0.000797451, -1.0122)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ui5nb")
