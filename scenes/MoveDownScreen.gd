@@ -8,9 +8,9 @@ func _ready():
 
 func _process(delta):
 	
-	global_position.z = global_position.z + speed * delta
-	pass
-
+	global_position.z = position.z + speed * delta
+	position.x = wrapf(position.x, GameManager.WORLD_BORDER_X_MIN, GameManager.WORLD_BORDER_X_MAX)
+	
 func _mode_swap(is_heaven):
 	
 	if is_heaven:
