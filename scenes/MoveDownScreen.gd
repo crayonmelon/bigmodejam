@@ -14,8 +14,8 @@ func _process(delta):
 func _mode_swap(is_heaven):
 	
 	if is_heaven:
-		collision_layer = 2
-		$Sprite3D.modulate = Color.BROWN
-	else: 
 		collision_layer = 4
 		$Sprite3D.modulate = Color.GOLD
+	else: 
+		collision_layer = 2
+		$Sprite3D.modulate = Color.BROWN

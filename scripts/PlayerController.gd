@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const SPEED = 10
-const HEAVEN_SPEED = 30
+const HEAVEN_SPEED = 20
 
 @onready var ship_model = $ship_idle/plane_2
 @onready var animation_tree = $ship_idle/AnimationPlayer/AnimationTree
@@ -74,7 +74,6 @@ func hell_control(delta):
 	
 	move_and_slide()
 	
-
 func _input(event):
 	
 	if event.is_action_pressed("SHOOT") && GameManager.is_heaven:
@@ -82,5 +81,4 @@ func _input(event):
 		direction_hell = direction_hell*-1
 
 func change_direction(left):
-	print("wuhay")
 	direction_hell = Vector3(1, 0, 0) if left else Vector3(-1, 0, 0)
