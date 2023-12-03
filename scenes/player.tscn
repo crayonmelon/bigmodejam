@@ -1,14 +1,14 @@
 [gd_scene load_steps=31 format=3 uid="uid://cpnbohmnn2bop"]
 
 [ext_resource type="Script" path="res://scripts/PlayerController.gd" id="1_0vmp4"]
-[ext_resource type="Texture2D" uid="uid://b282n846usqle" path="res://sprites/icon.svg" id="2_xde30"]
+[ext_resource type="Texture2D" uid="uid://do6jkd6vp742o" path="res://sprites/icon.svg" id="2_xde30"]
 [ext_resource type="Animation" uid="uid://b60dd6tyg338v" path="res://models/Ship/animations/ship_idle.res" id="3_7mfbl"]
 [ext_resource type="Animation" uid="uid://oinin1gmbyd" path="res://models/Ship/animations/ship_move_backward.res" id="3_ufjig"]
 [ext_resource type="Animation" uid="uid://ns2rrrgfvfkw" path="res://models/Ship/animations/ship_move_forward.res" id="4_hhb6c"]
 [ext_resource type="Animation" uid="uid://ea4s7on7db2r" path="res://models/Ship/animations/ship_move_left.res" id="5_5x55n"]
 [ext_resource type="Animation" uid="uid://cmb6wbvje4s5n" path="res://models/Ship/animations/ship_move_right.res" id="6_0ifs6"]
 [ext_resource type="Script" path="res://scenes/HitArea.gd" id="8_07g13"]
-[ext_resource type="Texture2D" uid="uid://4tl4xjnmohai" path="res://sprites/circle.png" id="8_ohe2o"]
+[ext_resource type="Texture2D" uid="uid://bvrfcoryrh8ol" path="res://sprites/circle.png" id="8_ohe2o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3trem"]
 resource_name = "Material"
@@ -445,7 +445,7 @@ bones/11/parent = -1
 bones/11/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.337975, 0.0458548)
 bones/11/enabled = true
 bones/11/position = Vector3(0, 0.337975, 0.0458548)
-bones/11/rotation = Quaternion(-0.0373506, -0.288772, -0.199582, 0.935619)
+bones/11/rotation = Quaternion(-0.0828862, -0.286102, -0.103929, 0.948933)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "upTorso"
 bones/12/parent = 11
@@ -466,7 +466,7 @@ bones/14/parent = 13
 bones/14/rest = Transform3D(1, 2.37262e-07, 2.14963e-07, -2.37262e-07, 0.0983797, 0.995149, 2.14963e-07, -0.995149, 0.0983797, 1.34327e-07, 1.51327, 1.09032e-07)
 bones/14/enabled = true
 bones/14/position = Vector3(1.34327e-07, 1.51327, 1.09032e-07)
-bones/14/rotation = Quaternion(-0.538757, 0.0560887, 0.141405, 0.828613)
+bones/14/rotation = Quaternion(-0.584644, 0.0564305, 0.130924, 0.798665)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "foreArm.L"
 bones/15/parent = 14
@@ -487,7 +487,7 @@ bones/17/parent = 16
 bones/17/rest = Transform3D(1, -1.1863e-06, 1.07482e-06, 1.18631e-06, 0.0983797, -0.995149, 1.07481e-06, 0.995149, 0.0983797, 2.85238e-07, 1.51327, 1.30517e-06)
 bones/17/enabled = true
 bones/17/position = Vector3(2.85238e-07, 1.51327, 1.30517e-06)
-bones/17/rotation = Quaternion(0.398644, 0.133054, -0.00845648, 0.907363)
+bones/17/rotation = Quaternion(0.489003, 0.082264, -0.0385125, 0.86754)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "foreArm.R"
 bones/18/parent = 17
@@ -505,7 +505,7 @@ bones/19/rotation = Quaternion(-0.127973, 0.208827, 0.0520269, 0.968146)
 bones/19/scale = Vector3(1, 1, 1)
 
 [node name="plane_2" type="BoneAttachment3D" parent="ship_idle/Armature/Skeleton3D"]
-transform = Transform3D(-2.41377, -1.78149, 0.00308113, 1.77728, -2.40771, 0.210252, 0.122381, -0.170992, -2.99262, -0.415272, -11.9496, -0.807376)
+transform = Transform3D(-2.41443, -1.78059, 0.0034966, 1.77639, -2.40833, 0.210751, 0.12228, -0.171685, -2.99259, -0.41069, -11.9496, -0.809487)
 bone_name = "plane_2"
 bone_idx = 10
 
@@ -552,5 +552,15 @@ no_depth_test = true
 texture_filter = 0
 texture = ExtResource("8_ohe2o")
 
+[node name="HitArea2" type="Area3D" parent="."]
+transform = Transform3D(4.93586, 0, 0, 0, 1, 0, 0, 0, 4.93586, 0, 0, 0)
+collision_mask = 6
+script = ExtResource("8_07g13")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea2"]
+shape = SubResource("SphereShape3D_fk7ki")
+
 [connection signal="area_entered" from="HitArea" to="." method="_on_hit_area_area_entered"]
 [connection signal="area_entered" from="HitArea" to="HitArea" method="_on_area_entered"]
+[connection signal="area_entered" from="HitArea2" to="." method="_on_hit_area_area_entered"]
+[connection signal="area_entered" from="HitArea2" to="HitArea2" method="_on_area_entered"]

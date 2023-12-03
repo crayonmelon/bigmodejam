@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/MoveOnPath.gd" id="1_xhsx2"]
 [ext_resource type="Script" path="res://scenes/EnemySpawner.gd" id="2_62k6p"]
-[ext_resource type="Texture2D" uid="uid://b282n846usqle" path="res://sprites/icon.svg" id="3_b61mf"]
+[ext_resource type="Texture2D" uid="uid://do6jkd6vp742o" path="res://sprites/icon.svg" id="3_b61mf"]
 
 [sub_resource type="Curve3D" id="Curve3D_muv3h"]
 _data = {
@@ -15,7 +15,7 @@ point_count = 3
 curve = SubResource("Curve3D_muv3h")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="."]
-transform = Transform3D(-4.37111e-08, 0, -0.999989, 0, 0.999991, 0, 0.999994, 0, -4.37109e-08, 0, 0, 0)
+transform = Transform3D(-4.37111e-08, 0, -0.999989, 0, 0.999991, 0, 0.999994, 0, -4.37109e-08, -15, 0, 0)
 script = ExtResource("1_xhsx2")
 
 [node name="EnemySpawner" type="Node3D" parent="PathFollow3D"]

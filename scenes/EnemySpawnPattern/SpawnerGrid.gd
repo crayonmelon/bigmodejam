@@ -15,8 +15,10 @@ func spawn_grid():
 		for y in range(1,grid_size+1):
 				
 				var obj = enemy.instantiate()
-				obj.global_position = global_position + Vector3(spacing*x,0,spacing*y)
 				get_tree().root.add_child(obj)
+				obj.global_position = global_position + Vector3(spacing*x,0,spacing*y)
+				obj.global_position.y = 21
+
 
 func _on_timer_timeout():
 	spawn_grid()

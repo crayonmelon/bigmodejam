@@ -5,6 +5,7 @@
 [node name="EnemyPath" type="Node3D"]
 
 [node name="SpawnerGrid" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
 script = ExtResource("1_j6nb3")
 
 [node name="Timer" type="Timer" parent="SpawnerGrid"]
