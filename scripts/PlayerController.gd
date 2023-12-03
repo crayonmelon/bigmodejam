@@ -5,7 +5,6 @@ const HEAVEN_SPEED = 20
 
 @onready var ship_model = $ship_idle/plane_2
 @onready var animation_tree = $ship_idle/AnimationPlayer/AnimationTree
-
 @export var blend_animations: bool = false
 
 func _ready():

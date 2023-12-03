@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://47oueet4y5dn"]
+
+[ext_resource type="Script" path="res://scenes/EnemySpawnPattern/SpawnerGrid.gd" id="1_j6nb3"]
+
+[node name="EnemyPath" type="Node3D"]
+
+[node name="SpawnerGrid" type="Node3D" parent="."]
+script = ExtResource("1_j6nb3")
+
+[node name="Timer" type="Timer" parent="SpawnerGrid"]
+autostart = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 34.5237, 34.366)
+projection = 1
+size = 40.377
+
+[node name="SubViewport" type="SubViewport" parent="Camera3D"]
+
+[connection signal="timeout" from="SpawnerGrid/Timer" to="SpawnerGrid" method="_on_timer_timeout"]

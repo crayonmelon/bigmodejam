@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://47oueet4y5dn"]
+[gd_scene load_steps=5 format=3 uid="uid://bvhkaernc4qdy"]
 
-[ext_resource type="Script" path="res://scenes/EnemySpawner.gd" id="1_efrxd"]
-[ext_resource type="Script" path="res://scenes/MoveOnPath.gd" id="1_fo7na"]
-[ext_resource type="Texture2D" uid="uid://do6jkd6vp742o" path="res://sprites/icon.svg" id="2_vwu05"]
+[ext_resource type="Script" path="res://scenes/MoveOnPath.gd" id="1_xhsx2"]
+[ext_resource type="Script" path="res://scenes/EnemySpawner.gd" id="2_62k6p"]
+[ext_resource type="Texture2D" uid="uid://b282n846usqle" path="res://sprites/icon.svg" id="3_b61mf"]
 
 [sub_resource type="Curve3D" id="Curve3D_muv3h"]
 _data = {
@@ -12,15 +12,14 @@ _data = {
 point_count = 3
 
 [node name="EnemyPath" type="Path3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444968, -0.164734, -0.252348)
 curve = SubResource("Curve3D_muv3h")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="."]
-transform = Transform3D(-4.37111e-08, 0, -0.999989, 0, 0.999991, 0, 0.999994, 0, -4.37109e-08, -15, 0, 0)
-script = ExtResource("1_fo7na")
+transform = Transform3D(-4.37111e-08, 0, -0.999989, 0, 0.999991, 0, 0.999994, 0, -4.37109e-08, 0, 0, 0)
+script = ExtResource("1_xhsx2")
 
 [node name="EnemySpawner" type="Node3D" parent="PathFollow3D"]
-script = ExtResource("1_efrxd")
+script = ExtResource("2_62k6p")
 
 [node name="Timer" type="Timer" parent="PathFollow3D/EnemySpawner"]
 wait_time = 0.1
@@ -30,7 +29,7 @@ autostart = true
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 visible = false
 billboard = 1
-texture = ExtResource("2_vwu05")
+texture = ExtResource("3_b61mf")
 
 [node name="Node3D" type="Node3D" parent="."]
 

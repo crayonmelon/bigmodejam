@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dt0srnvy2x5of" path="res://sprites/Cloud_layer_002.png" id="4_5jvtx"]
 [ext_resource type="Texture2D" uid="uid://c75cgqinalvl5" path="res://sprites/Cloud_layer_001.png" id="4_kgx1p"]
 [ext_resource type="Texture2D" uid="uid://b282n846usqle" path="res://sprites/icon.svg" id="5_7f0eh"]
-[ext_resource type="PackedScene" uid="uid://47oueet4y5dn" path="res://scenes/enemy_path.tscn" id="6_bhilo"]
 [ext_resource type="FontFile" uid="uid://c8v3m21p1rqhp" path="res://font/Starting Machine.ttf" id="8_8aska"]
+[ext_resource type="PackedScene" uid="uid://gjin3y2k2v1e" path="res://scenes/EnemySpawnPattern/EnemySpawnPatterns.tscn" id="10_v3rqo"]
 [ext_resource type="Script" path="res://scenes/Update_coin_text.gd" id="10_wd8cs"]
 [ext_resource type="Script" path="res://scenes/UpdateHealthText.gd" id="11_2nh5u"]
 
@@ -153,8 +153,6 @@ scrollDirection = Vector3(0, 1, 0)
 scrollSpeed = 0.5
 texture_heaven = ExtResource("5_7f0eh")
 
-[node name="EnemyPath" parent="." instance=ExtResource("6_bhilo")]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Coin" type="Label" parent="CanvasLayer"]
@@ -200,3 +198,6 @@ theme_override_font_sizes/font_size = 16
 text = "3"
 vertical_alignment = 1
 script = ExtResource("11_2nh5u")
+
+[node name="EnemySpawnPatterns" parent="." instance=ExtResource("10_v3rqo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)

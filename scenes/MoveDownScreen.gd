@@ -1,6 +1,6 @@
 extends CollisionObject3D
 
-const speed = 10
+@export var speed = 10
 
 func _ready():
 	_mode_swap(GameManager.is_heaven)
@@ -19,3 +19,6 @@ func _mode_swap(is_heaven):
 	else: 
 		collision_layer = 2
 		$Sprite3D.modulate = Color.BROWN
+
+func _on_timer_timeout():
+	$".".queue_free()
