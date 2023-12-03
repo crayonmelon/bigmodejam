@@ -2,6 +2,8 @@ extends Area3D
 
 func _on_area_entered(area):
 	
+	# 2
+	
 	if area.collision_layer == 2:
 		GameManager._chainge_health_val(-1)
 	elif area.collision_layer == 4:

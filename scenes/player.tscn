@@ -445,7 +445,7 @@ bones/11/parent = -1
 bones/11/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.337975, 0.0458548)
 bones/11/enabled = true
 bones/11/position = Vector3(0, 0.337975, 0.0458548)
-bones/11/rotation = Quaternion(-0.0828862, -0.286102, -0.103929, 0.948933)
+bones/11/rotation = Quaternion(-0.0523973, -0.294027, -0.203932, 0.932317)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "upTorso"
 bones/12/parent = 11
@@ -466,7 +466,7 @@ bones/14/parent = 13
 bones/14/rest = Transform3D(1, 2.37262e-07, 2.14963e-07, -2.37262e-07, 0.0983797, 0.995149, 2.14963e-07, -0.995149, 0.0983797, 1.34327e-07, 1.51327, 1.09032e-07)
 bones/14/enabled = true
 bones/14/position = Vector3(1.34327e-07, 1.51327, 1.09032e-07)
-bones/14/rotation = Quaternion(-0.584644, 0.0564305, 0.130924, 0.798665)
+bones/14/rotation = Quaternion(-0.558828, 0.0562151, 0.135631, 0.816184)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "foreArm.L"
 bones/15/parent = 14
@@ -487,7 +487,7 @@ bones/17/parent = 16
 bones/17/rest = Transform3D(1, -1.1863e-06, 1.07482e-06, 1.18631e-06, 0.0983797, -0.995149, 1.07481e-06, 0.995149, 0.0983797, 2.85238e-07, 1.51327, 1.30517e-06)
 bones/17/enabled = true
 bones/17/position = Vector3(2.85238e-07, 1.51327, 1.30517e-06)
-bones/17/rotation = Quaternion(0.489003, 0.082264, -0.0385125, 0.86754)
+bones/17/rotation = Quaternion(0.402073, 0.129449, -0.00751242, 0.906379)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "foreArm.R"
 bones/18/parent = 17
@@ -555,7 +555,6 @@ texture = ExtResource("8_ohe2o")
 [node name="HitArea2" type="Area3D" parent="."]
 transform = Transform3D(4.93586, 0, 0, 0, 1, 0, 0, 0, 4.93586, 0, 0, 0)
 collision_mask = 6
-script = ExtResource("8_07g13")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea2"]
 shape = SubResource("SphereShape3D_fk7ki")

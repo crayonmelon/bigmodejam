@@ -13,6 +13,9 @@ func _process(delta):
 	
 func _mode_swap(is_heaven):
 	
+	#4 = coin
+	#2 = enemy
+	
 	if is_heaven:
 		collision_layer = 4
 		$Sprite3D.modulate = Color.GOLD

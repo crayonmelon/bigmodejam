@@ -24,8 +24,6 @@ func _process(delta):
 	position.z = max(position.z, GameManager.WORLD_BORDER_Z_MIN)
 	position.z = min(position.z, GameManager.WORLD_BORDER_Z_MAX)
 	
-	print(position.x)
-	
 	if GameManager.is_heaven:
 		if position.x == GameManager.WORLD_BORDER_X_MIN:
 			change_direction(true)
