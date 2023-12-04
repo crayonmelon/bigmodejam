@@ -1,6 +1,8 @@
 extends CollisionObject3D
 
 @export var speed = 10
+var close_point_given = false
+
 
 func _ready():
 	_mode_swap(GameManager.is_heaven)
@@ -13,8 +15,8 @@ func _process(delta):
 	
 func _mode_swap(is_heaven):
 	
-	#4 = coin
 	#2 = enemy
+	#4 = coin
 	
 	if is_heaven:
 		collision_layer = 4
@@ -25,3 +27,14 @@ func _mode_swap(is_heaven):
 
 func _on_timer_timeout():
 	$".".queue_free()
+
+func _on_area_entered(area):
+	if area.collision_layer == 8 :
+		GameManager._change_charge_val(1)
+
+		queue_free()
+		area.queue_free()
+
+	elif area.collision_layer == 16 && (not close_point_given) && (not GameManager.is_heaven):
+		GameManager._change_charge_val(1)
+		close_point_given = true

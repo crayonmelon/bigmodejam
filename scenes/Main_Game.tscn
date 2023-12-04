@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cipvv00ugvtnm"]
+[gd_scene load_steps=22 format=3 uid="uid://cipvv00ugvtnm"]
 
 [ext_resource type="PackedScene" uid="uid://cpnbohmnn2bop" path="res://scenes/player.tscn" id="1_j12px"]
 [ext_resource type="Texture2D" uid="uid://ds2fu658sjuy0" path="res://sprites/Citymap001.png" id="2_p2oiy"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://do6jkd6vp742o" path="res://sprites/icon.svg" id="5_7f0eh"]
 [ext_resource type="FontFile" uid="uid://c2esusx06bivb" path="res://font/Starting Machine.ttf" id="8_8aska"]
 [ext_resource type="PackedScene" uid="uid://gjin3y2k2v1e" path="res://scenes/EnemySpawnPattern/EnemySpawnPatterns.tscn" id="10_v3rqo"]
+[ext_resource type="Script" path="res://scenes/ChargeBar.gd" id="10_vjdvd"]
 [ext_resource type="Script" path="res://scenes/Update_coin_text.gd" id="10_wd8cs"]
 [ext_resource type="Script" path="res://scenes/UpdateHealthText.gd" id="11_2nh5u"]
 [ext_resource type="PackedScene" uid="uid://bwd0plrjj3gc5" path="res://scenes/eyeball.tscn" id="11_p1if4"]
@@ -199,6 +200,16 @@ theme_override_font_sizes/font_size = 16
 text = "3"
 vertical_alignment = 1
 script = ExtResource("11_2nh5u")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.02
+offset_left = -0.112
+offset_bottom = -0.240001
+grow_horizontal = 0
+size_flags_horizontal = 8
+script = ExtResource("10_vjdvd")
 
 [node name="EnemySpawnPatterns" parent="." instance=ExtResource("10_v3rqo")]
 

@@ -16,7 +16,7 @@ config/icon="res://sprites/icon.svg"
 
 [autoload]
 
-GameManager="*res://scripts/GameManager.gd"
+GameManager="*res://scenes/game_manager.tscn"
 
 [display]
 
@@ -68,8 +68,11 @@ SHOOT={
 
 [layer_names]
 
+3d_physics/layer_1="PLAYER"
 3d_physics/layer_2="ENEMY"
 3d_physics/layer_3="COIN"
+3d_physics/layer_4="BULLET"
+3d_physics/layer_5="CLOSENESS"
 
 [rendering]
 

@@ -22,4 +22,3 @@ func spawn_grid():
 
 func _on_timer_timeout():
 	spawn_grid()
-	pass

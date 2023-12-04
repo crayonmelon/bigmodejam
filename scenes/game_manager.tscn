@@ -4,3 +4,7 @@
 
 [node name="GameManager" type="Node3D"]
 script = ExtResource("1_n3fd6")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
