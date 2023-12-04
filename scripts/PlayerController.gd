@@ -40,18 +40,23 @@ func _mode_Swap(is_heaven):
 var direction_hell = Vector3(1, 0, 0)
 
 func heaven_control(delta): 
+	var input_dir = Input.get_vector("LEFT", "RIGHT", "UP", "DOWN")
+	var direction = (transform.basis * Vector3(input_dir.x, input_dir.y, 0)).normalized()
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.y = direction.y * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.y = move_toward(velocity.y, 0, SPEED)
 	
-	velocity.x = direction_hell.x * HEAVEN_SPEED
-	velocity.z = 0
-	move_and_slide()
-	
-	ship_model.rotation.x = lerp(ship_model.rotation.x, direction_hell.x, 10 * delta)
+	ship_model.rotation.x = lerp(ship_model.rotation.x, direction.y, 10 * delta)
 	
 	if blend_animations:
-		animation_tree.set("parameters/blend_position", lerp(animation_tree.get("parameters/blend_position"), direction_hell, 10 * delta))
+		animation_tree.set("parameters/blend_position", lerp(animation_tree.get("parameters/blend_position"), input_dir, 10 * delta))
 	else:
-		animation_tree.set("parameters/blend_position", direction_hell)
+		animation_tree.set("parameters/blend_position", input_dir)
 	
+	move_and_slide()
 func hell_control(delta):
 	var input_dir = Input.get_vector("LEFT", "RIGHT", "UP", "DOWN")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()

@@ -11,7 +11,7 @@ var health = max_health
 var coin = 0 
 
 var max_charge = 300
-var charge = 100
+var charge = 100000
 
 const WORLD_BORDER_X_MIN = -14
 const WORLD_BORDER_X_MAX = 14
@@ -47,6 +47,8 @@ func _chainge_coin_val(value):
 func _chainge_health_val(value):
 	health += value
 	Health_Updated.emit()
+	if health <= 0:
+		_died()
 
 func _set_health(value):
 	health = value
@@ -73,3 +75,7 @@ func _Charge_count_down():
 	if timer.is_stopped():
 		_change_charge_val(-1)
 		$Timer.start()
+
+func _died():
+#	get_tree().quit() 
+	pass

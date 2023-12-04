@@ -1,15 +1,14 @@
-[gd_scene load_steps=66 format=3 uid="uid://cpnbohmnn2bop"]
+[gd_scene load_steps=34 format=3 uid="uid://cpnbohmnn2bop"]
 
 [ext_resource type="Script" path="res://scripts/PlayerController.gd" id="1_0vmp4"]
-[ext_resource type="Texture2D" uid="uid://baxyaayhlpwn0" path="res://sprites/Particles Effects/Ship Engines/ship_engine_100x100.png" id="2_8yqt5"]
-[ext_resource type="Texture2D" uid="uid://b1wm2silwpsuw" path="res://sprites/icon.svg" id="2_xde30"]
+[ext_resource type="Texture2D" uid="uid://do6jkd6vp742o" path="res://sprites/icon.svg" id="2_xde30"]
 [ext_resource type="Animation" uid="uid://b60dd6tyg338v" path="res://models/Ship/animations/ship_idle.res" id="3_7mfbl"]
 [ext_resource type="Animation" uid="uid://oinin1gmbyd" path="res://models/Ship/animations/ship_move_backward.res" id="3_ufjig"]
 [ext_resource type="Animation" uid="uid://ns2rrrgfvfkw" path="res://models/Ship/animations/ship_move_forward.res" id="4_hhb6c"]
 [ext_resource type="Animation" uid="uid://ea4s7on7db2r" path="res://models/Ship/animations/ship_move_left.res" id="5_5x55n"]
 [ext_resource type="Animation" uid="uid://cmb6wbvje4s5n" path="res://models/Ship/animations/ship_move_right.res" id="6_0ifs6"]
 [ext_resource type="Script" path="res://scenes/HitArea.gd" id="8_07g13"]
-[ext_resource type="Texture2D" uid="uid://cp5mmt6k5ru1b" path="res://sprites/circle.png" id="8_ohe2o"]
+[ext_resource type="Texture2D" uid="uid://bvrfcoryrh8ol" path="res://sprites/circle.png" id="8_ohe2o"]
 [ext_resource type="Script" path="res://scenes/CloseArea.gd" id="10_1xioh"]
 [ext_resource type="Script" path="res://scenes/AGUN.gd" id="10_qrvvr"]
 
@@ -49,224 +48,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ao0fc")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x0rgo"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(0, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x4c6y"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(100, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jy1gi"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(200, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_opf10"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(300, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c0bbn"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(400, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q1pa0"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(500, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uw1uu"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(0, 100, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3vvuh"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(100, 100, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hvqus"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(200, 100, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y46ja"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(300, 100, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jqfjf"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(400, 100, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_did84"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(500, 100, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0tvjd"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(0, 200, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h6211"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(100, 200, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_clpe5"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(200, 200, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_53hsv"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(300, 200, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_loov5"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(400, 200, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8yhdn"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(500, 200, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x68eo"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(0, 300, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5s4c3"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(100, 300, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_htonw"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(200, 300, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4yuom"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(300, 300, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lyjuq"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(400, 300, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kskqp"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(500, 300, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_avgny"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(0, 400, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ubp0w"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(100, 400, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8aysi"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(200, 400, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m5qvi"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(300, 400, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2cy2x"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(400, 400, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ullcx"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(500, 400, 100, 100)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_m606b"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x0rgo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x4c6y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jy1gi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_opf10")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c0bbn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q1pa0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uw1uu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3vvuh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hvqus")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y46ja")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jqfjf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_did84")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0tvjd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h6211")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_clpe5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_53hsv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_loov5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8yhdn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x68eo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5s4c3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_htonw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4yuom")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lyjuq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kskqp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_avgny")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ubp0w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8aysi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m5qvi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2cy2x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ullcx")
-}],
-"loop": true,
-"name": &"ship_engine",
-"speed": 60.0
-}]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5d32"]
 
@@ -582,14 +363,6 @@ transform = Transform3D(-3, 0, 0, 0, -3, 0.00184482, 0, -0.00184482, -3, 3.05291
 mesh = SubResource("ArrayMesh_xo1ur")
 skeleton = NodePath("")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="ship_idle/plane_2"]
-transform = Transform3D(84.4873, -6.82121e-13, 4.44089e-16, 0, -3.68059e-06, 84.4873, -4.54747e-13, -84.4873, -3.68059e-06, 10.6881, -0.304846, 2.13833)
-billboard = 1
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_m606b")
-animation = &"ship_engine"
-autoplay = "ship_engine"
-
 [node name="Armature" type="Node3D" parent="ship_idle"]
 transform = Transform3D(0.972966, -0.23095, -1.18167e-09, 0.23095, 0.972966, 1.00951e-08, -1.18174e-09, -1.00951e-08, 1, -6.98019, 9.81994, -0.0521888)
 
@@ -677,7 +450,7 @@ bones/11/parent = -1
 bones/11/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.337975, 0.0458548)
 bones/11/enabled = true
 bones/11/position = Vector3(0, 0.337975, 0.0458548)
-bones/11/rotation = Quaternion(0.0333151, -0.252477, -0.154371, 0.954628)
+bones/11/rotation = Quaternion(0.0406059, -0.24607, -0.119647, 0.960982)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "upTorso"
 bones/12/parent = 11
@@ -698,7 +471,7 @@ bones/14/parent = 13
 bones/14/rest = Transform3D(1, 2.37262e-07, 2.14963e-07, -2.37262e-07, 0.0983797, 0.995149, 2.14963e-07, -0.995149, 0.0983797, 1.34327e-07, 1.51327, 1.09032e-07)
 bones/14/enabled = true
 bones/14/position = Vector3(1.34327e-07, 1.51327, 1.09032e-07)
-bones/14/rotation = Quaternion(-0.496397, 0.0204728, 0.17087, 0.850867)
+bones/14/rotation = Quaternion(-0.502713, -0.0435959, 0.158361, 0.848706)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "foreArm.L"
 bones/15/parent = 14
@@ -719,7 +492,7 @@ bones/17/parent = 16
 bones/17/rest = Transform3D(1, -1.1863e-06, 1.07482e-06, 1.18631e-06, 0.0983797, -0.995149, 1.07481e-06, 0.995149, 0.0983797, 2.85238e-07, 1.51327, 1.30517e-06)
 bones/17/enabled = true
 bones/17/position = Vector3(2.85238e-07, 1.51327, 1.30517e-06)
-bones/17/rotation = Quaternion(0.446861, 0.193446, -0.0771506, 0.870024)
+bones/17/rotation = Quaternion(0.482265, 0.220231, -0.115893, 0.839933)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "foreArm.R"
 bones/18/parent = 17

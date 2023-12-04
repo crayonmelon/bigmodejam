@@ -15,7 +15,7 @@ point_count = 3
 curve = SubResource("Curve3D_muv3h")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="."]
-transform = Transform3D(-4.37111e-08, 0, -0.999989, 0, 0.999991, 0, 0.999994, 0, -4.37109e-08, -15, 0, 0)
+transform = Transform3D(-4.37111e-08, 0, -0.999988, 0, 0.999991, 0, 0.999993, 0, -4.37109e-08, -15, 0, 0)
 script = ExtResource("1_xhsx2")
 
 [node name="EnemySpawner" type="Node3D" parent="PathFollow3D"]
