@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/bullet.gd" id="1_5l584"]
 [ext_resource type="Texture2D" uid="uid://b1wm2silwpsuw" path="res://sprites/icon.svg" id="2_luy2h"]
-[ext_resource type="SpriteFrames" path="res://sprites/Particles Effects/Ship Engines/ship_engine_sprite_frames.tres" id="3_rp3iu"]
+[ext_resource type="SpriteFrames" uid="uid://b4tkhxfta3pxc" path="res://sprites/Particles Effects/Ship Engines/ship_engine_sprite_frames.tres" id="3_rp3iu"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ofg57"]
 
