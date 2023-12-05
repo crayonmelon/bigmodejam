@@ -14,4 +14,5 @@ func _process(delta):
 	get_surface_override_material(0).uv1_offset += scrollDirection * scrollSpeed * delta
 
 func _change_sprite(is_heaven):
+	pass
 	get_surface_override_material(0).albedo_texture = texture_heaven if is_heaven else texture_hell

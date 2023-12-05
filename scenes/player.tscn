@@ -450,7 +450,7 @@ bones/11/parent = -1
 bones/11/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.337975, 0.0458548)
 bones/11/enabled = true
 bones/11/position = Vector3(0, 0.337975, 0.0458548)
-bones/11/rotation = Quaternion(0.0406059, -0.24607, -0.119647, 0.960982)
+bones/11/rotation = Quaternion(-0.0407416, -0.290092, -0.200711, 0.934827)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "upTorso"
 bones/12/parent = 11
@@ -471,7 +471,7 @@ bones/14/parent = 13
 bones/14/rest = Transform3D(1, 2.37262e-07, 2.14963e-07, -2.37262e-07, 0.0983797, 0.995149, 2.14963e-07, -0.995149, 0.0983797, 1.34327e-07, 1.51327, 1.09032e-07)
 bones/14/enabled = true
 bones/14/position = Vector3(1.34327e-07, 1.51327, 1.09032e-07)
-bones/14/rotation = Quaternion(-0.502713, -0.0435959, 0.158361, 0.848706)
+bones/14/rotation = Quaternion(-0.543094, 0.0561407, 0.140153, 0.825987)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "foreArm.L"
 bones/15/parent = 14
@@ -492,7 +492,7 @@ bones/17/parent = 16
 bones/17/rest = Transform3D(1, -1.1863e-06, 1.07482e-06, 1.18631e-06, 0.0983797, -0.995149, 1.07481e-06, 0.995149, 0.0983797, 2.85238e-07, 1.51327, 1.30517e-06)
 bones/17/enabled = true
 bones/17/position = Vector3(2.85238e-07, 1.51327, 1.30517e-06)
-bones/17/rotation = Quaternion(0.482265, 0.220231, -0.115893, 0.839933)
+bones/17/rotation = Quaternion(0.398869, 0.132479, -0.00799763, 0.907353)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "foreArm.R"
 bones/18/parent = 17
@@ -510,7 +510,7 @@ bones/19/rotation = Quaternion(-0.127973, 0.208827, 0.0520269, 0.968146)
 bones/19/scale = Vector3(1, 1, 1)
 
 [node name="plane_2" type="BoneAttachment3D" parent="ship_idle/Armature/Skeleton3D"]
-transform = Transform3D(-2.41443, -1.78059, 0.0034966, 1.77639, -2.40833, 0.210751, 0.12228, -0.171685, -2.99259, -0.41069, -11.9496, -0.809487)
+transform = Transform3D(-2.41377, -1.78149, 0.00308113, 1.77728, -2.40771, 0.210252, 0.122381, -0.170992, -2.99262, -0.415272, -11.9496, -0.807376)
 bone_name = "plane_2"
 bone_idx = 10
 

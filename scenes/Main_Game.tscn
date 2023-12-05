@@ -1,11 +1,13 @@
-[gd_scene load_steps=26 format=3 uid="uid://cipvv00ugvtnm"]
+[gd_scene load_steps=29 format=3 uid="uid://cipvv00ugvtnm"]
 
 [ext_resource type="PackedScene" uid="uid://cpnbohmnn2bop" path="res://scenes/player.tscn" id="1_j12px"]
+[ext_resource type="Texture2D" uid="uid://di0uxqeqtxb1i" path="res://sprites/bg.png" id="1_rithy"]
 [ext_resource type="Script" path="res://scenes/CameraAngle.gd" id="2_1vjs7"]
-[ext_resource type="Texture2D" uid="uid://ds2fu658sjuy0" path="res://sprites/Citymap001.png" id="2_p2oiy"]
 [ext_resource type="Script" path="res://scripts/TextureScroll.gd" id="3_q0y32"]
 [ext_resource type="Texture2D" uid="uid://cbl4b722hcnew" path="res://sprites/Cloud_layer_002.png" id="4_5jvtx"]
 [ext_resource type="Texture2D" uid="uid://jvhec3shcns7" path="res://sprites/Cloud_layer_001.png" id="4_kgx1p"]
+[ext_resource type="Texture2D" uid="uid://dfgkfi38debji" path="res://sprites/tile_ground.png" id="4_lhq65"]
+[ext_resource type="Material" uid="uid://0jb1boabg4i3" path="res://scenes/THED.tres" id="4_nxwuk"]
 [ext_resource type="Texture2D" uid="uid://do6jkd6vp742o" path="res://sprites/icon.svg" id="5_7f0eh"]
 [ext_resource type="FontFile" uid="uid://c2esusx06bivb" path="res://font/Starting Machine.ttf" id="8_8aska"]
 [ext_resource type="PackedScene" uid="uid://gjin3y2k2v1e" path="res://scenes/EnemySpawnPattern/EnemySpawnPatterns.tscn" id="10_v3rqo"]
@@ -14,13 +16,29 @@
 [ext_resource type="Script" path="res://scenes/UpdateHealthText.gd" id="11_2nh5u"]
 [ext_resource type="PackedScene" uid="uid://bwd0plrjj3gc5" path="res://scenes/eyeball.tscn" id="11_p1if4"]
 
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_12oqm"]
+night_sky = ExtResource("1_rithy")
+
+[sub_resource type="Sky" id="Sky_5rh4j"]
+sky_material = SubResource("PhysicalSkyMaterial_12oqm")
+
 [sub_resource type="Environment" id="Environment_0mt7r"]
+background_mode = 2
+background_color = Color(0, 0, 1, 1)
+sky = SubResource("Sky_5rh4j")
+sky_rotation = Vector3(0, 1.5708, 0)
 ambient_light_source = 2
 ambient_light_color = Color(0.909804, 0.909804, 0.909804, 1)
-tonemap_mode = 2
+tonemap_mode = 3
+fog_light_color = Color(0.384314, 0.0705882, 0.00784314, 1)
+fog_light_energy = 0.33
+fog_density = 0.0005
+fog_height = -26.51
 
 [sub_resource type="Animation" id="Animation_xqb6q"]
 resource_name = "ChangeAngle"
+length = 0.5
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -28,20 +46,20 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(3, 3.605),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(5, 3.605),
 "update": 0,
-"values": [Vector3(-1.0472, 0, 0), Vector3(-0.174533, 0, 0)]
+"values": [Vector3(-1.0472, 0, 0), Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath(".:size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(3, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(5, 1),
 "update": 0,
 "values": [40.377, 30.0]
 }
@@ -52,10 +70,22 @@ tracks/2/path = NodePath(".:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(3, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(5, 1),
 "update": 0,
 "values": [Vector3(0, 35, 34.366), Vector3(0, 10, 40)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:projection")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
 }
 
 [sub_resource type="Animation" id="Animation_khi2p"]
@@ -96,6 +126,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0, 35, 34.366)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:projection")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cgv0q"]
 _data = {
@@ -106,11 +148,8 @@ _data = {
 [sub_resource type="TextMesh" id="TextMesh_iko7c"]
 text = "D"
 font_size = 127
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vr2se"]
-shading_mode = 0
-albedo_texture = ExtResource("2_p2oiy")
-uv1_scale = Vector3(5, 10, 1)
+pixel_size = 0.1
+curve_step = 3.3
 
 [sub_resource type="QuadMesh" id="QuadMesh_b4e8v"]
 
@@ -162,11 +201,12 @@ msdf_outline_size = 1.0
 environment = SubResource("Environment_0mt7r")
 
 [node name="player" parent="." instance=ExtResource("1_j12px")]
-transform = Transform3D(1, 0, -1.19209e-07, 3.55271e-15, 1, 0, 1.19209e-07, 0, 1, 0, 21, 30)
+transform = Transform3D(1, 0, -1.19209e-07, 3.55271e-15, 1, 0, 1.19209e-07, 0, 1, 0, 0, 30)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 35, 34.366)
+transform = Transform3D(1, 0, 0, 0, 0.499998, 0.866027, 0, -0.866027, 0.499998, 0, 35, 34.366)
 projection = 1
+fov = 130.0
 size = 40.377
 script = ExtResource("2_1vjs7")
 
@@ -180,14 +220,31 @@ libraries = {
 [node name="Scenery" type="Node3D" parent="."]
 
 [node name="Ground" type="MeshInstance3D" parent="Scenery"]
-transform = Transform3D(1.31171e-05, 3.93402e-06, -851, 7.03858e-06, -45, -7.43967e-05, -80.512, -3.93402e-06, -0.000138645, 0, -24.48, 11.027)
+transform = Transform3D(3.25855e-06, 7.2891e-07, -2200, 3.02004e-06, -8.33777, -0.00019233, -20.0008, -1.25897e-06, -0.000358426, 5.44527e-06, -49.4933, -8.97381)
 mesh = SubResource("TextMesh_iko7c")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_vr2se")
+surface_material_override/0 = ExtResource("4_nxwuk")
 script = ExtResource("3_q0y32")
-scrollDirection = Vector3(-1, 0, 0)
-scrollSpeed = 0.1
-texture_hell = ExtResource("2_p2oiy")
+texture_heaven = ExtResource("4_lhq65")
+texture_hell = ExtResource("4_lhq65")
+
+[node name="Ground2" type="MeshInstance3D" parent="Scenery"]
+transform = Transform3D(3.25855e-06, 7.2891e-07, -2200, 3.02004e-06, -8.33777, -0.00019233, -20.0008, -1.25897e-06, -0.000358426, 109.941, -49.4933, -8.97379)
+mesh = SubResource("TextMesh_iko7c")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("4_nxwuk")
+script = ExtResource("3_q0y32")
+texture_heaven = ExtResource("4_lhq65")
+texture_hell = ExtResource("4_lhq65")
+
+[node name="Ground3" type="MeshInstance3D" parent="Scenery"]
+transform = Transform3D(3.25855e-06, 7.2891e-07, -2200, 3.02004e-06, -8.33777, -0.00019233, -20.0008, -1.25897e-06, -0.000358426, -109.961, -49.4933, -8.97383)
+mesh = SubResource("TextMesh_iko7c")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("4_nxwuk")
+script = ExtResource("3_q0y32")
+texture_heaven = ExtResource("4_lhq65")
+texture_hell = ExtResource("4_lhq65")
 
 [node name="Cloud Layer" type="MeshInstance3D" parent="Scenery"]
 transform = Transform3D(52.1809, 0, 0, 0, 26.0904, 0.445674, 0, -45.19, 0.25731, -0.0487404, 10.9234, 17.3058)
@@ -238,6 +295,7 @@ texture_heaven = ExtResource("5_7f0eh")
 
 [node name="Cloud Layer5" type="MeshInstance3D" parent="Scenery"]
 transform = Transform3D(52.181, -4.56181e-06, 0, -2.2809e-06, -26.0905, 0.446003, 3.95064e-06, 45.1901, 0.2575, -0.0487404, 10.9234, 17.3058)
+visible = false
 mesh = SubResource("QuadMesh_b4e8v")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_7ca05")
@@ -245,6 +303,8 @@ script = ExtResource("3_q0y32")
 scrollDirection = Vector3(0, 1, 0)
 scrollSpeed = 0.5
 texture_heaven = ExtResource("5_7f0eh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scenery"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
