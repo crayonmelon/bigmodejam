@@ -22,7 +22,7 @@ GameManager="*res://scenes/game_manager.tscn"
 
 window/size/viewport_width=896
 window/size/viewport_height=1280
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 window/stretch/scale=4.0
 
 [dotnet]
