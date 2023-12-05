@@ -1,20 +1,20 @@
 [gd_scene load_steps=29 format=3 uid="uid://cipvv00ugvtnm"]
 
 [ext_resource type="PackedScene" uid="uid://cpnbohmnn2bop" path="res://scenes/player.tscn" id="1_j12px"]
-[ext_resource type="Texture2D" uid="uid://di0uxqeqtxb1i" path="res://sprites/bg.png" id="1_rithy"]
+[ext_resource type="Texture2D" uid="uid://bo5shm58y1cku" path="res://sprites/bg.png" id="1_rithy"]
 [ext_resource type="Script" path="res://scenes/CameraAngle.gd" id="2_1vjs7"]
 [ext_resource type="Script" path="res://scripts/TextureScroll.gd" id="3_q0y32"]
-[ext_resource type="Texture2D" uid="uid://cbl4b722hcnew" path="res://sprites/Cloud_layer_002.png" id="4_5jvtx"]
-[ext_resource type="Texture2D" uid="uid://jvhec3shcns7" path="res://sprites/Cloud_layer_001.png" id="4_kgx1p"]
-[ext_resource type="Texture2D" uid="uid://dfgkfi38debji" path="res://sprites/tile_ground.png" id="4_lhq65"]
-[ext_resource type="Material" uid="uid://0jb1boabg4i3" path="res://scenes/THED.tres" id="4_nxwuk"]
-[ext_resource type="Texture2D" uid="uid://do6jkd6vp742o" path="res://sprites/icon.svg" id="5_7f0eh"]
-[ext_resource type="FontFile" uid="uid://c2esusx06bivb" path="res://font/Starting Machine.ttf" id="8_8aska"]
+[ext_resource type="Texture2D" uid="uid://ch6cd47nam5ay" path="res://sprites/Cloud_layer_002.png" id="4_5jvtx"]
+[ext_resource type="Texture2D" uid="uid://x4dvcqh5ugfd" path="res://sprites/Cloud_layer_001.png" id="4_kgx1p"]
+[ext_resource type="Texture2D" uid="uid://b753vlp862v7w" path="res://sprites/tile_ground.png" id="4_lhq65"]
+[ext_resource type="Material" uid="uid://dtol571qbvgjn" path="res://scenes/THED.tres" id="4_nxwuk"]
+[ext_resource type="Texture2D" uid="uid://b1wm2silwpsuw" path="res://sprites/icon.svg" id="5_7f0eh"]
+[ext_resource type="FontFile" uid="uid://b015fxhu4htvp" path="res://font/Starting Machine.ttf" id="8_8aska"]
 [ext_resource type="PackedScene" uid="uid://gjin3y2k2v1e" path="res://scenes/EnemySpawnPattern/EnemySpawnPatterns.tscn" id="10_v3rqo"]
 [ext_resource type="Script" path="res://scenes/ChargeBar.gd" id="10_vjdvd"]
 [ext_resource type="Script" path="res://scenes/Update_coin_text.gd" id="10_wd8cs"]
 [ext_resource type="Script" path="res://scenes/UpdateHealthText.gd" id="11_2nh5u"]
-[ext_resource type="PackedScene" uid="uid://bwd0plrjj3gc5" path="res://scenes/eyeball.tscn" id="11_p1if4"]
+[ext_resource type="PackedScene" path="res://scenes/eyeball.tscn" id="11_p1if4"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_12oqm"]
 night_sky = ExtResource("1_rithy")
@@ -225,6 +225,8 @@ mesh = SubResource("TextMesh_iko7c")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("4_nxwuk")
 script = ExtResource("3_q0y32")
+scrollDirection = Vector3(-1, 0, 0)
+scrollSpeed = 0.5
 texture_heaven = ExtResource("4_lhq65")
 texture_hell = ExtResource("4_lhq65")
 
@@ -234,6 +236,8 @@ mesh = SubResource("TextMesh_iko7c")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("4_nxwuk")
 script = ExtResource("3_q0y32")
+scrollDirection = Vector3(-1, 0, 0)
+scrollSpeed = 0.5
 texture_heaven = ExtResource("4_lhq65")
 texture_hell = ExtResource("4_lhq65")
 
@@ -243,6 +247,8 @@ mesh = SubResource("TextMesh_iko7c")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("4_nxwuk")
 script = ExtResource("3_q0y32")
+scrollDirection = Vector3(-1, 0, 0)
+scrollSpeed = 0.5
 texture_heaven = ExtResource("4_lhq65")
 texture_hell = ExtResource("4_lhq65")
 

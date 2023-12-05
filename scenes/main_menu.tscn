@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcywoy6adp0bp"]
+
+[ext_resource type="Theme" path="res://menu_ui_theme.tres" id="1_bd4h3"]
+[ext_resource type="Texture2D" uid="uid://1n2wgx6gejo4" path="res://sprites/splash_screen.png" id="1_c37b8"]
+[ext_resource type="Script" path="res://scripts/mainMenu.gd" id="3_21nbp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_118li"]
+texture = ExtResource("1_c37b8")
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_right = 33.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_118li")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.308036
+anchor_top = 0.223438
+anchor_right = 0.46875
+anchor_bottom = 0.247656
+theme = ExtResource("1_bd4h3")
+theme_override_font_sizes/font_size = 28
+text = "Bone City"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.407366
+anchor_top = 0.314063
+anchor_right = 0.603795
+anchor_bottom = 0.338281
+theme = ExtResource("1_bd4h3")
+theme_override_font_sizes/font_size = 14
+text = "New Orleans"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.561384
+anchor_top = 0.5
+anchor_right = 0.731027
+anchor_bottom = 0.8375
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_21nbp")
+metadata/_edit_use_anchors_ = true
+
+[node name="Play Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("1_bd4h3")
+text = "Start"
+
+[node name="Settings Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("1_bd4h3")
+text = "Settings"
+
+[node name="Quit Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("1_bd4h3")
+text = "Quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
