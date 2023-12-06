@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED = 10
+const SPEED = 20
 const HEAVEN_SPEED = 20
 
 @onready var ship_model = $ship_idle/plane_2
@@ -11,11 +11,11 @@ var _3d_vec_pos = Vector3(0,10,32)
 
 
 func _ready():
-	_mode_Swap(GameManager.is_heaven)
+	_mode_Swap(GameManager.is_3D_mode)
 	GameManager.Swap_Mode.connect(_mode_Swap)
 
 func _physics_process(delta):
-	if GameManager.is_heaven:
+	if GameManager.is_3D_mode:
 		heaven_control(delta)
 	else:
 		hell_control(delta)
@@ -30,11 +30,11 @@ func _process(delta):
 	position.y = max(position.y, GameManager.WORLD_BORDER_Y_MIN)
 	position.y = min(position.y, GameManager.WORLD_BORDER_Y_MAX)
 
-func _mode_Swap(is_heaven):
+func _mode_Swap(is_3D_mode):
 	
 	velocity = Vector3.ZERO
 	position = Vector3(position.x,_3d_vec_pos.y, _3d_vec_pos.z)
-	if is_heaven:
+	if is_3D_mode:
 		$AnimationPlayer.play("shrink")
 		
 	else: 

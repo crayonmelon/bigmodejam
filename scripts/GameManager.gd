@@ -15,17 +15,19 @@ var charge = 100000
 
 const WORLD_BORDER_X_MIN = -14
 const WORLD_BORDER_X_MAX = 14
-const WORLD_BORDER_Z_MIN = 0
-const WORLD_BORDER_Z_MAX = 40
+
+const WORLD_BORDER_Z_MIN = 16
+const WORLD_BORDER_Z_MAX = 52
+
 const WORLD_BORDER_Y_MIN = -6
 const WORLD_BORDER_Y_MAX = 30
 
-const WORLD_HEIGHT = 21
+const WORLD_HEIGHT = 10
 
-var is_heaven = false
+var is_3D_mode = false
 
 func _process(delta):
-	if is_heaven:
+	if is_3D_mode:
 		_Charge_count_down()
 
 func _input(event):
@@ -35,12 +37,12 @@ func _input(event):
 func _swap_mode(value = null):
 	
 	if value != null:
-		is_heaven = value
-		Swap_Mode.emit(is_heaven)
+		is_3D_mode = value
+		Swap_Mode.emit(is_3D_mode)
 		return
 		
-	is_heaven = !is_heaven
-	Swap_Mode.emit(is_heaven)
+	is_3D_mode = !is_3D_mode
+	Swap_Mode.emit(is_3D_mode)
 
 func _chainge_coin_val(value):
 	coin += value

@@ -16,6 +16,6 @@ func _shoot():
 
 func _process(delta):
 
-	if Input.is_action_pressed("SHOOT")  && (not GameManager.is_heaven) && GameManager.coin > 0 && shoot_delay.is_stopped():
+	if Input.is_action_pressed("SHOOT")  && (not GameManager.is_3D_mode) && GameManager.coin > 0 && shoot_delay.is_stopped():
 		shoot_delay.start(.1)
 		_shoot()
