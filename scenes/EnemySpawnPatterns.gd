@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var start_on_ready = true
-@export var Patterns = [preload("res://scenes/EnemySpawnPattern/enemy_path_2.tscn"), preload("res://scenes/EnemySpawnPattern/enemy_path.tscn")] 
+@export var Patterns = [preload("res://scenes/EnemySpawnPattern/enemy_path_3.tscn")] 
 @onready var spawn_pivot = $SpawnPivot
 
 func _ready():

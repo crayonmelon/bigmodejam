@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cipvv00ugvtnm"]
+[gd_scene load_steps=26 format=3 uid="uid://cipvv00ugvtnm"]
 
 [ext_resource type="PackedScene" uid="uid://cpnbohmnn2bop" path="res://scenes/player.tscn" id="1_j12px"]
 [ext_resource type="Texture2D" uid="uid://di0uxqeqtxb1i" path="res://sprites/bg.png" id="1_rithy"]
@@ -6,16 +6,12 @@
 [ext_resource type="Script" path="res://scripts/TextureScroll.gd" id="3_q0y32"]
 [ext_resource type="Texture2D" uid="uid://cbl4b722hcnew" path="res://sprites/Cloud_layer_002.png" id="4_5jvtx"]
 [ext_resource type="Texture2D" uid="uid://jvhec3shcns7" path="res://sprites/Cloud_layer_001.png" id="4_kgx1p"]
-[ext_resource type="Texture2D" uid="uid://dfgkfi38debji" path="res://sprites/tile_ground.png" id="4_lhq65"]
 [ext_resource type="Material" uid="uid://dtol571qbvgjn" path="res://scenes/THED.tres" id="4_nxwuk"]
-[ext_resource type="Texture2D" uid="uid://do6jkd6vp742o" path="res://sprites/icon.svg" id="5_7f0eh"]
-[ext_resource type="Texture2D" uid="uid://rtxm5alurm01" path="res://sprites/Grass_23-128x128.png" id="6_5ivff"]
 [ext_resource type="FontFile" uid="uid://c2esusx06bivb" path="res://font/Starting Machine.ttf" id="8_8aska"]
-[ext_resource type="PackedScene" uid="uid://gjin3y2k2v1e" path="res://scenes/EnemySpawnPattern/EnemySpawnPatterns.tscn" id="10_v3rqo"]
 [ext_resource type="Script" path="res://scenes/ChargeBar.gd" id="10_vjdvd"]
 [ext_resource type="Script" path="res://scenes/Update_coin_text.gd" id="10_wd8cs"]
 [ext_resource type="Script" path="res://scenes/UpdateHealthText.gd" id="11_2nh5u"]
-[ext_resource type="PackedScene" uid="uid://bwd0plrjj3gc5" path="res://scenes/eyeball.tscn" id="11_p1if4"]
+[ext_resource type="Script" path="res://scenes/Spawner.gd" id="12_j5xrs"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_12oqm"]
 night_sky = ExtResource("1_rithy")
@@ -30,6 +26,7 @@ sky = SubResource("Sky_5rh4j")
 sky_rotation = Vector3(0, 1.5708, 0)
 ambient_light_source = 2
 ambient_light_color = Color(0.909804, 0.909804, 0.909804, 1)
+tonemap_mode = 1
 fog_light_color = Color(0.384314, 0.0705882, 0.00784314, 1)
 fog_light_energy = 0.33
 fog_density = 0.0005
@@ -227,8 +224,6 @@ surface_material_override/0 = ExtResource("4_nxwuk")
 script = ExtResource("3_q0y32")
 scrollDirection = Vector3(-1, 0, 0)
 scrollSpeed = 0.5
-texture_heaven = ExtResource("6_5ivff")
-texture_hell = ExtResource("6_5ivff")
 
 [node name="Ground2" type="MeshInstance3D" parent="Scenery"]
 transform = Transform3D(3.25855e-06, 7.2891e-07, -2200, 3.02004e-06, -8.33777, -0.00019233, -20.0008, -1.25897e-06, -0.000358426, 109.941, -49.4933, -8.97379)
@@ -238,8 +233,6 @@ surface_material_override/0 = ExtResource("4_nxwuk")
 script = ExtResource("3_q0y32")
 scrollDirection = Vector3(-1, 0, 0)
 scrollSpeed = 0.5
-texture_heaven = ExtResource("4_lhq65")
-texture_hell = ExtResource("4_lhq65")
 
 [node name="Ground3" type="MeshInstance3D" parent="Scenery"]
 transform = Transform3D(3.25855e-06, 7.2891e-07, -2200, 3.02004e-06, -8.33777, -0.00019233, -20.0008, -1.25897e-06, -0.000358426, -109.961, -49.4933, -8.97383)
@@ -249,32 +242,24 @@ surface_material_override/0 = ExtResource("4_nxwuk")
 script = ExtResource("3_q0y32")
 scrollDirection = Vector3(-1, 0, 0)
 scrollSpeed = 0.5
-texture_heaven = ExtResource("4_lhq65")
-texture_hell = ExtResource("4_lhq65")
 
 [node name="Cloud Layer" type="MeshInstance3D" parent="Scenery"]
 transform = Transform3D(52.1809, 0, 0, 0, 26.0904, 0.445674, 0, -45.19, 0.25731, -0.0487404, 10.9234, 17.3058)
-visible = false
 mesh = SubResource("QuadMesh_b4e8v")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_bg0yt")
 script = ExtResource("3_q0y32")
 scrollDirection = Vector3(0, -1, 0)
 scrollSpeed = 0.2
-texture_heaven = ExtResource("5_7f0eh")
-texture_hell = ExtResource("4_5jvtx")
 
 [node name="Cloud Layer3" type="MeshInstance3D" parent="Scenery"]
 transform = Transform3D(52.1809, 0, 0, 0, 26.0904, 0.445674, 0, -45.19, 0.25731, -0.0487404, 10.9234, 17.3058)
-visible = false
 mesh = SubResource("QuadMesh_b4e8v")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_acx64")
 script = ExtResource("3_q0y32")
 scrollDirection = Vector3(0, -1, 0)
 scrollSpeed = 0.4
-texture_heaven = ExtResource("5_7f0eh")
-texture_hell = ExtResource("4_5jvtx")
 
 [node name="Cloud Layer4" type="MeshInstance3D" parent="Scenery"]
 transform = Transform3D(52.1809, 0, 0, 0, 26.0904, 0.445674, 0, -45.19, 0.25731, -0.0487404, 10.9234, 17.3058)
@@ -285,8 +270,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_xs54y")
 script = ExtResource("3_q0y32")
 scrollDirection = Vector3(0, -1, 0)
 scrollSpeed = 0.4
-texture_heaven = ExtResource("5_7f0eh")
-texture_hell = ExtResource("4_5jvtx")
 
 [node name="Cloud Layer2" type="MeshInstance3D" parent="Scenery"]
 transform = Transform3D(-52.181, 0, 0, 0, 26.0905, 0.446003, 0, -45.1901, 0.2575, -0.0487404, 10.9234, 17.3058)
@@ -297,7 +280,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_fmtpb")
 script = ExtResource("3_q0y32")
 scrollDirection = Vector3(0, -1, 0)
 scrollSpeed = 0.5
-texture_heaven = ExtResource("5_7f0eh")
 
 [node name="Cloud Layer5" type="MeshInstance3D" parent="Scenery"]
 transform = Transform3D(52.181, -4.56181e-06, 0, -2.2809e-06, -26.0905, 0.446003, 3.95064e-06, 45.1901, 0.2575, -0.0487404, 10.9234, 17.3058)
@@ -308,7 +290,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_7ca05")
 script = ExtResource("3_q0y32")
 scrollDirection = Vector3(0, 1, 0)
 scrollSpeed = 0.5
-texture_heaven = ExtResource("5_7f0eh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Scenery"]
 
@@ -368,9 +349,7 @@ grow_horizontal = 0
 size_flags_horizontal = 8
 script = ExtResource("10_vjdvd")
 
-[node name="EnemySpawnPatterns" parent="." instance=ExtResource("10_v3rqo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+[node name="Spawner" type="Node3D" parent="."]
+script = ExtResource("12_j5xrs")
 
-[node name="eyeball" parent="." instance=ExtResource("11_p1if4")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0.5, 0.866026, 2.18557e-08, -0.866026, 0.5, -3.78552e-08, 0, 21, 10)
-visible = false
+[node name="Timer" type="Timer" parent="Spawner"]

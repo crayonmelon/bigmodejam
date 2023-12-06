@@ -5,6 +5,7 @@
 [resource]
 resource_local_to_scene = true
 specular_mode = 1
+albedo_color = Color(0.615686, 0.615686, 0.615686, 1)
 albedo_texture = ExtResource("1_l0b3x")
 uv1_scale = Vector3(40, 40, 40)
 uv2_scale = Vector3(2, 2, 2)

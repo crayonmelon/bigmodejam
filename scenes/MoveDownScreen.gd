@@ -18,9 +18,6 @@ func _process(delta):
 	position.x = wrapf(position.x, GameManager.WORLD_BORDER_X_MIN, GameManager.WORLD_BORDER_X_MAX)
 	
 func _mode_swap(is_3D_mode):
-	#2 = enemy
-	#4 = coin
-	
 	if is_3D_mode:
 		collision_shape_3d.position.y = 0
 	else: 

@@ -1,7 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckalp8n0jp0h7"]
+[gd_scene load_steps=8 format=3 uid="uid://dfkv4tkpwjtyc"]
 
-[ext_resource type="Script" path="res://scenes/EnemySpawnPattern/Barrier/MoveDown.gd" id="1_ac3sq"]
-[ext_resource type="PackedScene" uid="uid://bdjng1ek73ev8" path="res://scenes/enemies/skellyladder.tscn" id="2_esky4"]
+[ext_resource type="Script" path="res://scenes/EnemySpawnPattern/Barrier/MoveDown.gd" id="1_iikus"]
+[ext_resource type="FontFile" uid="uid://c2esusx06bivb" path="res://font/Starting Machine.ttf" id="2_njh4o"]
+
+[sub_resource type="TextMesh" id="TextMesh_e1uex"]
+text = "JOIN MY COOP GAME ON BLOONS TD 6!
+https://join.btd6.com/Coop/SOUBEY
+"
+font = ExtResource("2_njh4o")
+font_size = 127
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bfjf6"]
 size = Vector3(5, 40, 5)
@@ -11,30 +18,29 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("skellyladder:position")
+tracks/0/path = NodePath("MeshInstance3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 8.5, 0)]
+"values": [Vector3(0, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_fxjx4"]
 resource_name = "drop_in"
-length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("skellyladder:position")
+tracks/0/path = NodePath("MeshInstance3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.3, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.0544094, 0.0220971),
 "update": 0,
-"values": [Vector3(0, 60, 0), Vector3(0, 8.5, 0)]
+"values": [Vector3(0, -50, 0), Vector3(0, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cxdec"]
@@ -43,15 +49,18 @@ _data = {
 "drop_in": SubResource("Animation_fxjx4")
 }
 
-[node name="SkellyAbove" type="StaticBody3D"]
-script = ExtResource("1_ac3sq")
+[node name="bLOONS" type="StaticBody3D"]
+transform = Transform3D(5.27362, 0, 0, 0, 5.27362, 0, 0, 0, 4.3475, 0, 0, 0)
+script = ExtResource("1_iikus")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4.15682, 0, 1, 0)
+mesh = SubResource("TextMesh_e1uex")
+skeleton = NodePath("../CollisionShape3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 shape = SubResource("BoxShape3D_bfjf6")
-
-[node name="skellyladder" parent="." instance=ExtResource("2_esky4")]
-transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 8.5, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "drop_in"

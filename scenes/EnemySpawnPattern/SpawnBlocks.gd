@@ -1,6 +1,6 @@
 extends Node3D
 
-var enemy = preload("res://scenes/EnemySpawnPattern/Barrier/SkellyAboveLadder.tscn")
+var enemy = preload("res://scenes/EnemySpawnPattern/Barrier/bloons.tscn")
 
 func _ready():
 	Spawn_ladder_Upper()

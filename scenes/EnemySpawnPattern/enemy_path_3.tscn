@@ -9,6 +9,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
 script = ExtResource("1_81t6o")
 
 [node name="Timer" type="Timer" parent="SpawnerGrid"]
+wait_time = 2.0
 autostart = true
 
 [connection signal="timeout" from="SpawnerGrid/Timer" to="SpawnerGrid" method="_on_timer_timeout"]
