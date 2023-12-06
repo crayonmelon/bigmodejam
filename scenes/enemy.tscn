@@ -15,6 +15,7 @@ shape = SubResource("SphereShape3D_ofg57")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+billboard = 1
 texture = ExtResource("2_fda5c")
 
 [node name="Timer" type="Timer" parent="."]
