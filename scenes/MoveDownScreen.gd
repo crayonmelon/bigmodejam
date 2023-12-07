@@ -1,6 +1,6 @@
 extends CollisionObject3D
 
-@export var speed = 10
+@export var speed = 20
 var close_point_given = false
 @onready var collision_shape_3d = $CollisionShape3D
 var y_original  
@@ -14,15 +14,14 @@ func _ready():
 
 func _process(delta):
 	
-	global_position.z = position.z + speed * delta
-	position.x = wrapf(position.x, GameManager.WORLD_BORDER_X_MIN, GameManager.WORLD_BORDER_X_MAX)
+	translate(-global_transform.basis.z * speed * delta)
+	#position.x = wrapf(position.x, GameManager.WORLD_BORDER_X_MIN, GameManager.WORLD_BORDER_X_MAX)
 	
 func _mode_swap(is_3D_mode):
 	if is_3D_mode:
 		collision_shape_3d.position.y = 0
 	else: 
 		collision_shape_3d.global_position.y = GameManager.WORLD_HEIGHT
-		
 
 func _on_timer_timeout():
 	$".".queue_free()

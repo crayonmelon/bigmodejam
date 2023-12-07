@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bcywoy6adp0bp"]
 
 [ext_resource type="Theme" uid="uid://s7pty4gf0702" path="res://menu_ui_theme.tres" id="1_bd4h3"]
-[ext_resource type="Texture2D" uid="uid://1n2wgx6gejo4" path="res://splash_screen.png" id="1_yagi5"]
+[ext_resource type="Texture2D" uid="uid://bu4tlv3aqcll7" path="res://splash_screen.png" id="1_yagi5"]
 [ext_resource type="Script" path="res://scripts/mainMenu.gd" id="3_21nbp"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_118li"]

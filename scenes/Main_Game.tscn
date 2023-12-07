@@ -1,13 +1,13 @@
 [gd_scene load_steps=26 format=3 uid="uid://cipvv00ugvtnm"]
 
 [ext_resource type="PackedScene" uid="uid://cpnbohmnn2bop" path="res://scenes/player.tscn" id="1_j12px"]
-[ext_resource type="Texture2D" uid="uid://di0uxqeqtxb1i" path="res://sprites/bg.png" id="1_rithy"]
+[ext_resource type="Texture2D" uid="uid://bbhbjl6b1g6os" path="res://sprites/bg.png" id="1_rithy"]
 [ext_resource type="Script" path="res://scenes/CameraAngle.gd" id="2_1vjs7"]
 [ext_resource type="Script" path="res://scripts/TextureScroll.gd" id="3_q0y32"]
-[ext_resource type="Texture2D" uid="uid://cbl4b722hcnew" path="res://sprites/Cloud_layer_002.png" id="4_5jvtx"]
-[ext_resource type="Texture2D" uid="uid://jvhec3shcns7" path="res://sprites/Cloud_layer_001.png" id="4_kgx1p"]
+[ext_resource type="Texture2D" uid="uid://dt0srnvy2x5of" path="res://sprites/Cloud_layer_002.png" id="4_5jvtx"]
+[ext_resource type="Texture2D" uid="uid://c75cgqinalvl5" path="res://sprites/Cloud_layer_001.png" id="4_kgx1p"]
 [ext_resource type="Material" uid="uid://dtol571qbvgjn" path="res://scenes/THED.tres" id="4_nxwuk"]
-[ext_resource type="FontFile" uid="uid://c2esusx06bivb" path="res://font/Starting Machine.ttf" id="8_8aska"]
+[ext_resource type="FontFile" uid="uid://c8v3m21p1rqhp" path="res://font/Starting Machine.ttf" id="8_8aska"]
 [ext_resource type="Script" path="res://scenes/ChargeBar.gd" id="10_vjdvd"]
 [ext_resource type="Script" path="res://scenes/Update_coin_text.gd" id="10_wd8cs"]
 [ext_resource type="Script" path="res://scenes/UpdateHealthText.gd" id="11_2nh5u"]
@@ -155,6 +155,7 @@ transparency = 1
 albedo_color = Color(1, 1, 1, 0.392157)
 albedo_texture = ExtResource("4_5jvtx")
 albedo_texture_force_srgb = true
+uv1_scale = Vector3(2, 2, 2)
 uv1_offset = Vector3(10.175, 0, 0)
 texture_filter = 0
 msdf_outline_size = 1.0
@@ -217,7 +218,7 @@ libraries = {
 [node name="Scenery" type="Node3D" parent="."]
 
 [node name="Ground" type="MeshInstance3D" parent="Scenery"]
-transform = Transform3D(3.25855e-06, 7.2891e-07, -2200, 3.02004e-06, -8.33777, -0.00019233, -20.0008, -1.25897e-06, -0.000358426, 5.44527e-06, -49.4933, -8.97381)
+transform = Transform3D(3.25854e-06, 7.2891e-07, -2200, 3.02004e-06, -8.33777, -0.00019233, -20.0008, -1.25897e-06, -0.000358426, 5.44527e-06, -49.4933, -8.97381)
 mesh = SubResource("TextMesh_iko7c")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("4_nxwuk")
@@ -226,7 +227,7 @@ scrollDirection = Vector3(-1, 0, 0)
 scrollSpeed = 0.5
 
 [node name="Ground2" type="MeshInstance3D" parent="Scenery"]
-transform = Transform3D(3.25855e-06, 7.2891e-07, -2200, 3.02004e-06, -8.33777, -0.00019233, -20.0008, -1.25897e-06, -0.000358426, 109.941, -49.4933, -8.97379)
+transform = Transform3D(3.25854e-06, 7.2891e-07, -2200, 3.02004e-06, -8.33777, -0.00019233, -20.0008, -1.25897e-06, -0.000358426, 109.941, -49.4933, -8.97379)
 mesh = SubResource("TextMesh_iko7c")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("4_nxwuk")
@@ -235,7 +236,7 @@ scrollDirection = Vector3(-1, 0, 0)
 scrollSpeed = 0.5
 
 [node name="Ground3" type="MeshInstance3D" parent="Scenery"]
-transform = Transform3D(3.25855e-06, 7.2891e-07, -2200, 3.02004e-06, -8.33777, -0.00019233, -20.0008, -1.25897e-06, -0.000358426, -109.961, -49.4933, -8.97383)
+transform = Transform3D(3.25854e-06, 7.2891e-07, -2200, 3.02004e-06, -8.33777, -0.00019233, -20.0008, -1.25897e-06, -0.000358426, -109.961, -49.4933, -8.97383)
 mesh = SubResource("TextMesh_iko7c")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("4_nxwuk")
@@ -244,7 +245,18 @@ scrollDirection = Vector3(-1, 0, 0)
 scrollSpeed = 0.5
 
 [node name="Cloud Layer" type="MeshInstance3D" parent="Scenery"]
-transform = Transform3D(52.1809, 0, 0, 0, 26.0904, 0.445674, 0, -45.19, 0.25731, -0.0487404, 10.9234, 17.3058)
+transform = Transform3D(200, 0, 0, 0, 100, 0.512687, 0, -173.205, 0.296, -0.0487404, 37.8036, -13.7851)
+visible = false
+mesh = SubResource("QuadMesh_b4e8v")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_bg0yt")
+script = ExtResource("3_q0y32")
+scrollDirection = Vector3(0, -1, 0)
+scrollSpeed = 0.2
+
+[node name="Cloud Layer6" type="MeshInstance3D" parent="Scenery"]
+transform = Transform3D(200, 0, 0, 0, 100, 0.512687, 0, -173.205, 0.296, -0.0487404, 37.8036, -13.7851)
+visible = false
 mesh = SubResource("QuadMesh_b4e8v")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_bg0yt")
@@ -254,6 +266,7 @@ scrollSpeed = 0.2
 
 [node name="Cloud Layer3" type="MeshInstance3D" parent="Scenery"]
 transform = Transform3D(52.1809, 0, 0, 0, 26.0904, 0.445674, 0, -45.19, 0.25731, -0.0487404, 10.9234, 17.3058)
+visible = false
 mesh = SubResource("QuadMesh_b4e8v")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_acx64")
@@ -350,6 +363,12 @@ size_flags_horizontal = 8
 script = ExtResource("10_vjdvd")
 
 [node name="Spawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 script = ExtResource("12_j5xrs")
 
 [node name="Timer" type="Timer" parent="Spawner"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]

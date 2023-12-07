@@ -34,12 +34,7 @@ func _mode_Swap(is_3D_mode):
 	
 	velocity = Vector3.ZERO
 	position = Vector3(position.x,_3d_vec_pos.y, _3d_vec_pos.z)
-	if is_3D_mode:
-		$AnimationPlayer.play("shrink")
-		
-	else: 
-		$AnimationPlayer.play_backwards("shrink")
-		
+
 
 func heaven_control(delta): 
 	var input_dir = Input.get_vector("LEFT", "RIGHT", "UP", "DOWN")
