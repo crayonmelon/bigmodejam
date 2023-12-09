@@ -21,7 +21,7 @@ func _physics_process(delta):
 		heaven_control(delta, direction)
 	else:
 		hell_control(delta, direction)
-		
+	
 	if blend_animations:
 		animation_tree.set("parameters/blend_position", lerp(animation_tree.get("parameters/blend_position"), input_dir, 10 * delta))
 	else:

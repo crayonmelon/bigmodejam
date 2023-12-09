@@ -1,15 +1,23 @@
 extends Area3D
+@onready var animation_player = $"../ship_idle/AnimationPlayer" as AnimationPlayer
+@onready var animation_tree = $"../ship_idle/AnimationPlayer/AnimationTree"
+@onready var collision_shape_3d = $CollisionShape3D
 
 func _on_area_entered(area):
 	
-	# 2
-	
 	if area.collision_layer == 2:
-		GameManager._chainge_health_val(-1)
-	elif area.collision_layer == 4:
-		GameManager._chainge_coin_val(1)
-	else:
-		return 
-		
-	area.queue_free()
+		area.queue_free()	
+		Hurt()
+
+func Hurt():
+	GameManager._chainge_health_val(-1)
+	collision_shape_3d.disabled = true
+	animation_tree.active = false
+	animation_player.play("hurt")
+	
+	await animation_player.animation_finished
+	
+	collision_shape_3d.disabled = false
+	animation_tree.active = true
+
 

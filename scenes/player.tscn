@@ -1,9 +1,7 @@
-[gd_scene load_steps=40 format=3 uid="uid://cpnbohmnn2bop"]
+[gd_scene load_steps=35 format=3 uid="uid://cpnbohmnn2bop"]
 
 [ext_resource type="Script" path="res://scripts/PlayerController.gd" id="1_0vmp4"]
-[ext_resource type="Shader" path="res://Enemies/outline.gdshader" id="2_bwubw"]
 [ext_resource type="SpriteFrames" uid="uid://6ravjdfw1044" path="res://sprites/Particles Effects/Ship Engines/ship_engine_sprite_frames.tres" id="2_o05px"]
-[ext_resource type="Texture2D" uid="uid://do6jkd6vp742o" path="res://sprites/icon.svg" id="2_xde30"]
 [ext_resource type="Animation" uid="uid://b60dd6tyg338v" path="res://models/Ship/animations/ship_idle.res" id="3_7mfbl"]
 [ext_resource type="Animation" uid="uid://oinin1gmbyd" path="res://models/Ship/animations/ship_move_backward.res" id="3_ufjig"]
 [ext_resource type="Animation" uid="uid://ns2rrrgfvfkw" path="res://models/Ship/animations/ship_move_forward.res" id="4_hhb6c"]
@@ -12,7 +10,7 @@
 [ext_resource type="Script" path="res://scenes/HitArea.gd" id="8_07g13"]
 [ext_resource type="Animation" uid="uid://dw2bohj7c8s66" path="res://hurt.res" id="9_s7iud"]
 [ext_resource type="Script" path="res://scenes/CloseArea.gd" id="10_1xioh"]
-[ext_resource type="Texture2D" uid="uid://dev3wmoou33gb" path="res://sprites/center_ship.png" id="10_iwsjk"]
+[ext_resource type="Texture2D" uid="uid://dxi2fflh86wde" path="res://sprites/center_ship.png" id="10_iwsjk"]
 [ext_resource type="Script" path="res://scenes/AGUN.gd" id="10_qrvvr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3trem"]
@@ -52,14 +50,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ao0fc")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yq5wn"]
-render_priority = 0
-shader = ExtResource("2_bwubw")
-shader_parameter/outline_color = null
-shader_parameter/outline_width = 1.0
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8x2mv"]
-next_pass = SubResource("ShaderMaterial_yq5wn")
 shading_mode = 0
 albedo_color = Color(0.266667, 0.556863, 0.811765, 1)
 
@@ -143,17 +134,6 @@ bind/18/name = &"neck"
 bind/18/bone = -1
 bind/18/pose = Transform3D(1, 0, -2.38419e-07, 0, 1, 0, 2.38419e-07, 0, 1, 6.98019, -13.5569, 0.0104612)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_plps6"]
-render_priority = 0
-shader = ExtResource("2_bwubw")
-shader_parameter/outline_color = null
-shader_parameter/outline_width = 1.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2k2db"]
-next_pass = SubResource("ShaderMaterial_plps6")
-cull_mode = 2
-albedo_texture = ExtResource("2_xde30")
-
 [sub_resource type="Animation" id="Animation_7agt1"]
 length = 0.001
 tracks/0/type = "rotation_3d"
@@ -191,6 +171,42 @@ tracks/4/path = NodePath("Armature/Skeleton3D:hip.L")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = PackedFloat32Array(0, 1, 0.371836, 0.218408, -0.0904677, 0.897692)
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("plane_2:surface_material_override/0")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("StandardMaterial3D_8x2mv")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("plane_2:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.00169727, 0, 0.00304865)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_pgbv5"]
 resource_name = "metarig|metarig|metarigAction"
@@ -382,7 +398,7 @@ script = ExtResource("1_0vmp4")
 transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0, -0.25, 0)
 
 [node name="plane_2" type="MeshInstance3D" parent="ship_idle"]
-transform = Transform3D(-2.99999, 0.00914596, 0, -0.00914593, -2.99998, -0.0050918, 1.55231e-05, 0.00509178, -3, 3.05291, 2.9999, 7.3415e-07)
+transform = Transform3D(-2.99999, 0.00914593, 0, -0.00914594, -2.99998, -0.0050918, 1.55231e-05, 0.00509177, -3, 3.05291, 2.9999, 7.3415e-07)
 mesh = SubResource("ArrayMesh_xo1ur")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_8x2mv")
@@ -491,7 +507,7 @@ bones/11/parent = -1
 bones/11/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.337975, 0.0458548)
 bones/11/enabled = true
 bones/11/position = Vector3(0, 0.337975, 0.0458548)
-bones/11/rotation = Quaternion(-0.0830949, -0.289098, -0.123507, 0.945655)
+bones/11/rotation = Quaternion(0.0357526, -0.251048, -0.150246, 0.955574)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "upTorso"
 bones/12/parent = 11
@@ -512,7 +528,7 @@ bones/14/parent = 13
 bones/14/rest = Transform3D(1, 2.37262e-07, 2.14963e-07, -2.37262e-07, 0.0983797, 0.995149, 2.14963e-07, -0.995149, 0.0983797, 1.34327e-07, 1.51327, 1.09032e-07)
 bones/14/enabled = true
 bones/14/position = Vector3(1.34327e-07, 1.51327, 1.09032e-07)
-bones/14/rotation = Quaternion(-0.596252, 0.0509358, 0.125843, 0.791235)
+bones/14/rotation = Quaternion(-0.495423, 0.012024, 0.169713, 0.851827)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "foreArm.L"
 bones/15/parent = 14
@@ -533,7 +549,7 @@ bones/17/parent = 16
 bones/17/rest = Transform3D(1, -1.1863e-06, 1.07482e-06, 1.18631e-06, 0.0983797, -0.995149, 1.07481e-06, 0.995149, 0.0983797, 2.85238e-07, 1.51327, 1.30517e-06)
 bones/17/enabled = true
 bones/17/position = Vector3(2.85238e-07, 1.51327, 1.30517e-06)
-bones/17/rotation = Quaternion(0.465147, 0.0968936, -0.0307562, 0.879377)
+bones/17/rotation = Quaternion(0.45018, 0.199029, -0.0840678, 0.866405)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "foreArm.R"
 bones/18/parent = 17
@@ -551,7 +567,7 @@ bones/19/rotation = Quaternion(-0.127973, 0.208827, 0.0520269, 0.968146)
 bones/19/scale = Vector3(1, 1, 1)
 
 [node name="plane_2" type="BoneAttachment3D" parent="ship_idle/Armature/Skeleton3D"]
-transform = Transform3D(-2.41377, -1.78149, 0.00308113, 1.77728, -2.40771, 0.210252, 0.122381, -0.170992, -2.99262, -0.415272, -11.9496, -0.807376)
+transform = Transform3D(-2.42323, -1.7686, 0.00141455, 1.76445, -2.41738, 0.207334, 0.12109, -0.168304, -2.99283, -0.349633, -11.9525, -0.795272)
 bone_name = "plane_2"
 bone_idx = 10
 
@@ -559,7 +575,6 @@ bone_idx = 10
 transform = Transform3D(1.93185, 0.517638, -2.97881e-09, -0.517638, 1.93185, -2.26267e-08, -2.97891e-09, 2.26267e-08, 2, -1.6515, 6.31534, -7.07805e-08)
 mesh = SubResource("ArrayMesh_45472")
 skin = SubResource("Skin_wyyjn")
-surface_material_override/0 = SubResource("StandardMaterial3D_2k2db")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ship_idle"]
 autoplay = "ship_idle"
@@ -571,7 +586,6 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="ship_idle/AnimationPlayer"]
 tree_root = SubResource("AnimationNodeBlendSpace2D_7ealj")
 anim_player = NodePath("..")
-active = true
 parameters/blend_position = Vector2(-0.00162077, 0.00436687)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
