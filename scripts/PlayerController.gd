@@ -9,16 +9,25 @@ const HEAVEN_SPEED = 20
 
 var _3d_vec_pos = Vector3(0,10,32)
 
-
 func _ready():
 	_mode_Swap(GameManager.is_3D_mode)
 	GameManager.Swap_Mode.connect(_mode_Swap)
 
 func _physics_process(delta):
+	
+	var input_dir = Input.get_vector("LEFT", "RIGHT", "UP", "DOWN")		
+	var direction = (Vector2(input_dir.x, input_dir.y)).normalized()
 	if GameManager.is_3D_mode:
-		heaven_control(delta)
+		heaven_control(delta, direction)
 	else:
-		hell_control(delta)
+		hell_control(delta, direction)
+		
+	if blend_animations:
+		animation_tree.set("parameters/blend_position", lerp(animation_tree.get("parameters/blend_position"), input_dir, 10 * delta))
+	else:
+		animation_tree.set("parameters/blend_position", input_dir)
+		
+	move_and_slide()
 
 func _process(delta):
 	position.x = max(position.x, GameManager.WORLD_BORDER_X_MIN)
@@ -30,46 +39,25 @@ func _process(delta):
 	position.y = max(position.y, GameManager.WORLD_BORDER_Y_MIN)
 	position.y = min(position.y, GameManager.WORLD_BORDER_Y_MAX)
 
-func _mode_Swap(is_3D_mode):
-	
-	velocity = Vector3.ZERO
-	position = Vector3(position.x,_3d_vec_pos.y, _3d_vec_pos.z)
+func heaven_control(delta, direction): 
 
-
-func heaven_control(delta): 
-	var input_dir = Input.get_vector("LEFT", "RIGHT", "UP", "DOWN")
-	var direction = (transform.basis * Vector3(input_dir.x, input_dir.y, 0)).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.y = direction.y * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
-	
-	ship_model.rotation.x = lerp(ship_model.rotation.x, direction.y, 10 * delta)
-	
-	if blend_animations:
-		animation_tree.set("parameters/blend_position", lerp(animation_tree.get("parameters/blend_position"), input_dir, 10 * delta))
-	else:
-		animation_tree.set("parameters/blend_position", input_dir)
-	
-	move_and_slide()
-	
-func hell_control(delta):
-	var input_dir = Input.get_vector("LEFT", "RIGHT", "UP", "DOWN")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
+func hell_control(delta, direction):
+
 	if direction:
 		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.z = direction.y * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.z = move_toward(velocity.y, 0, SPEED)
+
+func _mode_Swap(is_3D_mode):
 	
-	ship_model.rotation.x = lerp(ship_model.rotation.x, direction.x, 10 * delta)
-	
-	if blend_animations:
-		animation_tree.set("parameters/blend_position", lerp(animation_tree.get("parameters/blend_position"), input_dir, 10 * delta))
-	else:
-		animation_tree.set("parameters/blend_position", input_dir)
-	
-	move_and_slide()
+	velocity = Vector3.ZERO
+	position = Vector3(position.x,_3d_vec_pos.y, _3d_vec_pos.z)

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_hrpbs")
-cost = 1
+cost = 5
 level = 0
 prefab = ExtResource("1_rj687")
 x_range = Vector2(-14, 14)

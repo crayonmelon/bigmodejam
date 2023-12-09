@@ -1,16 +1,18 @@
-[gd_scene load_steps=35 format=3 uid="uid://cpnbohmnn2bop"]
+[gd_scene load_steps=40 format=3 uid="uid://cpnbohmnn2bop"]
 
 [ext_resource type="Script" path="res://scripts/PlayerController.gd" id="1_0vmp4"]
+[ext_resource type="Shader" path="res://Enemies/outline.gdshader" id="2_bwubw"]
 [ext_resource type="SpriteFrames" uid="uid://6ravjdfw1044" path="res://sprites/Particles Effects/Ship Engines/ship_engine_sprite_frames.tres" id="2_o05px"]
-[ext_resource type="Texture2D" uid="uid://b282n846usqle" path="res://sprites/icon.svg" id="2_xde30"]
+[ext_resource type="Texture2D" uid="uid://do6jkd6vp742o" path="res://sprites/icon.svg" id="2_xde30"]
 [ext_resource type="Animation" uid="uid://b60dd6tyg338v" path="res://models/Ship/animations/ship_idle.res" id="3_7mfbl"]
 [ext_resource type="Animation" uid="uid://oinin1gmbyd" path="res://models/Ship/animations/ship_move_backward.res" id="3_ufjig"]
 [ext_resource type="Animation" uid="uid://ns2rrrgfvfkw" path="res://models/Ship/animations/ship_move_forward.res" id="4_hhb6c"]
 [ext_resource type="Animation" uid="uid://ea4s7on7db2r" path="res://models/Ship/animations/ship_move_left.res" id="5_5x55n"]
 [ext_resource type="Animation" uid="uid://cmb6wbvje4s5n" path="res://models/Ship/animations/ship_move_right.res" id="6_0ifs6"]
 [ext_resource type="Script" path="res://scenes/HitArea.gd" id="8_07g13"]
+[ext_resource type="Animation" uid="uid://dw2bohj7c8s66" path="res://hurt.res" id="9_s7iud"]
 [ext_resource type="Script" path="res://scenes/CloseArea.gd" id="10_1xioh"]
-[ext_resource type="Texture2D" uid="uid://dxi2fflh86wde" path="res://sprites/center_ship.png" id="10_iwsjk"]
+[ext_resource type="Texture2D" uid="uid://dev3wmoou33gb" path="res://sprites/center_ship.png" id="10_iwsjk"]
 [ext_resource type="Script" path="res://scenes/AGUN.gd" id="10_qrvvr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3trem"]
@@ -49,6 +51,17 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ao0fc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yq5wn"]
+render_priority = 0
+shader = ExtResource("2_bwubw")
+shader_parameter/outline_color = null
+shader_parameter/outline_width = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8x2mv"]
+next_pass = SubResource("ShaderMaterial_yq5wn")
+shading_mode = 0
+albedo_color = Color(0.266667, 0.556863, 0.811765, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5d32"]
 
@@ -130,7 +143,14 @@ bind/18/name = &"neck"
 bind/18/bone = -1
 bind/18/pose = Transform3D(1, 0, -2.38419e-07, 0, 1, 0, 2.38419e-07, 0, 1, 6.98019, -13.5569, 0.0104612)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_plps6"]
+render_priority = 0
+shader = ExtResource("2_bwubw")
+shader_parameter/outline_color = null
+shader_parameter/outline_width = 1.0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2k2db"]
+next_pass = SubResource("ShaderMaterial_plps6")
 cull_mode = 2
 albedo_texture = ExtResource("2_xde30")
 
@@ -298,6 +318,7 @@ tracks/16/keys = PackedFloat32Array(0, 1, 0, 1.42109e-14, 0, 1)
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1nw0b"]
 _data = {
 "RESET": SubResource("Animation_7agt1"),
+"hurt": ExtResource("9_s7iud"),
 "metarig|metarig|metarigAction": SubResource("Animation_pgbv5"),
 "ship_idle": ExtResource("3_7mfbl"),
 "ship_move_backward": ExtResource("3_ufjig"),
@@ -349,20 +370,22 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fk7ki"]
+radius = 0.319042
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_m8cwi"]
 radius = 1.59727
 
-[node name="Node3D" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_0vmp4")
 
 [node name="ship_idle" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0, -0.25, 0)
 
 [node name="plane_2" type="MeshInstance3D" parent="ship_idle"]
-transform = Transform3D(-3, 0, 0, 0, -3, 0.00184482, 0, -0.00184482, -3, 3.05291, 2.9999, 7.3415e-07)
+transform = Transform3D(-2.99999, 0.00914596, 0, -0.00914593, -2.99998, -0.0050918, 1.55231e-05, 0.00509178, -3, 3.05291, 2.9999, 7.3415e-07)
 mesh = SubResource("ArrayMesh_xo1ur")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8x2mv")
 
 [node name="fire" type="Node3D" parent="ship_idle/plane_2"]
 transform = Transform3D(1, 6.93889e-18, 3.55271e-15, 0, 1, 1.17496e-18, -3.55271e-15, 1.17496e-18, 1, 9.67955, 5.96046e-08, -0.76069)
@@ -382,7 +405,7 @@ autoplay = "ship_engine"
 frame_progress = 0.388407
 
 [node name="Armature" type="Node3D" parent="ship_idle"]
-transform = Transform3D(0.972966, -0.23095, -1.18167e-09, 0.23095, 0.972966, 1.00951e-08, -1.18174e-09, -1.00951e-08, 1, -6.98019, 9.81994, -0.0521888)
+transform = Transform3D(0.972966, -0.23095, -1.18167e-09, 0.23095, 0.972966, 1.00951e-08, -1.18174e-09, -1.00951e-08, 1, -6.98019, 9.82199, -0.0671859)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="ship_idle/Armature"]
 transform = Transform3D(1, 0, 2.4869e-14, 0, 1, 0, -2.4869e-14, 0, 1, 7.35306, -0.861085, 3.20375e-07)
@@ -468,7 +491,7 @@ bones/11/parent = -1
 bones/11/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.337975, 0.0458548)
 bones/11/enabled = true
 bones/11/position = Vector3(0, 0.337975, 0.0458548)
-bones/11/rotation = Quaternion(0.0104551, -0.284995, -0.132204, 0.949311)
+bones/11/rotation = Quaternion(-0.0830949, -0.289098, -0.123507, 0.945655)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "upTorso"
 bones/12/parent = 11
@@ -489,7 +512,7 @@ bones/14/parent = 13
 bones/14/rest = Transform3D(1, 2.37262e-07, 2.14963e-07, -2.37262e-07, 0.0983797, 0.995149, 2.14963e-07, -0.995149, 0.0983797, 1.34327e-07, 1.51327, 1.09032e-07)
 bones/14/enabled = true
 bones/14/position = Vector3(1.34327e-07, 1.51327, 1.09032e-07)
-bones/14/rotation = Quaternion(-0.533866, 0.0526747, 0.15223, 0.830083)
+bones/14/rotation = Quaternion(-0.596252, 0.0509358, 0.125843, 0.791235)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "foreArm.L"
 bones/15/parent = 14
@@ -503,14 +526,14 @@ bones/16/parent = 12
 bones/16/rest = Transform3D(1, -2.36327e-07, 1.16058e-06, 1.18163e-06, 0.132164, -0.991228, 8.08682e-08, 0.991228, 0.132164, 2.49374e-09, 1.7, 6.753e-11)
 bones/16/enabled = true
 bones/16/position = Vector3(2.49374e-09, 1.7, 6.753e-11)
-bones/16/rotation = Quaternion(0.658725, 3.58762e-07, 4.71154e-07, 0.752384)
+bones/16/rotation = Quaternion(0.658725, 3.58762e-07, 4.71155e-07, 0.752384)
 bones/16/scale = Vector3(1, 1, 1)
 bones/17/name = "upArm.R"
 bones/17/parent = 16
 bones/17/rest = Transform3D(1, -1.1863e-06, 1.07482e-06, 1.18631e-06, 0.0983797, -0.995149, 1.07481e-06, 0.995149, 0.0983797, 2.85238e-07, 1.51327, 1.30517e-06)
 bones/17/enabled = true
 bones/17/position = Vector3(2.85238e-07, 1.51327, 1.30517e-06)
-bones/17/rotation = Quaternion(0.530176, 0.0609932, -0.0566805, 0.84379)
+bones/17/rotation = Quaternion(0.465147, 0.0968936, -0.0307562, 0.879377)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "foreArm.R"
 bones/18/parent = 17
@@ -528,7 +551,7 @@ bones/19/rotation = Quaternion(-0.127973, 0.208827, 0.0520269, 0.968146)
 bones/19/scale = Vector3(1, 1, 1)
 
 [node name="plane_2" type="BoneAttachment3D" parent="ship_idle/Armature/Skeleton3D"]
-transform = Transform3D(-2.41443, -1.78059, 0.0034966, 1.77639, -2.40833, 0.210751, 0.12228, -0.171685, -2.99259, -0.41069, -11.9496, -0.809487)
+transform = Transform3D(-2.41377, -1.78149, 0.00308113, 1.77728, -2.40771, 0.210252, 0.122381, -0.170992, -2.99262, -0.415272, -11.9496, -0.807376)
 bone_name = "plane_2"
 bone_idx = 10
 
@@ -549,7 +572,7 @@ libraries = {
 tree_root = SubResource("AnimationNodeBlendSpace2D_7ealj")
 anim_player = NodePath("..")
 active = true
-parameters/blend_position = Vector2(0.000587225, -0.00436676)
+parameters/blend_position = Vector2(-0.00162077, 0.00436687)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ui5nb")
@@ -567,8 +590,7 @@ script = ExtResource("8_07g13")
 shape = SubResource("SphereShape3D_fk7ki")
 
 [node name="Sprite3D" type="Sprite3D" parent="HitArea"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-modulate = Color(0.854902, 0.709804, 0.490196, 0.52549)
+modulate = Color(1, 1, 0, 1)
 billboard = 1
 double_sided = false
 no_depth_test = true

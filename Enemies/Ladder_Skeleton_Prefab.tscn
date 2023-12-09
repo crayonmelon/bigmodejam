@@ -1,9 +1,10 @@
-[gd_scene load_steps=39 format=3 uid="uid://ckalp8n0jp0h7"]
+[gd_scene load_steps=41 format=3 uid="uid://ckalp8n0jp0h7"]
 
 [ext_resource type="Script" path="res://Enemies/Enemy.gd" id="1_mchb5"]
-[ext_resource type="Texture2D" uid="uid://b282n846usqle" path="res://sprites/icon.svg" id="2_syryw"]
+[ext_resource type="Texture2D" uid="uid://do6jkd6vp742o" path="res://sprites/icon.svg" id="2_syryw"]
 [ext_resource type="Material" uid="uid://m0i0k4hkxlh8" path="res://scenes/enemies/skellyladder.tres" id="3_cw70w"]
-[ext_resource type="Script" path="res://Enemies/Gun.gd" id="4_ke4bw"]
+[ext_resource type="Script" path="res://scripts/Gun.gd" id="5_45euc"]
+[ext_resource type="Material" uid="uid://cms5jlhxpw323" path="res://hurt.tres" id="5_qs500"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bfjf6"]
 size = Vector3(5, 40, 5)
@@ -804,41 +805,120 @@ _data = {
 "Armature_002Action": SubResource("Animation_el1ia")
 }
 
-[sub_resource type="Animation" id="Animation_dgxey"]
-resource_name = "gun_rotate"
-loop_mode = 2
+[sub_resource type="Animation" id="Animation_wr2w3"]
+resource_name = "Hurt"
+length = 0.1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath("SkellyModel/Armature/Skeleton3D/SkellyBod:surface_material_override/0")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0.349066, 0), Vector3(0, -0.349066, 0)]
+"times": PackedFloat32Array(0, 0.0001, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_cw70w"), ExtResource("3_cw70w"), ExtResource("5_qs500"), ExtResource("3_cw70w")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkellyModel/Armature_002/Skeleton3D/SkellyBod:surface_material_override/0")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_cw70w"), ExtResource("5_qs500"), ExtResource("3_cw70w")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkellyModel/Armature_001/Skeleton3D/SkellyBody:surface_material_override/0")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_cw70w"), ExtResource("5_qs500"), ExtResource("3_cw70w")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkellyModel/Cube_008:material_override")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [SubResource("StandardMaterial3D_fxe4e"), ExtResource("5_qs500"), SubResource("StandardMaterial3D_fxe4e")]
 }
 
-[sub_resource type="Animation" id="Animation_rv8ku"]
+[sub_resource type="Animation" id="Animation_tytop"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath("SkellyModel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -0.366519, 0)]
+"values": [Vector3(0, 8.5, 0)]
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vv2yq"]
-_data = {
-"RESET": SubResource("Animation_rv8ku"),
-"gun_rotate": SubResource("Animation_dgxey")
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkellyModel/Armature/Skeleton3D/SkellyBod:surface_material_override/0")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_cw70w")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkellyModel/Armature_002/Skeleton3D/SkellyBod:surface_material_override/0")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_cw70w")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkellyModel/Armature_001/Skeleton3D/SkellyBody:surface_material_override/0")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_cw70w")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SkellyModel/Cube_008:material_override")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("StandardMaterial3D_fxe4e")]
 }
 
 [sub_resource type="Animation" id="Animation_3ayhw"]
@@ -857,28 +937,52 @@ tracks/0/keys = {
 "values": [Vector3(0, 60, 0), Vector3(0, 8.5, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_tytop"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nutmt"]
+_data = {
+"Hurt": SubResource("Animation_wr2w3"),
+"RESET": SubResource("Animation_tytop"),
+"drop_in": SubResource("Animation_3ayhw")
+}
+
+[sub_resource type="Animation" id="Animation_rv8ku"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SkellyModel:position")
+tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 8.5, 0)]
+"values": [Vector3(0, -0.366519, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_nutmt"]
+[sub_resource type="Animation" id="Animation_dgxey"]
+resource_name = "gun_rotate"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.349066, 0), Vector3(0, -0.349066, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vv2yq"]
 _data = {
-"RESET": SubResource("Animation_tytop"),
-"drop_in": SubResource("Animation_3ayhw")
+"RESET": SubResource("Animation_rv8ku"),
+"gun_rotate": SubResource("Animation_dgxey")
 }
 
 [node name="Area3D" type="Area3D"]
+collision_mask = 8
 script = ExtResource("1_mchb5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -1103,7 +1207,7 @@ material_override = SubResource("StandardMaterial3D_vrc0r")
 mesh = SubResource("ArrayMesh_o1fw7")
 skeleton = NodePath("")
 
-[node name="Cube_006" type="MeshInstance3D" parent="SkellyModel/Armature/Skeleton3D"]
+[node name="SkellyBod" type="MeshInstance3D" parent="SkellyModel/Armature/Skeleton3D"]
 transform = Transform3D(1, -4.65661e-10, 3.72529e-09, -1.86265e-09, 1, 2.98023e-08, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_7defc")
 skin = SubResource("Skin_hsmrb")
@@ -1259,11 +1363,11 @@ transform = Transform3D(0.162982, 0.00544751, -0.0229115, 0.00489214, 0.148882, 
 bone_name = "Cube.002"
 bone_idx = 8
 
-[node name="Cube_002" type="MeshInstance3D" parent="SkellyModel/Armature_001/Skeleton3D/Cube_002"]
+[node name="SkellyBod" type="MeshInstance3D" parent="SkellyModel/Armature_001/Skeleton3D/Cube_002"]
 mesh = SubResource("ArrayMesh_o2ksf")
 skeleton = NodePath("")
 
-[node name="Cube_001" type="MeshInstance3D" parent="SkellyModel/Armature_001/Skeleton3D"]
+[node name="SkellyBody" type="MeshInstance3D" parent="SkellyModel/Armature_001/Skeleton3D"]
 mesh = SubResource("ArrayMesh_mjj0f")
 skin = SubResource("Skin_3506q")
 surface_material_override/0 = ExtResource("3_cw70w")
@@ -1422,7 +1526,7 @@ bone_idx = 8
 mesh = SubResource("ArrayMesh_18dom")
 skeleton = NodePath("")
 
-[node name="Cube_003" type="MeshInstance3D" parent="SkellyModel/Armature_002/Skeleton3D"]
+[node name="SkellyBod" type="MeshInstance3D" parent="SkellyModel/Armature_002/Skeleton3D"]
 mesh = SubResource("ArrayMesh_pi65x")
 skin = SubResource("Skin_pvbyp")
 surface_material_override/0 = ExtResource("3_cw70w")
@@ -1445,20 +1549,6 @@ libraries = {
 "": SubResource("AnimationLibrary_l6njk")
 }
 
-[node name="Gun" type="Node3D" parent="SkellyModel"]
-transform = Transform3D(0.93358, 0, -0.358368, 0, 1, 0, 0.358368, 0, 0.93358, 0, 0, 0)
-script = ExtResource("4_ke4bw")
-
-[node name="Timer" type="Timer" parent="SkellyModel/Gun"]
-wait_time = 0.1
-autostart = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SkellyModel/Gun"]
-autoplay = "gun_rotate"
-libraries = {
-"": SubResource("AnimationLibrary_vv2yq")
-}
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "drop_in"
 libraries = {
@@ -1470,5 +1560,20 @@ wait_time = 8.0
 one_shot = true
 autostart = true
 
-[connection signal="timeout" from="SkellyModel/Gun/Timer" to="SkellyModel/Gun" method="_on_timer_timeout"]
+[node name="Gun" type="Node3D" parent="."]
+transform = Transform3D(0.46679, 0, -0.179184, 0, 0.5, 0, 0.179184, 0, 0.46679, 0, 8.5, 0)
+script = ExtResource("5_45euc")
+
+[node name="Timer" type="Timer" parent="Gun"]
+wait_time = 0.1
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Gun"]
+autoplay = "gun_rotate"
+libraries = {
+"": SubResource("AnimationLibrary_vv2yq")
+}
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="Gun/Timer" to="Gun" method="_on_timer_timeout"]
