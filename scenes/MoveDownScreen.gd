@@ -10,6 +10,7 @@ func _ready():
 	y_original = collision_shape_3d.global_position.y
 		
 	_mode_swap(GameManager.is_3D_mode)
+	
 	GameManager.Swap_Mode.connect(_mode_swap)
 
 func _process(delta):

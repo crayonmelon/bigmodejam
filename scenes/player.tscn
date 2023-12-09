@@ -1,6 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://cpnbohmnn2bop"]
+[gd_scene load_steps=37 format=3 uid="uid://cpnbohmnn2bop"]
 
 [ext_resource type="Script" path="res://scripts/PlayerController.gd" id="1_0vmp4"]
+[ext_resource type="Shader" path="res://Enemies/outline.gdshader" id="2_bwubw"]
 [ext_resource type="SpriteFrames" uid="uid://6ravjdfw1044" path="res://sprites/Particles Effects/Ship Engines/ship_engine_sprite_frames.tres" id="2_o05px"]
 [ext_resource type="Animation" uid="uid://b60dd6tyg338v" path="res://models/Ship/animations/ship_idle.res" id="3_7mfbl"]
 [ext_resource type="Animation" uid="uid://oinin1gmbyd" path="res://models/Ship/animations/ship_move_backward.res" id="3_ufjig"]
@@ -10,7 +11,7 @@
 [ext_resource type="Script" path="res://scenes/HitArea.gd" id="8_07g13"]
 [ext_resource type="Animation" uid="uid://dw2bohj7c8s66" path="res://hurt.res" id="9_s7iud"]
 [ext_resource type="Script" path="res://scenes/CloseArea.gd" id="10_1xioh"]
-[ext_resource type="Texture2D" uid="uid://dxi2fflh86wde" path="res://sprites/center_ship.png" id="10_iwsjk"]
+[ext_resource type="Texture2D" uid="uid://dev3wmoou33gb" path="res://sprites/center_ship.png" id="10_iwsjk"]
 [ext_resource type="Script" path="res://scenes/AGUN.gd" id="10_qrvvr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3trem"]
@@ -50,7 +51,14 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ao0fc")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yq5wn"]
+render_priority = 0
+shader = ExtResource("2_bwubw")
+shader_parameter/outline_color = null
+shader_parameter/outline_width = 1.0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8x2mv"]
+next_pass = SubResource("ShaderMaterial_yq5wn")
 shading_mode = 0
 albedo_color = Color(0.266667, 0.556863, 0.811765, 1)
 
@@ -395,10 +403,10 @@ radius = 1.59727
 script = ExtResource("1_0vmp4")
 
 [node name="ship_idle" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0, -0.25, 0)
+transform = Transform3D(-3.61999e-07, 0, 0.1, 0, 0.1, 0, -0.1, 0, -3.61999e-07, 0, -0.25, 0)
 
 [node name="plane_2" type="MeshInstance3D" parent="ship_idle"]
-transform = Transform3D(-2.99999, 0.00914593, 0, -0.00914594, -2.99998, -0.0050918, 1.55231e-05, 0.00509177, -3, 3.05291, 2.9999, 7.3415e-07)
+transform = Transform3D(-2.99999, 0.00914593, 0, -0.00914594, -2.99998, -0.00509181, 1.55231e-05, 0.00509178, -3, 3.05291, 2.9999, 7.3415e-07)
 mesh = SubResource("ArrayMesh_xo1ur")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_8x2mv")
@@ -421,7 +429,7 @@ autoplay = "ship_engine"
 frame_progress = 0.388407
 
 [node name="Armature" type="Node3D" parent="ship_idle"]
-transform = Transform3D(0.972966, -0.23095, -1.18167e-09, 0.23095, 0.972966, 1.00951e-08, -1.18174e-09, -1.00951e-08, 1, -6.98019, 9.82199, -0.0671859)
+transform = Transform3D(0.972966, -0.23095, -1.18167e-09, 0.23095, 0.972966, 1.00951e-08, -1.18174e-09, -1.00951e-08, 1, -6.98019, 9.82148, -0.0653788)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="ship_idle/Armature"]
 transform = Transform3D(1, 0, 2.4869e-14, 0, 1, 0, -2.4869e-14, 0, 1, 7.35306, -0.861085, 3.20375e-07)
@@ -479,7 +487,7 @@ bones/7/parent = 6
 bones/7/rest = Transform3D(0.987062, -0.160239, 0.00562333, 0.160262, 0.984918, -0.065218, 0.00491193, 0.0652755, 0.997855, -2.17464e-07, 1.89069, 1.40353e-07)
 bones/7/enabled = true
 bones/7/position = Vector3(-2.17464e-07, 1.89069, 1.40353e-07)
-bones/7/rotation = Quaternion(-0.0057521, -0.0251608, 0.26344, 0.96433)
+bones/7/rotation = Quaternion(-0.00575209, -0.0251608, 0.26344, 0.96433)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/name = "foot.R"
 bones/8/parent = 7
@@ -507,7 +515,7 @@ bones/11/parent = -1
 bones/11/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.337975, 0.0458548)
 bones/11/enabled = true
 bones/11/position = Vector3(0, 0.337975, 0.0458548)
-bones/11/rotation = Quaternion(0.0357526, -0.251048, -0.150246, 0.955574)
+bones/11/rotation = Quaternion(0.0434736, -0.246214, -0.131646, 0.959249)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "upTorso"
 bones/12/parent = 11
@@ -528,7 +536,7 @@ bones/14/parent = 13
 bones/14/rest = Transform3D(1, 2.37262e-07, 2.14963e-07, -2.37262e-07, 0.0983797, 0.995149, 2.14963e-07, -0.995149, 0.0983797, 1.34327e-07, 1.51327, 1.09032e-07)
 bones/14/enabled = true
 bones/14/position = Vector3(1.34327e-07, 1.51327, 1.09032e-07)
-bones/14/rotation = Quaternion(-0.495423, 0.012024, 0.169713, 0.851827)
+bones/14/rotation = Quaternion(-0.498005, -0.0248695, 0.162219, 0.851503)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "foreArm.L"
 bones/15/parent = 14
@@ -549,7 +557,7 @@ bones/17/parent = 16
 bones/17/rest = Transform3D(1, -1.1863e-06, 1.07482e-06, 1.18631e-06, 0.0983797, -0.995149, 1.07481e-06, 0.995149, 0.0983797, 2.85238e-07, 1.51327, 1.30517e-06)
 bones/17/enabled = true
 bones/17/position = Vector3(2.85238e-07, 1.51327, 1.30517e-06)
-bones/17/rotation = Quaternion(0.45018, 0.199029, -0.0840678, 0.866405)
+bones/17/rotation = Quaternion(0.469602, 0.217041, -0.107978, 0.848945)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "foreArm.R"
 bones/18/parent = 17
@@ -567,7 +575,7 @@ bones/19/rotation = Quaternion(-0.127973, 0.208827, 0.0520269, 0.968146)
 bones/19/scale = Vector3(1, 1, 1)
 
 [node name="plane_2" type="BoneAttachment3D" parent="ship_idle/Armature/Skeleton3D"]
-transform = Transform3D(-2.42323, -1.7686, 0.00141455, 1.76445, -2.41738, 0.207334, 0.12109, -0.168304, -2.99283, -0.349633, -11.9525, -0.795272)
+transform = Transform3D(-2.43751, -1.74887, 0.00107527, 1.7448, -2.43172, 0.205961, 0.119195, -0.167969, -2.99292, -0.249609, -11.9553, -0.789728)
 bone_name = "plane_2"
 bone_idx = 10
 
@@ -586,7 +594,8 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="ship_idle/AnimationPlayer"]
 tree_root = SubResource("AnimationNodeBlendSpace2D_7ealj")
 anim_player = NodePath("..")
-parameters/blend_position = Vector2(-0.00162077, 0.00436687)
+active = true
+parameters/blend_position = Vector2(-0.00135136, 0.0127877)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ui5nb")

@@ -11,7 +11,10 @@ var _3d_vec_pos = Vector3(0,10,32)
 
 func _ready():
 	_mode_Swap(GameManager.is_3D_mode)
+	GameManager.Trans_Complete.connect(_trans_complete)
+	
 	GameManager.Swap_Mode.connect(_mode_Swap)
+	$ship_idle/AnimationPlayer/AnimationTree.active = true
 
 func _physics_process(delta):
 	
@@ -60,4 +63,8 @@ func hell_control(delta, direction):
 func _mode_Swap(is_3D_mode):
 	
 	velocity = Vector3.ZERO
+	if !is_3D_mode:
+		position = Vector3(position.x,_3d_vec_pos.y, _3d_vec_pos.z)
+
+func _trans_complete():
 	position = Vector3(position.x,_3d_vec_pos.y, _3d_vec_pos.z)

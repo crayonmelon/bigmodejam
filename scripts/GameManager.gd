@@ -5,6 +5,7 @@ signal Swap_Mode
 signal Coin_Updated
 signal Health_Updated
 signal Charge_Updated
+signal Trans_Complete
 
 var max_health = 3
 var health = max_health
@@ -25,6 +26,7 @@ const WORLD_BORDER_Y_MAX = 30
 const WORLD_HEIGHT = 10
 
 var is_3D_mode = false
+var invincible = false
 
 func _process(delta):
 	if is_3D_mode:

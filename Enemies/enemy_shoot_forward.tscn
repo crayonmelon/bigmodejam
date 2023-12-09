@@ -121,6 +121,7 @@ _data = {
 
 [node name="enemy_shoot_forward" type="Area3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_vifc0")
 

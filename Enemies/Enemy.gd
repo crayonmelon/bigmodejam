@@ -28,7 +28,6 @@ func _die():
 	queue_free()
 
 func _mode_swap(is_3D_mode):
-	print("we exit")
 	if is_3D_mode:
 		$CollisionShape3D.position.y = 0
 	else: 
