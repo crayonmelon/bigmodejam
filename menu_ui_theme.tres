@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://s7pty4gf0702"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://s7pty4gf0702"]
 
 [ext_resource type="FontFile" uid="uid://c2esusx06bivb" path="res://font/Starting Machine.ttf" id="1_67op1"]
 
@@ -12,7 +12,14 @@ border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4wi7p"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51fts"]
+content_margin_bottom = 7.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
 [resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
 Button/font_sizes/font_size = 16
 Button/fonts/font = ExtResource("1_67op1")
 Button/styles/focus = SubResource("StyleBoxEmpty_wwu0c")
@@ -20,5 +27,6 @@ Button/styles/hover = SubResource("StyleBoxFlat_1m53u")
 Button/styles/normal = SubResource("StyleBoxEmpty_4wi7p")
 Button/styles/pressed = SubResource("StyleBoxFlat_1m53u")
 Label/fonts/font = ExtResource("1_67op1")
+MenuButton/styles/hover = SubResource("StyleBoxFlat_51fts")
 RichTextLabel/fonts/bold_font = ExtResource("1_67op1")
 RichTextLabel/fonts/normal_font = ExtResource("1_67op1")
