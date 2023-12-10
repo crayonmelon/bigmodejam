@@ -11,16 +11,22 @@ func _ready():
 		
 	_mode_swap(GameManager.is_3D_mode)
 	
+	if GameManager.is_3D_mode:
+		var player_pos = get_tree().get_nodes_in_group("Player")[0].position
+		look_at(player_pos)
+	
 	GameManager.Swap_Mode.connect(_mode_swap)
 
 func _process(delta):
 	
-	translate(global_transform.basis.z * speed * delta)
+
 	#position.x = wrapf(position.x, GameManager.WORLD_BORDER_X_MIN, GameManager.WORLD_BORDER_X_MAX)
+	global_transform.origin -= transform.basis.z.normalized() * speed * delta
 	
 func _mode_swap(is_3D_mode):
 	if is_3D_mode:
 		collision_shape_3d.position.y = 0
+	
 	else: 
 		collision_shape_3d.global_position.y = GameManager.WORLD_HEIGHT
 
