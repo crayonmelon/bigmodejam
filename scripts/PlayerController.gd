@@ -64,7 +64,9 @@ func _mode_Swap(is_3D_mode):
 	
 	velocity = Vector3.ZERO
 	if !is_3D_mode:
-		position = Vector3(position.x,_3d_vec_pos.y, _3d_vec_pos.z)
+		position = Vector3(position.x,_3d_vec_pos.y, position.z)
+	else:
+		position = Vector3(position.x,position.y, _3d_vec_pos.z)
 
 func _trans_complete():
-	position = Vector3(position.x,_3d_vec_pos.y, _3d_vec_pos.z)
+	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cpnbohmnn2bop"]
+[gd_scene load_steps=41 format=3 uid="uid://cpnbohmnn2bop"]
 
 [ext_resource type="Script" path="res://scripts/PlayerController.gd" id="1_0vmp4"]
 [ext_resource type="Shader" path="res://Enemies/outline.gdshader" id="2_bwubw"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scenes/CloseArea.gd" id="10_1xioh"]
 [ext_resource type="Texture2D" uid="uid://dev3wmoou33gb" path="res://sprites/center_ship.png" id="10_iwsjk"]
 [ext_resource type="Script" path="res://scenes/AGUN.gd" id="10_qrvvr"]
+[ext_resource type="Texture2D" uid="uid://bvrfcoryrh8ol" path="res://sprites/circle.png" id="11_r5yi7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3trem"]
 resource_name = "Material"
@@ -396,8 +397,44 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_fk7ki"]
 radius = 0.319042
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_m8cwi"]
-radius = 1.59727
+[sub_resource type="SphereShape3D" id="SphereShape3D_x0vo6"]
+radius = 1.5
+
+[sub_resource type="Animation" id="Animation_mitkh"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1.7411, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.258824), Color(1, 1, 1, 0.258824), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d7rqe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6fe7l"]
+_data = {
+"RESET": SubResource("Animation_d7rqe"),
+"fade_in": SubResource("Animation_mitkh")
+}
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_0vmp4")
@@ -515,7 +552,7 @@ bones/11/parent = -1
 bones/11/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.337975, 0.0458548)
 bones/11/enabled = true
 bones/11/position = Vector3(0, 0.337975, 0.0458548)
-bones/11/rotation = Quaternion(0.0434736, -0.246214, -0.131646, 0.959249)
+bones/11/rotation = Quaternion(-0.0232154, -0.28571, -0.121295, 0.950325)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "upTorso"
 bones/12/parent = 11
@@ -536,7 +573,7 @@ bones/14/parent = 13
 bones/14/rest = Transform3D(1, 2.37262e-07, 2.14963e-07, -2.37262e-07, 0.0983797, 0.995149, 2.14963e-07, -0.995149, 0.0983797, 1.34327e-07, 1.51327, 1.09032e-07)
 bones/14/enabled = true
 bones/14/position = Vector3(1.34327e-07, 1.51327, 1.09032e-07)
-bones/14/rotation = Quaternion(-0.498005, -0.0248695, 0.162219, 0.851503)
+bones/14/rotation = Quaternion(-0.550029, 0.0506395, 0.137895, 0.822125)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "foreArm.L"
 bones/15/parent = 14
@@ -557,7 +594,7 @@ bones/17/parent = 16
 bones/17/rest = Transform3D(1, -1.1863e-06, 1.07482e-06, 1.18631e-06, 0.0983797, -0.995149, 1.07481e-06, 0.995149, 0.0983797, 2.85238e-07, 1.51327, 1.30517e-06)
 bones/17/enabled = true
 bones/17/position = Vector3(2.85238e-07, 1.51327, 1.30517e-06)
-bones/17/rotation = Quaternion(0.469602, 0.217041, -0.107978, 0.848945)
+bones/17/rotation = Quaternion(0.520508, 0.0719317, -0.0582286, 0.848827)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "foreArm.R"
 bones/18/parent = 17
@@ -610,15 +647,17 @@ collision_mask = 6
 script = ExtResource("8_07g13")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 shape = SubResource("SphereShape3D_fk7ki")
 
 [node name="Sprite3D" type="Sprite3D" parent="HitArea"]
-modulate = Color(1, 1, 0, 1)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+modulate = Color(1, 1, 0, 0.733333)
 billboard = 1
 double_sided = false
 no_depth_test = true
 texture_filter = 0
-texture = ExtResource("10_iwsjk")
+texture = ExtResource("11_r5yi7")
 
 [node name="HitArea2" type="Area3D" parent="."]
 collision_layer = 16
@@ -626,7 +665,21 @@ collision_mask = 6
 script = ExtResource("10_1xioh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea2"]
-shape = SubResource("CylinderShape3D_m8cwi")
+shape = SubResource("SphereShape3D_x0vo6")
+
+[node name="Sprite3D" type="Sprite3D" parent="HitArea2"]
+transform = Transform3D(4.5, 0, 0, 0, 4.5, 0, 0, 0, 4.5, 0, 0, 0)
+modulate = Color(1, 1, 1, 0)
+billboard = 1
+double_sided = false
+no_depth_test = true
+texture_filter = 0
+texture = ExtResource("10_iwsjk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HitArea2"]
+libraries = {
+"": SubResource("AnimationLibrary_6fe7l")
+}
 
 [node name="AGUN" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)

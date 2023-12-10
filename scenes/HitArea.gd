@@ -15,7 +15,6 @@ func Hurt():
 	GameManager.invincible = true
 	GameManager._chainge_health_val(-1)
 	collision_layer = 0
-	collision_shape_3d.disabled = true
 	animation_tree.active = false
 	animation_player.play("hurt")
 	
@@ -24,7 +23,5 @@ func Hurt():
 	GameManager.invincible = false
 	print("wait?")
 	collision_layer = 1
-	collision_shape_3d.disabled = false
+
 	animation_tree.active = true
-
-
