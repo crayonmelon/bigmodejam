@@ -2,8 +2,8 @@ extends Camera3D
 
 
 func _ready():
+	
 	GameManager.Swap_Mode.connect(Change_Angle)
-	pass 
 
 func Change_Angle(is_3D_mode):
 	
@@ -18,4 +18,3 @@ func Change_Angle(is_3D_mode):
 	await $AnimationPlayer.animation_finished
 	GameManager.Trans_Complete.emit()
 	GameManager.invincible = false
-	

@@ -8,5 +8,5 @@ script = ExtResource("1_fc6xg")
 cost = 3
 level = 0
 prefab = ExtResource("1_w7d7a")
-x_range = Vector2(-10, 10)
+x_range = Vector2(-10, 1)
 y_range = Vector2(0, 0)
