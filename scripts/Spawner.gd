@@ -1,6 +1,12 @@
 extends Node3D
 
-@export var enemies : Array[Enemy_Resource] = [preload("res://Enemies/Enemy_Skull_Forward.tres"), preload("res://Enemies/Ladder_Skeleton.tres"), preload("res://Enemies/enemy_skull_spin.tres")]
+@export var enemies : Array[Enemy_Resource] = [
+	preload("res://Enemies/Enemy_Skull_Forward.tres"), 
+	preload("res://Enemies/Ladder_Skeleton.tres"), 
+	preload("res://Enemies/enemy_skull_spin.tres"), 
+	preload("res://Enemies/Wall.tres"),
+	preload("res://Enemies/tunnel.tres")]
+	
 var budget = 5
 
 func _ready():

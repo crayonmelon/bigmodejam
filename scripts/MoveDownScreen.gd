@@ -21,7 +21,10 @@ func _process(delta):
 	
 
 	#position.x = wrapf(position.x, GameManager.WORLD_BORDER_X_MIN, GameManager.WORLD_BORDER_X_MAX)
-	global_transform.origin -= transform.basis.z.normalized() * speed * delta
+	if GameManager.is_3D_mode:
+		global_transform.origin -= transform.basis.z.normalized() * speed * delta
+	else: 
+		translate(transform.basis.z.normalized() * speed * delta)
 	
 func _mode_swap(is_3D_mode):
 	if is_3D_mode:
