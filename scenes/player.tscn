@@ -10,8 +10,8 @@
 [ext_resource type="Animation" uid="uid://cmb6wbvje4s5n" path="res://models/Ship/animations/ship_move_right.res" id="6_0ifs6"]
 [ext_resource type="Animation" uid="uid://dw2bohj7c8s66" path="res://hurt.res" id="9_s7iud"]
 [ext_resource type="Script" path="res://scripts/HitArea.gd" id="10_im4wi"]
-[ext_resource type="Texture2D" uid="uid://dxi2fflh86wde" path="res://sprites/center_ship.png" id="10_iwsjk"]
-[ext_resource type="Texture2D" uid="uid://4tl4xjnmohai" path="res://sprites/circle.png" id="11_r5yi7"]
+[ext_resource type="Texture2D" uid="uid://dev3wmoou33gb" path="res://sprites/center_ship.png" id="10_iwsjk"]
+[ext_resource type="Texture2D" uid="uid://bvrfcoryrh8ol" path="res://sprites/circle.png" id="11_r5yi7"]
 [ext_resource type="Script" path="res://scripts/CloseArea.gd" id="12_4ofub"]
 [ext_resource type="Script" path="res://scripts/AGUN.gd" id="14_i8pxy"]
 
@@ -612,7 +612,7 @@ bones/19/rotation = Quaternion(-0.127973, 0.208827, 0.0520269, 0.968146)
 bones/19/scale = Vector3(1, 1, 1)
 
 [node name="plane_2" type="BoneAttachment3D" parent="ship_idle/Armature/Skeleton3D"]
-transform = Transform3D(-2.43751, -1.74887, 0.00107526, 1.7448, -2.43172, 0.205961, 0.119195, -0.167969, -2.99292, -0.249609, -11.9553, -0.789728)
+transform = Transform3D(-2.41377, -1.78149, 0.00308113, 1.77728, -2.40771, 0.210252, 0.122381, -0.170992, -2.99262, -0.415272, -11.9496, -0.807376)
 bone_name = "plane_2"
 bone_idx = 10
 
