@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Enemies/Enemy.gd" id="1_jm4j6"]
 [ext_resource type="Shader" path="res://Enemies/outline.gdshader" id="2_smp26"]
-[ext_resource type="Material" uid="uid://m0i0k4hkxlh8" path="res://scenes/enemies/skellyladder.tres" id="2_tvu3g"]
+[ext_resource type="Material" uid="uid://m0i0k4hkxlh8" path="res://models/skellyladder.tres" id="2_tvu3g"]
 [ext_resource type="Script" path="res://Enemies/change_anim_on_mode_change.gd" id="3_6lixr"]
 [ext_resource type="Script" path="res://scripts/Gun.gd" id="4_vnji0"]
 [ext_resource type="Material" uid="uid://cms5jlhxpw323" path="res://hurt.tres" id="5_hvh26"]

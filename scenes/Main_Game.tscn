@@ -1,18 +1,18 @@
 [gd_scene load_steps=29 format=3 uid="uid://cipvv00ugvtnm"]
 
 [ext_resource type="PackedScene" uid="uid://cpnbohmnn2bop" path="res://scenes/player.tscn" id="1_j12px"]
-[ext_resource type="Texture2D" uid="uid://di0uxqeqtxb1i" path="res://sprites/bg.png" id="1_rithy"]
-[ext_resource type="Script" path="res://scenes/CameraAngle.gd" id="2_1vjs7"]
+[ext_resource type="Texture2D" uid="uid://bbhbjl6b1g6os" path="res://sprites/bg.png" id="1_rithy"]
+[ext_resource type="Script" path="res://scripts/CameraAngle.gd" id="3_0fdpl"]
 [ext_resource type="Script" path="res://scripts/TextureScroll.gd" id="3_q0y32"]
-[ext_resource type="Texture2D" uid="uid://cbl4b722hcnew" path="res://sprites/Cloud_layer_002.png" id="4_5jvtx"]
-[ext_resource type="Texture2D" uid="uid://jvhec3shcns7" path="res://sprites/Cloud_layer_001.png" id="4_kgx1p"]
+[ext_resource type="Texture2D" uid="uid://dt0srnvy2x5of" path="res://sprites/Cloud_layer_002.png" id="4_5jvtx"]
+[ext_resource type="Texture2D" uid="uid://c75cgqinalvl5" path="res://sprites/Cloud_layer_001.png" id="4_kgx1p"]
 [ext_resource type="Material" uid="uid://dtol571qbvgjn" path="res://scenes/THED.tres" id="4_nxwuk"]
-[ext_resource type="FontFile" uid="uid://c2esusx06bivb" path="res://font/Starting Machine.ttf" id="8_8aska"]
+[ext_resource type="FontFile" uid="uid://c8v3m21p1rqhp" path="res://font/Starting Machine.ttf" id="8_8aska"]
 [ext_resource type="Shader" path="res://scenes/effect.gdshader" id="8_v3mxf"]
-[ext_resource type="Script" path="res://scenes/ChargeBar.gd" id="10_vjdvd"]
-[ext_resource type="Script" path="res://scenes/Update_coin_text.gd" id="10_wd8cs"]
-[ext_resource type="Script" path="res://scenes/UpdateHealthText.gd" id="11_2nh5u"]
-[ext_resource type="Script" path="res://scenes/Spawner.gd" id="12_j5xrs"]
+[ext_resource type="Script" path="res://scripts/Update_coin_text.gd" id="10_ktp1n"]
+[ext_resource type="Script" path="res://scripts/UpdateHealthText.gd" id="11_vu682"]
+[ext_resource type="Script" path="res://scripts/ChargeBar.gd" id="12_o7ymn"]
+[ext_resource type="Script" path="res://scripts/Spawner.gd" id="13_8f20g"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_12oqm"]
 night_sky = ExtResource("1_rithy")
@@ -198,11 +198,11 @@ msdf_outline_size = 1.0
 resource_local_to_scene = true
 shader = ExtResource("8_v3mxf")
 shader_parameter/change_color_depth = true
-shader_parameter/target_color_depth = 8
+shader_parameter/target_color_depth = 3
 shader_parameter/dithering = true
 shader_parameter/scale_resolution = true
 shader_parameter/target_resolution_scale = 1
-shader_parameter/enable_recolor = true
+shader_parameter/enable_recolor = false
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_r6h31"]
 viewport_path = NodePath("SubViewport")
@@ -225,7 +225,7 @@ transform = Transform3D(1, 0, 0, 0, 0.499998, 0.866027, 0, -0.866027, 0.499998, 
 projection = 1
 fov = 130.0
 size = 40.377
-script = ExtResource("2_1vjs7")
+script = ExtResource("3_0fdpl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewport/Camera3D"]
 libraries = {
@@ -357,7 +357,7 @@ theme_override_font_sizes/font_size = 16
 text = "120"
 horizontal_alignment = 2
 vertical_alignment = 1
-script = ExtResource("10_wd8cs")
+script = ExtResource("10_ktp1n")
 
 [node name="Health" type="Label" parent="CanvasLayer"]
 texture_filter = 1
@@ -377,7 +377,7 @@ theme_override_fonts/font = ExtResource("8_8aska")
 theme_override_font_sizes/font_size = 16
 text = "3"
 vertical_alignment = 1
-script = ExtResource("11_2nh5u")
+script = ExtResource("11_vu682")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = -1
@@ -387,11 +387,11 @@ offset_left = -0.112
 offset_bottom = -0.240001
 grow_horizontal = 0
 size_flags_horizontal = 8
-script = ExtResource("10_vjdvd")
+script = ExtResource("12_o7ymn")
 
 [node name="Spawner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
-script = ExtResource("12_j5xrs")
+script = ExtResource("13_8f20g")
 
 [node name="Timer" type="Timer" parent="Spawner"]
 wait_time = 5.0

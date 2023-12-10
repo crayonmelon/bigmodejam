@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cguu7yr6p177s"]
 
-[ext_resource type="Script" path="res://scenes/bullet.gd" id="1_5l584"]
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_5l584"]
 [ext_resource type="SpriteFrames" uid="uid://6ravjdfw1044" path="res://sprites/Particles Effects/Ship Engines/ship_engine_sprite_frames.tres" id="3_rp3iu"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ofg57"]
@@ -11,6 +11,11 @@ script = ExtResource("1_5l584")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ofg57")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+autostart = true
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(-2.64009e-14, -6.03983e-07, -0.691, 8, -3.49691e-07, 4.29233e-22, -3.49691e-07, -8, 5.2169e-08, 0.0028438, -0.2741, -0.21196)
@@ -37,4 +42,5 @@ wait_time = 8.0
 one_shot = true
 autostart = true
 
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
