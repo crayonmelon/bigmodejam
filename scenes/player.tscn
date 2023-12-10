@@ -1,17 +1,19 @@
-[gd_scene load_steps=66 format=3 uid="uid://cpnbohmnn2bop"]
+[gd_scene load_steps=41 format=3 uid="uid://cpnbohmnn2bop"]
 
 [ext_resource type="Script" path="res://scripts/PlayerController.gd" id="1_0vmp4"]
-[ext_resource type="Texture2D" uid="uid://baxyaayhlpwn0" path="res://sprites/Particles Effects/Ship Engines/ship_engine_100x100.png" id="2_8yqt5"]
-[ext_resource type="Texture2D" uid="uid://b1wm2silwpsuw" path="res://sprites/icon.svg" id="2_xde30"]
+[ext_resource type="Shader" path="res://Enemies/outline.gdshader" id="2_bwubw"]
+[ext_resource type="SpriteFrames" uid="uid://6ravjdfw1044" path="res://sprites/Particles Effects/Ship Engines/ship_engine_sprite_frames.tres" id="2_o05px"]
 [ext_resource type="Animation" uid="uid://b60dd6tyg338v" path="res://models/Ship/animations/ship_idle.res" id="3_7mfbl"]
 [ext_resource type="Animation" uid="uid://oinin1gmbyd" path="res://models/Ship/animations/ship_move_backward.res" id="3_ufjig"]
 [ext_resource type="Animation" uid="uid://ns2rrrgfvfkw" path="res://models/Ship/animations/ship_move_forward.res" id="4_hhb6c"]
 [ext_resource type="Animation" uid="uid://ea4s7on7db2r" path="res://models/Ship/animations/ship_move_left.res" id="5_5x55n"]
 [ext_resource type="Animation" uid="uid://cmb6wbvje4s5n" path="res://models/Ship/animations/ship_move_right.res" id="6_0ifs6"]
-[ext_resource type="Script" path="res://scenes/HitArea.gd" id="8_07g13"]
-[ext_resource type="Texture2D" uid="uid://cp5mmt6k5ru1b" path="res://sprites/circle.png" id="8_ohe2o"]
-[ext_resource type="Script" path="res://scenes/CloseArea.gd" id="10_1xioh"]
-[ext_resource type="Script" path="res://scenes/AGUN.gd" id="10_qrvvr"]
+[ext_resource type="Animation" uid="uid://dw2bohj7c8s66" path="res://hurt.res" id="9_s7iud"]
+[ext_resource type="Script" path="res://scripts/HitArea.gd" id="10_im4wi"]
+[ext_resource type="Texture2D" uid="uid://dev3wmoou33gb" path="res://sprites/center_ship.png" id="10_iwsjk"]
+[ext_resource type="Texture2D" uid="uid://bvrfcoryrh8ol" path="res://sprites/circle.png" id="11_r5yi7"]
+[ext_resource type="Script" path="res://scripts/CloseArea.gd" id="12_4ofub"]
+[ext_resource type="Script" path="res://scripts/AGUN.gd" id="14_i8pxy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3trem"]
 resource_name = "Material"
@@ -50,223 +52,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ao0fc")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x0rgo"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(0, 0, 100, 100)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yq5wn"]
+render_priority = 0
+shader = ExtResource("2_bwubw")
+shader_parameter/outline_color = null
+shader_parameter/outline_width = 1.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x4c6y"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(100, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jy1gi"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(200, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_opf10"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(300, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c0bbn"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(400, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q1pa0"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(500, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uw1uu"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(0, 100, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3vvuh"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(100, 100, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hvqus"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(200, 100, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y46ja"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(300, 100, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jqfjf"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(400, 100, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_did84"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(500, 100, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0tvjd"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(0, 200, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h6211"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(100, 200, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_clpe5"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(200, 200, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_53hsv"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(300, 200, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_loov5"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(400, 200, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8yhdn"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(500, 200, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x68eo"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(0, 300, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5s4c3"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(100, 300, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_htonw"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(200, 300, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4yuom"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(300, 300, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lyjuq"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(400, 300, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kskqp"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(500, 300, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_avgny"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(0, 400, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ubp0w"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(100, 400, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8aysi"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(200, 400, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m5qvi"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(300, 400, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2cy2x"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(400, 400, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ullcx"]
-atlas = ExtResource("2_8yqt5")
-region = Rect2(500, 400, 100, 100)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_m606b"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x0rgo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x4c6y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jy1gi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_opf10")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c0bbn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q1pa0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uw1uu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3vvuh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hvqus")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y46ja")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jqfjf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_did84")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0tvjd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h6211")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_clpe5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_53hsv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_loov5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8yhdn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x68eo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5s4c3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_htonw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4yuom")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lyjuq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kskqp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_avgny")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ubp0w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8aysi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m5qvi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2cy2x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ullcx")
-}],
-"loop": true,
-"name": &"ship_engine",
-"speed": 60.0
-}]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8x2mv"]
+next_pass = SubResource("ShaderMaterial_yq5wn")
+shading_mode = 0
+albedo_color = Color(0.266667, 0.556863, 0.811765, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5d32"]
 
@@ -348,10 +143,6 @@ bind/18/name = &"neck"
 bind/18/bone = -1
 bind/18/pose = Transform3D(1, 0, -2.38419e-07, 0, 1, 0, 2.38419e-07, 0, 1, 6.98019, -13.5569, 0.0104612)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2k2db"]
-cull_mode = 2
-albedo_texture = ExtResource("2_xde30")
-
 [sub_resource type="Animation" id="Animation_7agt1"]
 length = 0.001
 tracks/0/type = "rotation_3d"
@@ -389,6 +180,42 @@ tracks/4/path = NodePath("Armature/Skeleton3D:hip.L")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = PackedFloat32Array(0, 1, 0.371836, 0.218408, -0.0904677, 0.897692)
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("plane_2:surface_material_override/0")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("StandardMaterial3D_8x2mv")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("plane_2:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.00169727, 0, 0.00304865)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_pgbv5"]
 resource_name = "metarig|metarig|metarigAction"
@@ -516,6 +343,7 @@ tracks/16/keys = PackedFloat32Array(0, 1, 0, 1.42109e-14, 0, 1)
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1nw0b"]
 _data = {
 "RESET": SubResource("Animation_7agt1"),
+"hurt": ExtResource("9_s7iud"),
 "metarig|metarig|metarigAction": SubResource("Animation_pgbv5"),
 "ship_idle": ExtResource("3_7mfbl"),
 "ship_move_backward": ExtResource("3_ufjig"),
@@ -567,31 +395,78 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fk7ki"]
+radius = 0.319042
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_m8cwi"]
-radius = 1.59727
+[sub_resource type="SphereShape3D" id="SphereShape3D_x0vo6"]
+radius = 1.5
 
-[node name="Node3D" type="CharacterBody3D"]
+[sub_resource type="Animation" id="Animation_d7rqe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mitkh"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1.7411, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.258824), Color(1, 1, 1, 0.258824), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6fe7l"]
+_data = {
+"RESET": SubResource("Animation_d7rqe"),
+"fade_in": SubResource("Animation_mitkh")
+}
+
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_0vmp4")
 
 [node name="ship_idle" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0, 0, 0)
+transform = Transform3D(-3.61999e-07, 0, 0.1, 0, 0.1, 0, -0.1, 0, -3.61999e-07, 0, -0.25, 0)
 
 [node name="plane_2" type="MeshInstance3D" parent="ship_idle"]
-transform = Transform3D(-3, 0, 0, 0, -3, 0.00184482, 0, -0.00184482, -3, 3.05291, 2.9999, 7.3415e-07)
+transform = Transform3D(-2.99999, 0.00914593, 0, -0.00914594, -2.99998, -0.00509181, 1.55231e-05, 0.00509178, -3, 3.05291, 2.9999, 7.3415e-07)
 mesh = SubResource("ArrayMesh_xo1ur")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_8x2mv")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="ship_idle/plane_2"]
-transform = Transform3D(84.4873, -6.82121e-13, 4.44089e-16, 0, -3.68059e-06, 84.4873, -4.54747e-13, -84.4873, -3.68059e-06, 10.6881, -0.304846, 2.13833)
-billboard = 1
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_m606b")
+[node name="fire" type="Node3D" parent="ship_idle/plane_2"]
+transform = Transform3D(1, 6.93889e-18, 3.55271e-15, 0, 1, 1.17496e-18, -3.55271e-15, 1.17496e-18, 1, 9.67955, 5.96046e-08, -0.76069)
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="ship_idle/plane_2/fire"]
+transform = Transform3D(-2.18557e-06, -50, 4.54747e-12, 50, -2.18557e-06, 7.45058e-09, -7.45068e-09, 3.18323e-12, 50, 0, -1.0459, 0.86701)
+sprite_frames = ExtResource("2_o05px")
 animation = &"ship_engine"
 autoplay = "ship_engine"
+frame_progress = 0.86012
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="ship_idle/plane_2/fire"]
+transform = Transform3D(-2.18557e-06, -50, 2.18557e-06, 0, -2.18557e-06, -50, 50, -2.18557e-06, 9.55343e-14, 0, -5.96046e-08, -0.449826)
+sprite_frames = ExtResource("2_o05px")
+animation = &"ship_engine"
+autoplay = "ship_engine"
+frame_progress = 0.388407
 
 [node name="Armature" type="Node3D" parent="ship_idle"]
-transform = Transform3D(0.972966, -0.23095, -1.18167e-09, 0.23095, 0.972966, 1.00951e-08, -1.18174e-09, -1.00951e-08, 1, -6.98019, 9.81994, -0.0521888)
+transform = Transform3D(0.972966, -0.23095, -1.18167e-09, 0.23095, 0.972966, 1.00951e-08, -1.18174e-09, -1.00951e-08, 1, -6.98019, 9.82148, -0.0653788)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="ship_idle/Armature"]
 transform = Transform3D(1, 0, 2.4869e-14, 0, 1, 0, -2.4869e-14, 0, 1, 7.35306, -0.861085, 3.20375e-07)
@@ -649,7 +524,7 @@ bones/7/parent = 6
 bones/7/rest = Transform3D(0.987062, -0.160239, 0.00562333, 0.160262, 0.984918, -0.065218, 0.00491193, 0.0652755, 0.997855, -2.17464e-07, 1.89069, 1.40353e-07)
 bones/7/enabled = true
 bones/7/position = Vector3(-2.17464e-07, 1.89069, 1.40353e-07)
-bones/7/rotation = Quaternion(-0.0057521, -0.0251608, 0.26344, 0.96433)
+bones/7/rotation = Quaternion(-0.00575209, -0.0251608, 0.26344, 0.96433)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/name = "foot.R"
 bones/8/parent = 7
@@ -677,7 +552,7 @@ bones/11/parent = -1
 bones/11/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.337975, 0.0458548)
 bones/11/enabled = true
 bones/11/position = Vector3(0, 0.337975, 0.0458548)
-bones/11/rotation = Quaternion(0.0333151, -0.252477, -0.154371, 0.954628)
+bones/11/rotation = Quaternion(-0.0217407, -0.285701, -0.121757, 0.950304)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "upTorso"
 bones/12/parent = 11
@@ -698,7 +573,7 @@ bones/14/parent = 13
 bones/14/rest = Transform3D(1, 2.37262e-07, 2.14963e-07, -2.37262e-07, 0.0983797, 0.995149, 2.14963e-07, -0.995149, 0.0983797, 1.34327e-07, 1.51327, 1.09032e-07)
 bones/14/enabled = true
 bones/14/position = Vector3(1.34327e-07, 1.51327, 1.09032e-07)
-bones/14/rotation = Quaternion(-0.496397, 0.0204728, 0.17087, 0.850867)
+bones/14/rotation = Quaternion(-0.549371, 0.0505929, 0.13814, 0.822526)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "foreArm.L"
 bones/15/parent = 14
@@ -712,14 +587,14 @@ bones/16/parent = 12
 bones/16/rest = Transform3D(1, -2.36327e-07, 1.16058e-06, 1.18163e-06, 0.132164, -0.991228, 8.08682e-08, 0.991228, 0.132164, 2.49374e-09, 1.7, 6.753e-11)
 bones/16/enabled = true
 bones/16/position = Vector3(2.49374e-09, 1.7, 6.753e-11)
-bones/16/rotation = Quaternion(0.658725, 3.58762e-07, 4.71154e-07, 0.752384)
+bones/16/rotation = Quaternion(0.658725, 3.58762e-07, 4.71155e-07, 0.752384)
 bones/16/scale = Vector3(1, 1, 1)
 bones/17/name = "upArm.R"
 bones/17/parent = 16
 bones/17/rest = Transform3D(1, -1.1863e-06, 1.07482e-06, 1.18631e-06, 0.0983797, -0.995149, 1.07481e-06, 0.995149, 0.0983797, 2.85238e-07, 1.51327, 1.30517e-06)
 bones/17/enabled = true
 bones/17/position = Vector3(2.85238e-07, 1.51327, 1.30517e-06)
-bones/17/rotation = Quaternion(0.446861, 0.193446, -0.0771506, 0.870024)
+bones/17/rotation = Quaternion(0.520925, 0.0717156, -0.0584217, 0.848576)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "foreArm.R"
 bones/18/parent = 17
@@ -737,7 +612,7 @@ bones/19/rotation = Quaternion(-0.127973, 0.208827, 0.0520269, 0.968146)
 bones/19/scale = Vector3(1, 1, 1)
 
 [node name="plane_2" type="BoneAttachment3D" parent="ship_idle/Armature/Skeleton3D"]
-transform = Transform3D(-2.41443, -1.78059, 0.0034966, 1.77639, -2.40833, 0.210751, 0.12228, -0.171685, -2.99259, -0.41069, -11.9496, -0.809487)
+transform = Transform3D(-2.41377, -1.78149, 0.00308113, 1.77728, -2.40771, 0.210252, 0.122381, -0.170992, -2.99262, -0.415272, -11.9496, -0.807376)
 bone_name = "plane_2"
 bone_idx = 10
 
@@ -745,7 +620,6 @@ bone_idx = 10
 transform = Transform3D(1.93185, 0.517638, -2.97881e-09, -0.517638, 1.93185, -2.26267e-08, -2.97891e-09, 2.26267e-08, 2, -1.6515, 6.31534, -7.07805e-08)
 mesh = SubResource("ArrayMesh_45472")
 skin = SubResource("Skin_wyyjn")
-surface_material_override/0 = SubResource("StandardMaterial3D_2k2db")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ship_idle"]
 autoplay = "ship_idle"
@@ -758,7 +632,7 @@ libraries = {
 tree_root = SubResource("AnimationNodeBlendSpace2D_7ealj")
 anim_player = NodePath("..")
 active = true
-parameters/blend_position = Vector2(0.000587225, -0.00436676)
+parameters/blend_position = Vector2(-0.00135136, 0.0127877)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ui5nb")
@@ -770,30 +644,47 @@ libraries = {
 
 [node name="HitArea" type="Area3D" parent="."]
 collision_mask = 6
-script = ExtResource("8_07g13")
+script = ExtResource("10_im4wi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 shape = SubResource("SphereShape3D_fk7ki")
 
 [node name="Sprite3D" type="Sprite3D" parent="HitArea"]
-transform = Transform3D(-1.5, -2.26494e-07, -9.90035e-15, 6.35275e-22, -6.55671e-08, 1.5, -2.26494e-07, 1.5, 6.55671e-08, 0, 0, 0)
-modulate = Color(0, 1, 0.0509804, 0.360784)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+modulate = Color(1, 1, 0, 0.733333)
 billboard = 1
 double_sided = false
 no_depth_test = true
 texture_filter = 0
-texture = ExtResource("8_ohe2o")
+texture = ExtResource("11_r5yi7")
 
 [node name="HitArea2" type="Area3D" parent="."]
 collision_layer = 16
 collision_mask = 6
-script = ExtResource("10_1xioh")
+script = ExtResource("12_4ofub")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea2"]
-shape = SubResource("CylinderShape3D_m8cwi")
+shape = SubResource("SphereShape3D_x0vo6")
+
+[node name="Sprite3D" type="Sprite3D" parent="HitArea2"]
+transform = Transform3D(4.5, 0, 0, 0, 4.5, 0, 0, 0, 4.5, 0, 0, 0)
+modulate = Color(1, 1, 1, 0)
+billboard = 1
+double_sided = false
+no_depth_test = true
+texture_filter = 0
+texture = ExtResource("10_iwsjk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HitArea2"]
+libraries = {
+"": SubResource("AnimationLibrary_6fe7l")
+}
 
 [node name="AGUN" type="Node3D" parent="."]
-script = ExtResource("10_qrvvr")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+visible = false
+script = ExtResource("14_i8pxy")
 
 [node name="ShootDelay" type="Timer" parent="AGUN"]
 wait_time = 0.1

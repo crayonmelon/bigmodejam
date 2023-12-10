@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Enemy_Resource" load_steps=3 format=3 uid="uid://gycvhie05y47"]
+
+[ext_resource type="Script" path="res://Enemies/enemy_resource.gd" id="1_hrpbs"]
+[ext_resource type="PackedScene" uid="uid://ckalp8n0jp0h7" path="res://Enemies/Ladder_Skeleton_Prefab.tscn" id="1_rj687"]
+
+[resource]
+script = ExtResource("1_hrpbs")
+cost = 5
+level = 0
+prefab = ExtResource("1_rj687")
+x_range = Vector2(-14, 14)
+y_range = Vector2(0, 20)

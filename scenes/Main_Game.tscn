@@ -1,31 +1,153 @@
-[gd_scene load_steps=22 format=3 uid="uid://cipvv00ugvtnm"]
+[gd_scene load_steps=29 format=3 uid="uid://cipvv00ugvtnm"]
 
 [ext_resource type="PackedScene" uid="uid://cpnbohmnn2bop" path="res://scenes/player.tscn" id="1_j12px"]
-[ext_resource type="Texture2D" uid="uid://ijd0fkuaex6r" path="res://sprites/Citymap001.png" id="2_p2oiy"]
+[ext_resource type="Texture2D" uid="uid://di0uxqeqtxb1i" path="res://sprites/bg.png" id="1_rithy"]
+[ext_resource type="Script" path="res://scripts/CameraAngle.gd" id="3_0fdpl"]
 [ext_resource type="Script" path="res://scripts/TextureScroll.gd" id="3_q0y32"]
-[ext_resource type="Texture2D" uid="uid://ch6cd47nam5ay" path="res://sprites/Cloud_layer_002.png" id="4_5jvtx"]
-[ext_resource type="Texture2D" uid="uid://x4dvcqh5ugfd" path="res://sprites/Cloud_layer_001.png" id="4_kgx1p"]
-[ext_resource type="Texture2D" uid="uid://b1wm2silwpsuw" path="res://sprites/icon.svg" id="5_7f0eh"]
-[ext_resource type="FontFile" uid="uid://b015fxhu4htvp" path="res://font/Starting Machine.ttf" id="8_8aska"]
-[ext_resource type="PackedScene" uid="uid://gjin3y2k2v1e" path="res://scenes/EnemySpawnPattern/EnemySpawnPatterns.tscn" id="10_v3rqo"]
-[ext_resource type="Script" path="res://scenes/ChargeBar.gd" id="10_vjdvd"]
-[ext_resource type="Script" path="res://scenes/Update_coin_text.gd" id="10_wd8cs"]
-[ext_resource type="Script" path="res://scenes/UpdateHealthText.gd" id="11_2nh5u"]
-[ext_resource type="PackedScene" path="res://scenes/eyeball.tscn" id="11_p1if4"]
+[ext_resource type="Texture2D" uid="uid://cbl4b722hcnew" path="res://sprites/Cloud_layer_002.png" id="4_5jvtx"]
+[ext_resource type="Texture2D" uid="uid://jvhec3shcns7" path="res://sprites/Cloud_layer_001.png" id="4_kgx1p"]
+[ext_resource type="Material" uid="uid://dtol571qbvgjn" path="res://scenes/THED.tres" id="4_nxwuk"]
+[ext_resource type="FontFile" uid="uid://c2esusx06bivb" path="res://font/Starting Machine.ttf" id="8_8aska"]
+[ext_resource type="Shader" path="res://scenes/effect.gdshader" id="8_v3mxf"]
+[ext_resource type="Script" path="res://scripts/Update_coin_text.gd" id="10_ktp1n"]
+[ext_resource type="Script" path="res://scripts/UpdateHealthText.gd" id="11_vu682"]
+[ext_resource type="Script" path="res://scripts/ChargeBar.gd" id="12_o7ymn"]
+[ext_resource type="Script" path="res://scripts/Spawner.gd" id="13_8f20g"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_12oqm"]
+night_sky = ExtResource("1_rithy")
+
+[sub_resource type="Sky" id="Sky_5rh4j"]
+sky_material = SubResource("PhysicalSkyMaterial_12oqm")
 
 [sub_resource type="Environment" id="Environment_0mt7r"]
+background_mode = 2
+background_color = Color(0, 0, 1, 1)
+sky = SubResource("Sky_5rh4j")
+sky_rotation = Vector3(0, 1.5708, 0)
 ambient_light_source = 2
 ambient_light_color = Color(0.909804, 0.909804, 0.909804, 1)
-tonemap_mode = 2
+tonemap_mode = 1
+fog_light_color = Color(0.384314, 0.0705882, 0.00784314, 1)
+fog_light_energy = 0.33
+fog_density = 0.0005
+fog_height = -26.51
+
+[sub_resource type="Animation" id="Animation_xqb6q"]
+resource_name = "ChangeAngle"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(5, 3.605),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath(".:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(5, 1),
+"update": 0,
+"values": [40.377, 30.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(5, 1),
+"update": 0,
+"values": [Vector3(0, 35, 34.366), Vector3(0, 10, 40)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:projection")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_khi2p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.0472, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [40.377]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 35, 34.366)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:projection")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cgv0q"]
+_data = {
+"ChangeAngle": SubResource("Animation_xqb6q"),
+"RESET": SubResource("Animation_khi2p")
+}
 
 [sub_resource type="TextMesh" id="TextMesh_iko7c"]
 text = "D"
 font_size = 127
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vr2se"]
-shading_mode = 0
-albedo_texture = ExtResource("2_p2oiy")
-uv1_scale = Vector3(5, 10, 1)
+pixel_size = 0.1
+curve_step = 3.3
 
 [sub_resource type="QuadMesh" id="QuadMesh_b4e8v"]
 
@@ -34,6 +156,7 @@ transparency = 1
 albedo_color = Color(1, 1, 1, 0.392157)
 albedo_texture = ExtResource("4_5jvtx")
 albedo_texture_force_srgb = true
+uv1_scale = Vector3(2, 2, 2)
 uv1_offset = Vector3(10.175, 0, 0)
 texture_filter = 0
 msdf_outline_size = 1.0
@@ -71,35 +194,75 @@ uv1_scale = Vector3(0.5, 0.5, 0.5)
 texture_filter = 0
 msdf_outline_size = 1.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wetay"]
+resource_local_to_scene = true
+shader = ExtResource("8_v3mxf")
+shader_parameter/change_color_depth = true
+shader_parameter/target_color_depth = 3
+shader_parameter/dithering = true
+shader_parameter/scale_resolution = true
+shader_parameter/target_resolution_scale = 1
+shader_parameter/enable_recolor = false
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_r6h31"]
+viewport_path = NodePath("SubViewport")
+
 [node name="Main_Game" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0mt7r")
 
 [node name="player" parent="." instance=ExtResource("1_j12px")]
-transform = Transform3D(1, 0, -1.19209e-07, 3.55271e-15, 1, 0, 1.19209e-07, 0, 1, 0, 21, 30)
+transform = Transform3D(1, 0, -1.19209e-07, 3.55271e-15, 1, 0, 1.19209e-07, 0, 1, -0.396, 10.45, 38)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 34.5237, 34.366)
+[node name="SubViewport" type="SubViewport" parent="."]
+canvas_item_default_texture_filter = 0
+canvas_cull_mask = 4294967294
+size = Vector2i(224, 320)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.499998, 0.866027, 0, -0.866027, 0.499998, 0, 35, 34.366)
 projection = 1
+fov = 130.0
 size = 40.377
+script = ExtResource("3_0fdpl")
 
-[node name="SubViewport" type="SubViewport" parent="Camera3D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewport/Camera3D"]
+libraries = {
+"": SubResource("AnimationLibrary_cgv0q")
+}
 
 [node name="Scenery" type="Node3D" parent="."]
 
 [node name="Ground" type="MeshInstance3D" parent="Scenery"]
-transform = Transform3D(1.31171e-05, 3.93402e-06, -851, 7.03858e-06, -45, -7.43967e-05, -80.512, -3.93402e-06, -0.000138645, 0, -24.48, 11.027)
+transform = Transform3D(3.25854e-06, 7.2891e-07, -2200, 3.02004e-06, -8.33777, -0.00019233, -20.0008, -1.25897e-06, -0.000358426, 5.44527e-06, -49.4933, -8.97381)
 mesh = SubResource("TextMesh_iko7c")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_vr2se")
+surface_material_override/0 = ExtResource("4_nxwuk")
 script = ExtResource("3_q0y32")
 scrollDirection = Vector3(-1, 0, 0)
-scrollSpeed = 0.1
-texture_hell = ExtResource("2_p2oiy")
+scrollSpeed = 0.5
+
+[node name="Ground2" type="MeshInstance3D" parent="Scenery"]
+transform = Transform3D(3.25854e-06, 7.2891e-07, -2200, 3.02004e-06, -8.33777, -0.00019233, -20.0008, -1.25897e-06, -0.000358426, 109.941, -49.4933, -8.97379)
+mesh = SubResource("TextMesh_iko7c")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("4_nxwuk")
+script = ExtResource("3_q0y32")
+scrollDirection = Vector3(-1, 0, 0)
+scrollSpeed = 0.5
+
+[node name="Ground3" type="MeshInstance3D" parent="Scenery"]
+transform = Transform3D(3.25854e-06, 7.2891e-07, -2200, 3.02004e-06, -8.33777, -0.00019233, -20.0008, -1.25897e-06, -0.000358426, -109.961, -49.4933, -8.97383)
+mesh = SubResource("TextMesh_iko7c")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("4_nxwuk")
+script = ExtResource("3_q0y32")
+scrollDirection = Vector3(-1, 0, 0)
+scrollSpeed = 0.5
 
 [node name="Cloud Layer" type="MeshInstance3D" parent="Scenery"]
-transform = Transform3D(52.1809, 0, 0, 0, 26.0904, 0.445674, 0, -45.19, 0.25731, -0.0487404, 10.9234, 17.3058)
+transform = Transform3D(200, 0, 0, 0, 100, 0.512687, 0, -173.205, 0.296, -0.0487404, 37.8036, -13.7851)
 visible = false
 mesh = SubResource("QuadMesh_b4e8v")
 skeleton = NodePath("../..")
@@ -107,8 +270,16 @@ surface_material_override/0 = SubResource("StandardMaterial3D_bg0yt")
 script = ExtResource("3_q0y32")
 scrollDirection = Vector3(0, -1, 0)
 scrollSpeed = 0.2
-texture_heaven = ExtResource("5_7f0eh")
-texture_hell = ExtResource("4_5jvtx")
+
+[node name="Cloud Layer6" type="MeshInstance3D" parent="Scenery"]
+transform = Transform3D(200, 0, 0, 0, 100, 0.512687, 0, -173.205, 0.296, -0.0487404, 37.8036, -13.7851)
+visible = false
+mesh = SubResource("QuadMesh_b4e8v")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_bg0yt")
+script = ExtResource("3_q0y32")
+scrollDirection = Vector3(0, -1, 0)
+scrollSpeed = 0.2
 
 [node name="Cloud Layer3" type="MeshInstance3D" parent="Scenery"]
 transform = Transform3D(52.1809, 0, 0, 0, 26.0904, 0.445674, 0, -45.19, 0.25731, -0.0487404, 10.9234, 17.3058)
@@ -119,8 +290,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_acx64")
 script = ExtResource("3_q0y32")
 scrollDirection = Vector3(0, -1, 0)
 scrollSpeed = 0.4
-texture_heaven = ExtResource("5_7f0eh")
-texture_hell = ExtResource("4_5jvtx")
 
 [node name="Cloud Layer4" type="MeshInstance3D" parent="Scenery"]
 transform = Transform3D(52.1809, 0, 0, 0, 26.0904, 0.445674, 0, -45.19, 0.25731, -0.0487404, 10.9234, 17.3058)
@@ -131,8 +300,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_xs54y")
 script = ExtResource("3_q0y32")
 scrollDirection = Vector3(0, -1, 0)
 scrollSpeed = 0.4
-texture_heaven = ExtResource("5_7f0eh")
-texture_hell = ExtResource("4_5jvtx")
 
 [node name="Cloud Layer2" type="MeshInstance3D" parent="Scenery"]
 transform = Transform3D(-52.181, 0, 0, 0, 26.0905, 0.446003, 0, -45.1901, 0.2575, -0.0487404, 10.9234, 17.3058)
@@ -143,19 +310,30 @@ surface_material_override/0 = SubResource("StandardMaterial3D_fmtpb")
 script = ExtResource("3_q0y32")
 scrollDirection = Vector3(0, -1, 0)
 scrollSpeed = 0.5
-texture_heaven = ExtResource("5_7f0eh")
 
 [node name="Cloud Layer5" type="MeshInstance3D" parent="Scenery"]
 transform = Transform3D(52.181, -4.56181e-06, 0, -2.2809e-06, -26.0905, 0.446003, 3.95064e-06, 45.1901, 0.2575, -0.0487404, 10.9234, 17.3058)
+visible = false
 mesh = SubResource("QuadMesh_b4e8v")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_7ca05")
 script = ExtResource("3_q0y32")
 scrollDirection = Vector3(0, 1, 0)
 scrollSpeed = 0.5
-texture_heaven = ExtResource("5_7f0eh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scenery"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_wetay")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_r6h31")
 
 [node name="Coin" type="Label" parent="CanvasLayer"]
 texture_filter = 1
@@ -179,7 +357,7 @@ theme_override_font_sizes/font_size = 16
 text = "120"
 horizontal_alignment = 2
 vertical_alignment = 1
-script = ExtResource("10_wd8cs")
+script = ExtResource("10_ktp1n")
 
 [node name="Health" type="Label" parent="CanvasLayer"]
 texture_filter = 1
@@ -199,7 +377,7 @@ theme_override_fonts/font = ExtResource("8_8aska")
 theme_override_font_sizes/font_size = 16
 text = "3"
 vertical_alignment = 1
-script = ExtResource("11_2nh5u")
+script = ExtResource("11_vu682")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = -1
@@ -209,10 +387,14 @@ offset_left = -0.112
 offset_bottom = -0.240001
 grow_horizontal = 0
 size_flags_horizontal = 8
-script = ExtResource("10_vjdvd")
+script = ExtResource("12_o7ymn")
 
-[node name="EnemySpawnPatterns" parent="." instance=ExtResource("10_v3rqo")]
+[node name="Spawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+script = ExtResource("13_8f20g")
 
-[node name="eyeball" parent="." instance=ExtResource("11_p1if4")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0.5, 0.866026, 2.18557e-08, -0.866026, 0.5, -3.78552e-08, 0, 21, 10)
-visible = false
+[node name="Timer" type="Timer" parent="Spawner"]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]

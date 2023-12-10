@@ -5,25 +5,31 @@ signal Swap_Mode
 signal Coin_Updated
 signal Health_Updated
 signal Charge_Updated
+signal Trans_Complete
 
 var max_health = 3
 var health = max_health
 var coin = 0 
 
 var max_charge = 300
-var charge = 100
+var charge = 100000
 
 const WORLD_BORDER_X_MIN = -14
 const WORLD_BORDER_X_MAX = 14
-const WORLD_BORDER_Z_MIN = 4
-const WORLD_BORDER_Z_MAX = 50
 
-const WORLD_HEIGHT = 21
+const WORLD_BORDER_Z_MIN = 16
+const WORLD_BORDER_Z_MAX = 52
 
-var is_heaven = false
+const WORLD_BORDER_Y_MIN = -6
+const WORLD_BORDER_Y_MAX = 30
+
+const WORLD_HEIGHT = 10
+
+var is_3D_mode = false
+var invincible = false
 
 func _process(delta):
-	if is_heaven:
+	if is_3D_mode:
 		_Charge_count_down()
 
 func _input(event):
@@ -33,12 +39,12 @@ func _input(event):
 func _swap_mode(value = null):
 	
 	if value != null:
-		is_heaven = value
-		Swap_Mode.emit(is_heaven)
+		is_3D_mode = value
+		Swap_Mode.emit(is_3D_mode)
 		return
 		
-	is_heaven = !is_heaven
-	Swap_Mode.emit(is_heaven)
+	is_3D_mode = !is_3D_mode
+	Swap_Mode.emit(is_3D_mode)
 
 func _chainge_coin_val(value):
 	coin += value
@@ -47,6 +53,8 @@ func _chainge_coin_val(value):
 func _chainge_health_val(value):
 	health += value
 	Health_Updated.emit()
+	if health <= 0:
+		_died()
 
 func _set_health(value):
 	health = value
@@ -73,3 +81,7 @@ func _Charge_count_down():
 	if timer.is_stopped():
 		_change_charge_val(-1)
 		$Timer.start()
+
+func _died():
+#	get_tree().quit() 
+	pass
