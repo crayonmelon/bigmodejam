@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dtol571qbvgjn"]
 
-[ext_resource type="Texture2D" uid="uid://rtxm5alurm01" path="res://sprites/Grass_23-128x128.png" id="1_l0b3x"]
+[ext_resource type="Texture2D" uid="uid://cj1e75x0nnc3r" path="res://sprites/Grass_23-128x128.png" id="1_l0b3x"]
 
 [resource]
 resource_local_to_scene = true

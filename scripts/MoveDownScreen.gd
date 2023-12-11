@@ -16,6 +16,7 @@ func _ready():
 		look_at(player_pos)
 	
 	GameManager.Swap_Mode.connect(_mode_swap)
+	GameManager.player_dead.connect(_destroy)
 
 func _process(delta):
 	
@@ -46,3 +47,6 @@ func _on_area_entered(area):
 	elif area.collision_layer == 16 && (not close_point_given):
 		GameManager._change_charge_val(1)
 		close_point_given = true
+
+func _destroy():
+	queue_free()

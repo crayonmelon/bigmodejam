@@ -7,5 +7,4 @@ func _ready():
 	pass
 
 func _update_bar():
-	print(float(GameManager.charge)/float(GameManager.max_charge))
 	anchor_right = float(GameManager.charge)/float(GameManager.max_charge)

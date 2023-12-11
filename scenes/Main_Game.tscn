@@ -1,21 +1,23 @@
-[gd_scene load_steps=36 format=3 uid="uid://cipvv00ugvtnm"]
+[gd_scene load_steps=38 format=3 uid="uid://cipvv00ugvtnm"]
 
 [ext_resource type="PackedScene" uid="uid://cpnbohmnn2bop" path="res://scenes/player.tscn" id="1_j12px"]
-[ext_resource type="Texture2D" uid="uid://di0uxqeqtxb1i" path="res://sprites/bg.png" id="1_rithy"]
+[ext_resource type="Texture2D" uid="uid://bo5shm58y1cku" path="res://sprites/bg.png" id="1_rithy"]
 [ext_resource type="Script" path="res://scripts/CameraAngle.gd" id="3_0fdpl"]
 [ext_resource type="Script" path="res://scripts/TextureScroll.gd" id="3_q0y32"]
-[ext_resource type="Texture2D" uid="uid://cbl4b722hcnew" path="res://sprites/Cloud_layer_002.png" id="4_5jvtx"]
-[ext_resource type="Texture2D" uid="uid://jvhec3shcns7" path="res://sprites/Cloud_layer_001.png" id="4_kgx1p"]
+[ext_resource type="Texture2D" uid="uid://ch6cd47nam5ay" path="res://sprites/Cloud_layer_002.png" id="4_5jvtx"]
+[ext_resource type="Texture2D" uid="uid://x4dvcqh5ugfd" path="res://sprites/Cloud_layer_001.png" id="4_kgx1p"]
 [ext_resource type="Material" uid="uid://dtol571qbvgjn" path="res://scenes/THED.tres" id="4_nxwuk"]
-[ext_resource type="FontFile" uid="uid://c2esusx06bivb" path="res://font/Starting Machine.ttf" id="8_8aska"]
+[ext_resource type="FontFile" uid="uid://b015fxhu4htvp" path="res://font/Starting Machine.ttf" id="8_8aska"]
 [ext_resource type="Shader" path="res://scenes/effect.gdshader" id="8_v3mxf"]
 [ext_resource type="Script" path="res://scripts/UpdateHealthScreenEffect.gd" id="9_68x4j"]
 [ext_resource type="Script" path="res://scripts/Update_coin_text.gd" id="10_ktp1n"]
-[ext_resource type="Texture2D" uid="uid://w7wlapy6jgq5" path="res://sprites/Player_Health_Sprites.png" id="11_g27pf"]
+[ext_resource type="Texture2D" uid="uid://bwsgn2omx1keb" path="res://sprites/Player_Health_Sprites.png" id="11_g27pf"]
 [ext_resource type="Script" path="res://scripts/UpdateHealthText.gd" id="11_vu682"]
 [ext_resource type="Script" path="res://scripts/Spawner.gd" id="13_8f20g"]
-[ext_resource type="PackedScene" uid="uid://bgamjx3bfb0a2" path="res://scenes/mountain.tscn" id="15_ij244"]
+[ext_resource type="PackedScene" path="res://scenes/mountain.tscn" id="15_ij244"]
 [ext_resource type="Script" path="res://scenes/DeathBarrier.gd" id="16_pp7co"]
+[ext_resource type="AudioStream" uid="uid://xdnyu77ekg8" path="res://Audio/Sound Effects/die.wav" id="17_4pgf5"]
+[ext_resource type="Script" path="res://scripts/PlayerDeathHandler.gd" id="17_vfsf8"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_12oqm"]
 night_sky = ExtResource("1_rithy")
@@ -89,57 +91,6 @@ tracks/3/keys = {
 "values": [1, 0]
 }
 
-[sub_resource type="Animation" id="Animation_khi2p"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.0472, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [40.377]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 35, 34.366)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:projection")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-
 [sub_resource type="Animation" id="Animation_2ncgg"]
 resource_name = "Default"
 length = 0.01
@@ -177,6 +128,57 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(5),
+"update": 0,
+"values": [Vector3(0, 35, 34.366)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:projection")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_khi2p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.0472, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [40.377]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 35, 34.366)]
 }
@@ -480,6 +482,10 @@ script = ExtResource("16_pp7co")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathBarrier"]
 shape = SubResource("BoxShape3D_nny0j")
+
+[node name="Death AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_4pgf5")
+script = ExtResource("17_vfsf8")
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
 [connection signal="timeout" from="Spawner/level_up_timer" to="Spawner" method="_on_level_up_timer_timeout"]

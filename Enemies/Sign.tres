@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="Enemy_Resource" load_steps=3 format=3 uid="uid://33k84unko4c"]
+[gd_resource type="Resource" script_class="Enemy_Resource" load_steps=3 format=3 uid="uid://2ge2lxmdinys"]
 
 [ext_resource type="Script" path="res://Enemies/enemy_resource.gd" id="1_a80rw"]
-[ext_resource type="PackedScene" uid="uid://dgd5fd8235bk1" path="res://Enemies/Sign.tscn" id="1_d0g6m"]
+[ext_resource type="PackedScene" path="res://Enemies/Sign.tscn" id="1_d0g6m"]
 
 [resource]
 script = ExtResource("1_a80rw")

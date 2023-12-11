@@ -6,6 +6,7 @@ signal Coin_Updated
 signal Health_Updated
 signal Charge_Updated
 signal Trans_Complete
+signal player_dead
 
 var max_health = 3
 var health = max_health
@@ -53,8 +54,6 @@ func _chainge_coin_val(value):
 func _chainge_health_val(value):
 	health += value
 	Health_Updated.emit()
-	if health <= 0:
-		_died()
 
 func _set_health(value):
 	health = value
@@ -82,6 +81,7 @@ func _Charge_count_down():
 		_change_charge_val(-1)
 		$Timer.start()
 
-func _died():
-#	get_tree().quit() 
-	pass
+func _reset_game():
+	_set_health(3)
+	_set_coin(0)
+	_swap_mode(false)

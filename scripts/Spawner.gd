@@ -31,7 +31,7 @@ func _spawn_enemy():
 			
 		var enemy_inst = enemy.prefab.instantiate()
 		to_spend -= enemy.cost
-		get_tree().root.add_child(enemy_inst)
+		get_tree().root.get_node_or_null("Main_Game").add_child(enemy_inst)
 		enemy_inst.global_position = global_position
 		enemy_inst.global_position.x = randi_range(enemy.x_range.x, enemy.x_range.y)
 		enemy_inst.global_position.y = randi_range(enemy.y_range.x, enemy.y_range.y)
