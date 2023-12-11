@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cpnbohmnn2bop"]
+[gd_scene load_steps=43 format=3 uid="uid://cpnbohmnn2bop"]
 
 [ext_resource type="Script" path="res://scripts/PlayerController.gd" id="1_0vmp4"]
 [ext_resource type="Shader" path="res://Enemies/outline.gdshader" id="2_bwubw"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://bvrfcoryrh8ol" path="res://sprites/circle.png" id="11_r5yi7"]
 [ext_resource type="Script" path="res://scripts/CloseArea.gd" id="12_4ofub"]
 [ext_resource type="Script" path="res://scripts/AGUN.gd" id="14_i8pxy"]
+[ext_resource type="Script" path="res://scenes/ShadowRaycast.gd" id="15_ntcbj"]
+[ext_resource type="Texture2D" uid="uid://do6jkd6vp742o" path="res://sprites/icon.svg" id="16_ehgdt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3trem"]
 resource_name = "Material"
@@ -552,7 +554,7 @@ bones/11/parent = -1
 bones/11/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.337975, 0.0458548)
 bones/11/enabled = true
 bones/11/position = Vector3(0, 0.337975, 0.0458548)
-bones/11/rotation = Quaternion(-0.0490787, -0.293036, -0.202707, 0.933076)
+bones/11/rotation = Quaternion(0.00300202, -0.269378, -0.10701, 0.957066)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "upTorso"
 bones/12/parent = 11
@@ -573,7 +575,7 @@ bones/14/parent = 13
 bones/14/rest = Transform3D(1, 2.37262e-07, 2.14963e-07, -2.37262e-07, 0.0983797, 0.995149, 2.14963e-07, -0.995149, 0.0983797, 1.34327e-07, 1.51327, 1.09032e-07)
 bones/14/enabled = true
 bones/14/position = Vector3(1.34327e-07, 1.51327, 1.09032e-07)
-bones/14/rotation = Quaternion(-0.55259, 0.0502564, 0.133628, 0.821134)
+bones/14/rotation = Quaternion(-0.511505, -0.0529398, 0.145694, 0.845182)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "foreArm.L"
 bones/15/parent = 14
@@ -594,7 +596,7 @@ bones/17/parent = 16
 bones/17/rest = Transform3D(1, -1.1863e-06, 1.07482e-06, 1.18631e-06, 0.0983797, -0.995149, 1.07481e-06, 0.995149, 0.0983797, 2.85238e-07, 1.51327, 1.30517e-06)
 bones/17/enabled = true
 bones/17/position = Vector3(2.85238e-07, 1.51327, 1.30517e-06)
-bones/17/rotation = Quaternion(0.402999, 0.134602, -0.0128321, 0.905157)
+bones/17/rotation = Quaternion(0.523483, 0.118908, -0.08603, 0.839301)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "foreArm.R"
 bones/18/parent = 17
@@ -612,7 +614,7 @@ bones/19/rotation = Quaternion(-0.127973, 0.208827, 0.0520269, 0.968146)
 bones/19/scale = Vector3(1, 1, 1)
 
 [node name="plane_2" type="BoneAttachment3D" parent="ship_idle/Armature/Skeleton3D"]
-transform = Transform3D(-2.41377, -1.78149, 0.00308113, 1.77728, -2.40771, 0.210252, 0.122381, -0.170992, -2.99262, -0.415272, -11.9496, -0.807376)
+transform = Transform3D(-2.43751, -1.74887, 0.00107526, 1.7448, -2.43172, 0.205961, 0.119195, -0.167969, -2.99292, -0.249609, -11.9553, -0.789728)
 bone_name = "plane_2"
 bone_idx = 10
 
@@ -688,6 +690,17 @@ script = ExtResource("14_i8pxy")
 [node name="ShootDelay" type="Timer" parent="AGUN"]
 wait_time = 0.1
 one_shot = true
+
+[node name="ShadowRaycast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+target_position = Vector3(0, -50, 0)
+hit_from_inside = true
+collide_with_areas = true
+script = ExtResource("15_ntcbj")
+
+[node name="Shadow" type="Sprite3D" parent="ShadowRaycast"]
+transform = Transform3D(-1.63232, -3.4841e-07, -2.62708e-16, 0, -1.74205e-07, 0.0687472, -1.42702e-07, 3.98534, 3.00503e-09, 0, -3, 0)
+texture = ExtResource("16_ehgdt")
 
 [connection signal="area_entered" from="HitArea" to="." method="_on_hit_area_area_entered"]
 [connection signal="area_entered" from="HitArea" to="HitArea" method="_on_area_entered"]

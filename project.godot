@@ -74,6 +74,7 @@ SHOOT={
 3d_physics/layer_3="COIN"
 3d_physics/layer_4="BULLET"
 3d_physics/layer_5="CLOSENESS"
+3d_physics/layer_6="DEATH_BARRIOR"
 
 [rendering]
 
