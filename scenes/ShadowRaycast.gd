@@ -11,4 +11,6 @@ func _process(delta):
 	var point = get_collision_point()
 	if point:
 		print("wow")
-		shadow.global_position = point
+		shadow.global_position.y = point.y
+
+	shadow.visible = GameManager.is_3D_mode
