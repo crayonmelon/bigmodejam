@@ -9,7 +9,6 @@ extends Node3D
 	preload("res://Enemies/Wall.tres"),
 	preload("res://Enemies/tunnel.tres"),
 	preload("res://Enemies/Sign.tres"),
-	preload("res://Enemies/jeb.tres")
 	]
 	
 var budget = 3
