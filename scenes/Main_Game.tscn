@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cipvv00ugvtnm"]
+[gd_scene load_steps=43 format=3 uid="uid://cipvv00ugvtnm"]
 
 [ext_resource type="PackedScene" uid="uid://cpnbohmnn2bop" path="res://scenes/player.tscn" id="1_j12px"]
 [ext_resource type="Texture2D" uid="uid://bo5shm58y1cku" path="res://sprites/bg.png" id="1_rithy"]
@@ -19,6 +19,9 @@
 [ext_resource type="Script" path="res://scenes/DeathBarrier.gd" id="16_pp7co"]
 [ext_resource type="AudioStream" uid="uid://xdnyu77ekg8" path="res://Audio/Sound Effects/die.wav" id="17_4pgf5"]
 [ext_resource type="Script" path="res://scripts/PlayerDeathHandler.gd" id="17_vfsf8"]
+[ext_resource type="PackedScene" uid="uid://chp5di6ugghqe" path="res://scenes/pause_menu.tscn" id="20_nq07a"]
+[ext_resource type="AudioStream" uid="uid://blnr2dh1218y6" path="res://Audio/Music/LOOP_Vicious_Vortex.wav" id="21_s0xhx"]
+[ext_resource type="Script" path="res://scenes/GameMusicHandler.gd" id="21_t5x15"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_12oqm"]
 night_sky = ExtResource("1_rithy")
@@ -463,6 +466,8 @@ size_flags_horizontal = 8
 theme_override_styles/panel = SubResource("StyleBoxTexture_def1y")
 script = ExtResource("11_vu682")
 
+[node name="pause_menu" parent="CanvasLayer" instance=ExtResource("20_nq07a")]
+
 [node name="Spawner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 script = ExtResource("13_8f20g")
@@ -495,6 +500,13 @@ shape = SubResource("BoxShape3D_nny0j")
 [node name="Death AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_4pgf5")
 script = ExtResource("17_vfsf8")
+
+[node name="Music AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("21_s0xhx")
+volume_db = -10.0
+autoplay = true
+script = ExtResource("21_t5x15")
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
 [connection signal="timeout" from="Spawner/level_up_timer" to="Spawner" method="_on_level_up_timer_timeout"]
