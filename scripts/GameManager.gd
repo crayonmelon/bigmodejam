@@ -7,6 +7,7 @@ signal Health_Updated
 signal Charge_Updated
 signal Trans_Complete
 signal player_dead
+signal game_paused
 
 var max_health = 3
 var health = max_health
