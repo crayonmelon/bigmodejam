@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://3sf1oc3lbyu0"]
 
 [ext_resource type="Script" path="res://scripts/MoveDownScreen.gd" id="1_0gr50"]
-[ext_resource type="Texture2D" uid="uid://b1wm2silwpsuw" path="res://sprites/icon.svg" id="2_ieija"]
+[ext_resource type="SpriteFrames" uid="uid://cai6xhntbsg1c" path="res://sprites/Particles Effects/Enemy Bullet/enemy_bullet_sprite_frames.tres" id="2_ksh7s"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ofg57"]
 
@@ -13,9 +13,25 @@ script = ExtResource("1_0gr50")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ofg57")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Sprite3D2" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 0, 0, 0)
+offset = Vector2(0, 7)
+modulate = Color(0, 0, 0, 1)
 billboard = 1
-texture = ExtResource("2_ieija")
+texture_filter = 0
+render_priority = -1
+sprite_frames = ExtResource("2_ksh7s")
+animation = &"new_animation"
+autoplay = "new_animation"
+
+[node name="Sprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
+offset = Vector2(0, 7)
+billboard = 1
+texture_filter = 0
+sprite_frames = ExtResource("2_ksh7s")
+animation = &"new_animation"
+autoplay = "new_animation"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 8.0
