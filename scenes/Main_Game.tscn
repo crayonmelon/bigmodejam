@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cipvv00ugvtnm"]
+[gd_scene load_steps=40 format=3 uid="uid://cipvv00ugvtnm"]
 
 [ext_resource type="PackedScene" uid="uid://cpnbohmnn2bop" path="res://scenes/player.tscn" id="1_j12px"]
 [ext_resource type="Texture2D" uid="uid://bo5shm58y1cku" path="res://sprites/bg.png" id="1_rithy"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ch6cd47nam5ay" path="res://sprites/Cloud_layer_002.png" id="4_5jvtx"]
 [ext_resource type="Texture2D" uid="uid://x4dvcqh5ugfd" path="res://sprites/Cloud_layer_001.png" id="4_kgx1p"]
 [ext_resource type="Material" uid="uid://dtol571qbvgjn" path="res://scenes/THED.tres" id="4_nxwuk"]
+[ext_resource type="Texture2D" uid="uid://cj1e75x0nnc3r" path="res://sprites/Grass_23-128x128.png" id="6_4gx01"]
 [ext_resource type="FontFile" uid="uid://b015fxhu4htvp" path="res://font/Starting Machine.ttf" id="8_8aska"]
 [ext_resource type="Shader" path="res://scenes/effect.gdshader" id="8_v3mxf"]
 [ext_resource type="Script" path="res://scripts/UpdateHealthScreenEffect.gd" id="9_68x4j"]
@@ -211,6 +212,14 @@ font_size = 127
 pixel_size = 0.1
 curve_step = 3.3
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_txypu"]
+resource_local_to_scene = true
+specular_mode = 1
+albedo_color = Color(0.615686, 0.615686, 0.615686, 1)
+albedo_texture = ExtResource("6_4gx01")
+uv1_scale = Vector3(40, 40, 40)
+uv2_scale = Vector3(2, 2, 2)
+
 [sub_resource type="QuadMesh" id="QuadMesh_b4e8v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bg0yt"]
@@ -321,22 +330,22 @@ scrollDirection = Vector3(-1, 0, 0)
 scrollSpeed = 0.5
 
 [node name="Ground2" type="MeshInstance3D" parent="Scenery"]
-transform = Transform3D(4.88762e-06, 7.2891e-07, -2200, 4.52987e-06, -8.33777, -0.00019233, -30, -1.25897e-06, -0.000358426, 109.941, -49.4933, -8.97379)
+transform = Transform3D(4.88762e-06, 7.2891e-07, -2200, 4.52987e-06, -8.33777, -0.00019233, -30, -1.25897e-06, -0.000358426, 68.1501, -49.4453, -8.80278)
 mesh = SubResource("TextMesh_iko7c")
 skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("4_nxwuk")
+surface_material_override/0 = SubResource("StandardMaterial3D_txypu")
 script = ExtResource("3_q0y32")
 scrollDirection = Vector3(-1, 0, 0)
-scrollSpeed = 0.5
+scrollSpeed = 0.25
 
 [node name="Ground3" type="MeshInstance3D" parent="Scenery"]
-transform = Transform3D(4.88762e-06, 7.2891e-07, -2200, 4.52987e-06, -8.33777, -0.00019233, -30, -1.25897e-06, -0.000358426, -109.961, -49.4933, -8.97383)
+transform = Transform3D(4.88762e-06, 7.2891e-07, -2200, 4.52987e-06, -8.33777, -0.00019233, -30, -1.25897e-06, -0.000358426, -67.7934, -49.3989, -8.97383)
 mesh = SubResource("TextMesh_iko7c")
 skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("4_nxwuk")
+surface_material_override/0 = SubResource("StandardMaterial3D_txypu")
 script = ExtResource("3_q0y32")
 scrollDirection = Vector3(-1, 0, 0)
-scrollSpeed = 0.5
+scrollSpeed = 0.25
 
 [node name="Cloud Layer" type="MeshInstance3D" parent="Scenery"]
 transform = Transform3D(200, 0, 0, 0, 100, 0.512687, 0, -173.205, 0.296, -0.0487404, 37.8036, -13.7851)
