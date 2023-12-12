@@ -3,13 +3,22 @@ extends Area3D
 @export var health = 20
 @export var speed = 10
 
+@export var move_z = true
+
+@export var move_x = false
+@export var speed_x = -10
+
+
 func _ready():
 	_mode_swap(GameManager.is_3D_mode)
 	GameManager.Swap_Mode.connect(_mode_swap)
 
 func _process(delta):
-	
-	global_position.z = position.z + speed * delta
+	if move_z:
+		global_position.z = position.z + speed * delta
+		
+	if move_x:
+		global_position.x = position.x + speed_x * delta
 	#position.x = wrapf(position.x, GameManager.WORLD_BORDER_X_MIN, GameManager.WORLD_BORDER_X_MAX)
 
 func _on_death_timer_timeout():

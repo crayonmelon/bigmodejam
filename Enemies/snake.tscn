@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://cqjk8uithrxtq"]
+[gd_scene load_steps=21 format=3 uid="uid://cqjk8uithrxtq"]
 
 [ext_resource type="Script" path="res://Enemies/Enemy.gd" id="1_c0wyy"]
+[ext_resource type="Script" path="res://Enemies/snake_move.gd" id="1_xma28"]
 [ext_resource type="Shader" path="res://Enemies/outline.gdshader" id="2_apiru"]
 [ext_resource type="Material" uid="uid://m0i0k4hkxlh8" path="res://models/skellyladder.tres" id="3_6l3lg"]
 [ext_resource type="Script" path="res://Enemies/change_anim_on_mode_change.gd" id="4_v45l2"]
@@ -94,44 +95,6 @@ _data = {
 "mode_3d": SubResource("Animation_pjwoi")
 }
 
-[sub_resource type="Animation" id="Animation_ow6ck"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_y6m4k"]
-resource_name = "spin"
-length = 1.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.349066, 0, 0), Vector3(0.349066, 3.14159, 0), Vector3(-0.349066, 6.28319, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2usu1"]
-_data = {
-"RESET": SubResource("Animation_ow6ck"),
-"spin": SubResource("Animation_y6m4k")
-}
-
 [sub_resource type="Animation" id="Animation_vpox6"]
 resource_name = "Drop_In"
 
@@ -174,275 +137,252 @@ _data = {
 "RESET": SubResource("Animation_65h3k")
 }
 
-[node name="Path3D" type="Path3D"]
+[node name="Camera3D" type="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.3488)
+fov = 146.0
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21.4515)
 curve = SubResource("Curve3D_osler")
+script = ExtResource("1_xma28")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="."]
-transform = Transform3D(-0.229679, 0.149532, 0.961711, 0.973153, 0.0201776, 0.229275, 0.014879, 0.988551, -0.150152, 11.1512, 0.858744, 0.647064)
-progress = 1.43505
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.154261, -0.226529, 0.961705, 0, 0.973359, 0.229273, -0.988026, 0.0353681, -0.150151, 12.531, 1.18769, 0.431635)
 
-[node name="enemy_shoot_loop" type="Area3D" parent="PathFollow3D"]
+[node name="enemy_shoot_loop" type="Area3D" parent="Path3D/PathFollow3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_c0wyy")
 speed = 15
+move_z = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PathFollow3D/enemy_shoot_loop"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/PathFollow3D/enemy_shoot_loop"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.487886, 0)
 shape = SubResource("BoxShape3D_sl05b")
 
-[node name="Skull" type="MeshInstance3D" parent="PathFollow3D/enemy_shoot_loop"]
+[node name="Skull" type="MeshInstance3D" parent="Path3D/PathFollow3D/enemy_shoot_loop"]
+transform = Transform3D(0.116686, 0, 0, 0, 0.109649, 0.039909, 0, -0.039909, 0.109649, 0, -0.618292, 0)
+mesh = SubResource("ArrayMesh_tkwya")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_6l3lg")
+script = ExtResource("4_v45l2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D/PathFollow3D/enemy_shoot_loop/Skull"]
+libraries = {
+"": SubResource("AnimationLibrary_nrbqo")
+}
+
+[node name="Gun" type="Node3D" parent="Path3D/PathFollow3D/enemy_shoot_loop/Skull"]
+transform = Transform3D(0.00353307, -2.60929e-13, -0.999994, -0.000785137, 1, -2.77397e-06, 0.999993, 0.000785142, 0.00353307, -8.56995, 5.29874, 0.0344387)
+script = ExtResource("5_fblq4")
+
+[node name="Timer" type="Timer" parent="Path3D/PathFollow3D/enemy_shoot_loop/Skull/Gun"]
+wait_time = 0.4
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D/PathFollow3D/enemy_shoot_loop"]
+libraries = {
+"": SubResource("AnimationLibrary_gfsvv")
+}
+
+[node name="DeathTimer" type="Timer" parent="Path3D/PathFollow3D/enemy_shoot_loop"]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[node name="PathFollow3D2" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.154261, -0.226529, 0.961705, 0, 0.973359, 0.229273, -0.988026, 0.0353681, -0.150151, 12.531, 1.18769, 0.431635)
+
+[node name="enemy_shoot_loop" type="Area3D" parent="Path3D/PathFollow3D2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_c0wyy")
+speed = 15
+move_z = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/PathFollow3D2/enemy_shoot_loop"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.487886, 0)
+shape = SubResource("BoxShape3D_sl05b")
+
+[node name="Skull" type="MeshInstance3D" parent="Path3D/PathFollow3D2/enemy_shoot_loop"]
 transform = Transform3D(0.116686, 0, 0, 0, 0.116686, 0, 0, 0, 0.116686, 0, -0.618292, 0)
 mesh = SubResource("ArrayMesh_tkwya")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_6l3lg")
 script = ExtResource("4_v45l2")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow3D/enemy_shoot_loop/Skull"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D/PathFollow3D2/enemy_shoot_loop/Skull"]
 libraries = {
 "": SubResource("AnimationLibrary_nrbqo")
 }
 
-[node name="LoopAnim" type="AnimationPlayer" parent="PathFollow3D/enemy_shoot_loop/Skull"]
-autoplay = "spin"
-libraries = {
-"": SubResource("AnimationLibrary_2usu1")
-}
-
-[node name="Gun" type="Node3D" parent="PathFollow3D/enemy_shoot_loop/Skull"]
+[node name="Gun" type="Node3D" parent="Path3D/PathFollow3D2/enemy_shoot_loop/Skull"]
 transform = Transform3D(0.00353307, -2.60929e-13, -0.999994, -0.000785137, 1, -2.77397e-06, 0.999993, 0.000785142, 0.00353307, -8.56995, 5.29874, 0.0344387)
 script = ExtResource("5_fblq4")
 
-[node name="Timer" type="Timer" parent="PathFollow3D/enemy_shoot_loop/Skull/Gun"]
+[node name="Timer" type="Timer" parent="Path3D/PathFollow3D2/enemy_shoot_loop/Skull/Gun"]
 wait_time = 0.4
 autostart = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow3D/enemy_shoot_loop"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D/PathFollow3D2/enemy_shoot_loop"]
 libraries = {
 "": SubResource("AnimationLibrary_gfsvv")
 }
 
-[node name="DeathTimer" type="Timer" parent="PathFollow3D/enemy_shoot_loop"]
-wait_time = 8.0
+[node name="DeathTimer" type="Timer" parent="Path3D/PathFollow3D2/enemy_shoot_loop"]
+wait_time = 30.0
 one_shot = true
 autostart = true
 
-[node name="PathFollow3D3" type="PathFollow3D" parent="."]
-transform = Transform3D(-0.229679, 0.149532, 0.961711, 0.973153, 0.0201777, 0.229274, 0.0148788, 0.988551, -0.150152, 7.0032, -0.130154, 1.29469)
-progress = 5.7479
+[node name="PathFollow3D3" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.154261, -0.226529, 0.961705, 0, 0.973359, 0.229273, -0.988026, 0.0353681, -0.150151, 12.531, 1.18769, 0.431635)
 
-[node name="enemy_shoot_loop" type="Area3D" parent="PathFollow3D3"]
+[node name="enemy_shoot_loop" type="Area3D" parent="Path3D/PathFollow3D3"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_c0wyy")
 speed = 15
+move_z = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PathFollow3D3/enemy_shoot_loop"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/PathFollow3D3/enemy_shoot_loop"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.487886, 0)
 shape = SubResource("BoxShape3D_sl05b")
 
-[node name="Skull" type="MeshInstance3D" parent="PathFollow3D3/enemy_shoot_loop"]
+[node name="Skull" type="MeshInstance3D" parent="Path3D/PathFollow3D3/enemy_shoot_loop"]
 transform = Transform3D(0.116686, 0, 0, 0, 0.116686, 0, 0, 0, 0.116686, 0, -0.618292, 0)
 mesh = SubResource("ArrayMesh_tkwya")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_6l3lg")
 script = ExtResource("4_v45l2")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow3D3/enemy_shoot_loop/Skull"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D/PathFollow3D3/enemy_shoot_loop/Skull"]
 libraries = {
 "": SubResource("AnimationLibrary_nrbqo")
 }
 
-[node name="LoopAnim" type="AnimationPlayer" parent="PathFollow3D3/enemy_shoot_loop/Skull"]
-autoplay = "spin"
-libraries = {
-"": SubResource("AnimationLibrary_2usu1")
-}
-
-[node name="Gun" type="Node3D" parent="PathFollow3D3/enemy_shoot_loop/Skull"]
+[node name="Gun" type="Node3D" parent="Path3D/PathFollow3D3/enemy_shoot_loop/Skull"]
 transform = Transform3D(0.00353307, -2.60929e-13, -0.999994, -0.000785137, 1, -2.77397e-06, 0.999993, 0.000785142, 0.00353307, -8.56995, 5.29874, 0.0344387)
 script = ExtResource("5_fblq4")
 
-[node name="Timer" type="Timer" parent="PathFollow3D3/enemy_shoot_loop/Skull/Gun"]
+[node name="Timer" type="Timer" parent="Path3D/PathFollow3D3/enemy_shoot_loop/Skull/Gun"]
 wait_time = 0.4
 autostart = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow3D3/enemy_shoot_loop"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D/PathFollow3D3/enemy_shoot_loop"]
 libraries = {
 "": SubResource("AnimationLibrary_gfsvv")
 }
 
-[node name="DeathTimer" type="Timer" parent="PathFollow3D3/enemy_shoot_loop"]
-wait_time = 8.0
+[node name="DeathTimer" type="Timer" parent="Path3D/PathFollow3D3/enemy_shoot_loop"]
+wait_time = 30.0
 one_shot = true
 autostart = true
 
-[node name="PathFollow3D4" type="PathFollow3D" parent="."]
-transform = Transform3D(-0.229679, 0.149532, 0.961711, 0.973153, 0.0201776, 0.229274, 0.0148789, 0.988551, -0.150152, 4.69548, -0.680321, 1.655)
-progress = 8.14736
+[node name="PathFollow3D4" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.154261, -0.226529, 0.961705, 0, 0.973359, 0.229273, -0.988026, 0.0353681, -0.150151, 12.531, 1.18769, 0.431635)
 
-[node name="enemy_shoot_loop" type="Area3D" parent="PathFollow3D4"]
+[node name="enemy_shoot_loop" type="Area3D" parent="Path3D/PathFollow3D4"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_c0wyy")
 speed = 15
+move_z = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PathFollow3D4/enemy_shoot_loop"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/PathFollow3D4/enemy_shoot_loop"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.487886, 0)
 shape = SubResource("BoxShape3D_sl05b")
 
-[node name="Skull" type="MeshInstance3D" parent="PathFollow3D4/enemy_shoot_loop"]
+[node name="Skull" type="MeshInstance3D" parent="Path3D/PathFollow3D4/enemy_shoot_loop"]
 transform = Transform3D(0.116686, 0, 0, 0, 0.116686, 0, 0, 0, 0.116686, 0, -0.618292, 0)
 mesh = SubResource("ArrayMesh_tkwya")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_6l3lg")
 script = ExtResource("4_v45l2")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow3D4/enemy_shoot_loop/Skull"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D/PathFollow3D4/enemy_shoot_loop/Skull"]
 libraries = {
 "": SubResource("AnimationLibrary_nrbqo")
 }
 
-[node name="LoopAnim" type="AnimationPlayer" parent="PathFollow3D4/enemy_shoot_loop/Skull"]
-autoplay = "spin"
-libraries = {
-"": SubResource("AnimationLibrary_2usu1")
-}
-
-[node name="Gun" type="Node3D" parent="PathFollow3D4/enemy_shoot_loop/Skull"]
+[node name="Gun" type="Node3D" parent="Path3D/PathFollow3D4/enemy_shoot_loop/Skull"]
 transform = Transform3D(0.00353307, -2.60929e-13, -0.999994, -0.000785137, 1, -2.77397e-06, 0.999993, 0.000785142, 0.00353307, -8.56995, 5.29874, 0.0344387)
 script = ExtResource("5_fblq4")
 
-[node name="Timer" type="Timer" parent="PathFollow3D4/enemy_shoot_loop/Skull/Gun"]
+[node name="Timer" type="Timer" parent="Path3D/PathFollow3D4/enemy_shoot_loop/Skull/Gun"]
 wait_time = 0.4
 autostart = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow3D4/enemy_shoot_loop"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D/PathFollow3D4/enemy_shoot_loop"]
 libraries = {
 "": SubResource("AnimationLibrary_gfsvv")
 }
 
-[node name="DeathTimer" type="Timer" parent="PathFollow3D4/enemy_shoot_loop"]
-wait_time = 8.0
+[node name="DeathTimer" type="Timer" parent="Path3D/PathFollow3D4/enemy_shoot_loop"]
+wait_time = 30.0
 one_shot = true
 autostart = true
 
-[node name="PathFollow3D2" type="PathFollow3D" parent="."]
-transform = Transform3D(-0.229679, 0.149532, 0.96171, 0.973152, 0.0201776, 0.229274, 0.0148789, 0.98855, -0.150152, 9.30339, 0.418216, 0.935566)
-progress = 3.35616
+[node name="PathFollow3D5" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.154261, -0.226529, 0.961705, 0, 0.973359, 0.229273, -0.988026, 0.0353681, -0.150151, 12.531, 1.18769, 0.431635)
 
-[node name="enemy_shoot_loop" type="Area3D" parent="PathFollow3D2"]
+[node name="enemy_shoot_loop" type="Area3D" parent="Path3D/PathFollow3D5"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_c0wyy")
 speed = 15
+move_z = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PathFollow3D2/enemy_shoot_loop"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/PathFollow3D5/enemy_shoot_loop"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.487886, 0)
 shape = SubResource("BoxShape3D_sl05b")
 
-[node name="Skull" type="MeshInstance3D" parent="PathFollow3D2/enemy_shoot_loop"]
+[node name="Skull" type="MeshInstance3D" parent="Path3D/PathFollow3D5/enemy_shoot_loop"]
 transform = Transform3D(0.116686, 0, 0, 0, 0.116686, 0, 0, 0, 0.116686, 0, -0.618292, 0)
 mesh = SubResource("ArrayMesh_tkwya")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_6l3lg")
 script = ExtResource("4_v45l2")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow3D2/enemy_shoot_loop/Skull"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D/PathFollow3D5/enemy_shoot_loop/Skull"]
 libraries = {
 "": SubResource("AnimationLibrary_nrbqo")
 }
 
-[node name="LoopAnim" type="AnimationPlayer" parent="PathFollow3D2/enemy_shoot_loop/Skull"]
-autoplay = "spin"
-libraries = {
-"": SubResource("AnimationLibrary_2usu1")
-}
-
-[node name="Gun" type="Node3D" parent="PathFollow3D2/enemy_shoot_loop/Skull"]
+[node name="Gun" type="Node3D" parent="Path3D/PathFollow3D5/enemy_shoot_loop/Skull"]
 transform = Transform3D(0.00353307, -2.60929e-13, -0.999994, -0.000785137, 1, -2.77397e-06, 0.999993, 0.000785142, 0.00353307, -8.56995, 5.29874, 0.0344387)
 script = ExtResource("5_fblq4")
 
-[node name="Timer" type="Timer" parent="PathFollow3D2/enemy_shoot_loop/Skull/Gun"]
+[node name="Timer" type="Timer" parent="Path3D/PathFollow3D5/enemy_shoot_loop/Skull/Gun"]
 wait_time = 0.4
 autostart = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow3D2/enemy_shoot_loop"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D/PathFollow3D5/enemy_shoot_loop"]
 libraries = {
 "": SubResource("AnimationLibrary_gfsvv")
 }
 
-[node name="DeathTimer" type="Timer" parent="PathFollow3D2/enemy_shoot_loop"]
-wait_time = 8.0
+[node name="DeathTimer" type="Timer" parent="Path3D/PathFollow3D5/enemy_shoot_loop"]
+wait_time = 30.0
 one_shot = true
 autostart = true
 
-[node name="PathFollow3D5" type="PathFollow3D" parent="."]
-transform = Transform3D(-0.154261, -0.22653, 0.961707, 7.45054e-09, 0.97336, 0.229274, -0.988025, 0.0353682, -0.150152, 12.531, 1.18769, 0.431635)
-
-[node name="enemy_shoot_loop" type="Area3D" parent="PathFollow3D5"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-collision_layer = 2
-collision_mask = 8
-script = ExtResource("1_c0wyy")
-speed = 15
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PathFollow3D5/enemy_shoot_loop"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.487886, 0)
-shape = SubResource("BoxShape3D_sl05b")
-
-[node name="Skull" type="MeshInstance3D" parent="PathFollow3D5/enemy_shoot_loop"]
-transform = Transform3D(0.116686, 0, 0, 0, 0.116686, 0, 0, 0, 0.116686, 0, -0.618292, 0)
-mesh = SubResource("ArrayMesh_tkwya")
-skeleton = NodePath("")
-surface_material_override/0 = ExtResource("3_6l3lg")
-script = ExtResource("4_v45l2")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow3D5/enemy_shoot_loop/Skull"]
-libraries = {
-"": SubResource("AnimationLibrary_nrbqo")
-}
-
-[node name="LoopAnim" type="AnimationPlayer" parent="PathFollow3D5/enemy_shoot_loop/Skull"]
-autoplay = "spin"
-libraries = {
-"": SubResource("AnimationLibrary_2usu1")
-}
-
-[node name="Gun" type="Node3D" parent="PathFollow3D5/enemy_shoot_loop/Skull"]
-transform = Transform3D(0.00353307, -2.60929e-13, -0.999994, -0.000785137, 1, -2.77397e-06, 0.999993, 0.000785142, 0.00353307, -8.56995, 5.29874, 0.0344387)
-script = ExtResource("5_fblq4")
-
-[node name="Timer" type="Timer" parent="PathFollow3D5/enemy_shoot_loop/Skull/Gun"]
-wait_time = 0.4
-autostart = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow3D5/enemy_shoot_loop"]
-libraries = {
-"": SubResource("AnimationLibrary_gfsvv")
-}
-
-[node name="DeathTimer" type="Timer" parent="PathFollow3D5/enemy_shoot_loop"]
-wait_time = 8.0
-one_shot = true
-autostart = true
-
-[connection signal="area_entered" from="PathFollow3D/enemy_shoot_loop" to="PathFollow3D/enemy_shoot_loop" method="_on_area_entered"]
-[connection signal="timeout" from="PathFollow3D/enemy_shoot_loop/Skull/Gun/Timer" to="PathFollow3D/enemy_shoot_loop/Skull/Gun" method="_on_timer_timeout"]
-[connection signal="timeout" from="PathFollow3D/enemy_shoot_loop/DeathTimer" to="PathFollow3D/enemy_shoot_loop" method="_on_death_timer_timeout"]
-[connection signal="area_entered" from="PathFollow3D3/enemy_shoot_loop" to="PathFollow3D3/enemy_shoot_loop" method="_on_area_entered"]
-[connection signal="timeout" from="PathFollow3D3/enemy_shoot_loop/Skull/Gun/Timer" to="PathFollow3D3/enemy_shoot_loop/Skull/Gun" method="_on_timer_timeout"]
-[connection signal="timeout" from="PathFollow3D3/enemy_shoot_loop/DeathTimer" to="PathFollow3D3/enemy_shoot_loop" method="_on_death_timer_timeout"]
-[connection signal="area_entered" from="PathFollow3D4/enemy_shoot_loop" to="PathFollow3D4/enemy_shoot_loop" method="_on_area_entered"]
-[connection signal="timeout" from="PathFollow3D4/enemy_shoot_loop/Skull/Gun/Timer" to="PathFollow3D4/enemy_shoot_loop/Skull/Gun" method="_on_timer_timeout"]
-[connection signal="timeout" from="PathFollow3D4/enemy_shoot_loop/DeathTimer" to="PathFollow3D4/enemy_shoot_loop" method="_on_death_timer_timeout"]
-[connection signal="area_entered" from="PathFollow3D2/enemy_shoot_loop" to="PathFollow3D2/enemy_shoot_loop" method="_on_area_entered"]
-[connection signal="timeout" from="PathFollow3D2/enemy_shoot_loop/Skull/Gun/Timer" to="PathFollow3D2/enemy_shoot_loop/Skull/Gun" method="_on_timer_timeout"]
-[connection signal="timeout" from="PathFollow3D2/enemy_shoot_loop/DeathTimer" to="PathFollow3D2/enemy_shoot_loop" method="_on_death_timer_timeout"]
-[connection signal="area_entered" from="PathFollow3D5/enemy_shoot_loop" to="PathFollow3D5/enemy_shoot_loop" method="_on_area_entered"]
-[connection signal="timeout" from="PathFollow3D5/enemy_shoot_loop/Skull/Gun/Timer" to="PathFollow3D5/enemy_shoot_loop/Skull/Gun" method="_on_timer_timeout"]
-[connection signal="timeout" from="PathFollow3D5/enemy_shoot_loop/DeathTimer" to="PathFollow3D5/enemy_shoot_loop" method="_on_death_timer_timeout"]
+[connection signal="area_entered" from="Path3D/PathFollow3D/enemy_shoot_loop" to="Path3D/PathFollow3D/enemy_shoot_loop" method="_on_area_entered"]
+[connection signal="timeout" from="Path3D/PathFollow3D/enemy_shoot_loop/Skull/Gun/Timer" to="Path3D/PathFollow3D/enemy_shoot_loop/Skull/Gun" method="_on_timer_timeout"]
+[connection signal="timeout" from="Path3D/PathFollow3D/enemy_shoot_loop/DeathTimer" to="Path3D/PathFollow3D/enemy_shoot_loop" method="_on_death_timer_timeout"]
+[connection signal="area_entered" from="Path3D/PathFollow3D2/enemy_shoot_loop" to="Path3D/PathFollow3D2/enemy_shoot_loop" method="_on_area_entered"]
+[connection signal="timeout" from="Path3D/PathFollow3D2/enemy_shoot_loop/Skull/Gun/Timer" to="Path3D/PathFollow3D2/enemy_shoot_loop/Skull/Gun" method="_on_timer_timeout"]
+[connection signal="timeout" from="Path3D/PathFollow3D2/enemy_shoot_loop/DeathTimer" to="Path3D/PathFollow3D2/enemy_shoot_loop" method="_on_death_timer_timeout"]
+[connection signal="area_entered" from="Path3D/PathFollow3D3/enemy_shoot_loop" to="Path3D/PathFollow3D3/enemy_shoot_loop" method="_on_area_entered"]
+[connection signal="timeout" from="Path3D/PathFollow3D3/enemy_shoot_loop/Skull/Gun/Timer" to="Path3D/PathFollow3D3/enemy_shoot_loop/Skull/Gun" method="_on_timer_timeout"]
+[connection signal="timeout" from="Path3D/PathFollow3D3/enemy_shoot_loop/DeathTimer" to="Path3D/PathFollow3D3/enemy_shoot_loop" method="_on_death_timer_timeout"]
+[connection signal="area_entered" from="Path3D/PathFollow3D4/enemy_shoot_loop" to="Path3D/PathFollow3D4/enemy_shoot_loop" method="_on_area_entered"]
+[connection signal="timeout" from="Path3D/PathFollow3D4/enemy_shoot_loop/Skull/Gun/Timer" to="Path3D/PathFollow3D4/enemy_shoot_loop/Skull/Gun" method="_on_timer_timeout"]
+[connection signal="timeout" from="Path3D/PathFollow3D4/enemy_shoot_loop/DeathTimer" to="Path3D/PathFollow3D4/enemy_shoot_loop" method="_on_death_timer_timeout"]
+[connection signal="area_entered" from="Path3D/PathFollow3D5/enemy_shoot_loop" to="Path3D/PathFollow3D5/enemy_shoot_loop" method="_on_area_entered"]
+[connection signal="timeout" from="Path3D/PathFollow3D5/enemy_shoot_loop/Skull/Gun/Timer" to="Path3D/PathFollow3D5/enemy_shoot_loop/Skull/Gun" method="_on_timer_timeout"]
+[connection signal="timeout" from="Path3D/PathFollow3D5/enemy_shoot_loop/DeathTimer" to="Path3D/PathFollow3D5/enemy_shoot_loop" method="_on_death_timer_timeout"]

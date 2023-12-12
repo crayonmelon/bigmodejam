@@ -7,8 +7,10 @@ extends Node3D
 	preload("res://Enemies/Ladder_Skeleton.tres"), 
 	preload("res://Enemies/enemy_skull_spin.tres"), 
 	preload("res://Enemies/Wall.tres"),
-	preload("res://Enemies/tunnel.tres"),
+	preload("res://Enemies/building.tres"),
 	preload("res://Enemies/Sign.tres"),
+	preload("res://Enemies/blimp.tres"),
+	preload("res://Enemies/crane.tres")
 	]
 	
 var budget = 3

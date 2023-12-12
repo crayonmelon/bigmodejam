@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Enemy_Resource" load_steps=3 format=3 uid="uid://b2ds3lcc26334"]
+
+[ext_resource type="Script" path="res://Enemies/enemy_resource.gd" id="1_xgfpq"]
+[ext_resource type="PackedScene" uid="uid://bkf02q6mwe8c" path="res://Enemies/blimp.tscn" id="1_y4xk3"]
+
+[resource]
+script = ExtResource("1_xgfpq")
+cost = 1
+level = 0
+prefab = ExtResource("1_y4xk3")
+x_range = Vector2(20, 20)
+y_range = Vector2(10, 20)
