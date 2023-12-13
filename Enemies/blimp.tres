@@ -9,4 +9,4 @@ cost = 1
 level = 0
 prefab = ExtResource("1_y4xk3")
 x_range = Vector2(20, 20)
-y_range = Vector2(10, 20)
+y_range = Vector2(8, 17)

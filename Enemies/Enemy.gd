@@ -8,8 +8,10 @@ extends Area3D
 @export var move_x = false
 @export var speed_x = -10
 
+var explo = preload("res://scenes/Explosion.tscn")
 
 func _ready():
+	
 	GameManager.Swap_Mode.connect(_mode_swap)
 	
 	await get_tree().create_timer(.1).timeout
@@ -38,6 +40,11 @@ func _hurt():
 		
 func _die():
 	GameManager.enemy_killed.emit()
+	
+	var explode = explo.instantiate()
+	explode.position = global_position
+	explode.rotation = global_rotation	
+	get_tree().root.add_child(explode)
 	queue_free()
 
 func _mode_swap(is_3D_mode):

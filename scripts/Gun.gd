@@ -12,4 +12,3 @@ func _on_timer_timeout():
 	enemy.position = global_position
 	enemy.rotation = global_rotation	
 	get_tree().root.add_child(enemy)
-	

@@ -20,9 +20,11 @@ func _pause():
 		background_panel.visible = true
 		get_tree().paused = true
 		GameManager.game_paused.emit(true)
-
+		$"Continue Button".toggle_focus()
+		
 func _quit():
 	get_tree().paused = false
+	GameManager._reset_game()
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func _resume():

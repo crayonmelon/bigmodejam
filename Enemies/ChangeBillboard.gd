@@ -11,6 +11,5 @@ preload("res://sprites/Billboard/billboard7.png")]
 
 func _ready():
 	
-	
 	mesh.surface_get_material(0).set("albedo_texture", billboards.pick_random())
 	

@@ -1,4 +1,4 @@
-extends MeshInstance3D
+extends Node
 
 func _ready():
 	_mode_swap(GameManager.is_3D_mode)
