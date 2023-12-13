@@ -2,6 +2,9 @@ extends CharacterBody3D
 
 const SPEED = 20
 const HEAVEN_SPEED = 20
+const SLOW_SPEED = 7
+
+var SLOWED = false
 
 @onready var ship_model = $ship_idle/plane_2
 @onready var animation_tree = $ship_idle/AnimationPlayer/AnimationTree
@@ -42,31 +45,37 @@ func _process(delta):
 	position.y = max(position.y, GameManager.WORLD_BORDER_Y_MIN)
 	position.y = min(position.y, GameManager.WORLD_BORDER_Y_MAX)
 
+func _input(event):
+	if event.is_action_pressed("SLOW"):
+		SLOWED = true
+	if event.is_action_released("SLOW"):
+		SLOWED = false
+
 func heaven_control(delta, direction): 
 
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.y = direction.y * SPEED
+		velocity.x = direction.x * (SPEED if not SLOWED else SLOW_SPEED)
+		velocity.y = -direction.y * (SPEED if not SLOWED else SLOW_SPEED)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, (SPEED if not SLOWED else SLOW_SPEED))
+		velocity.y = move_toward(-velocity.y, 0, (SPEED if not SLOWED else SLOW_SPEED))
 
 func hell_control(delta, direction):
 
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.y * SPEED
+		velocity.x = direction.x * (SPEED if not SLOWED else SLOW_SPEED)
+		velocity.z = direction.y * (SPEED if not SLOWED else SLOW_SPEED)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.y, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, (SPEED if not SLOWED else SLOW_SPEED))
+		velocity.z = move_toward(velocity.y, 0, (SPEED if not SLOWED else SLOW_SPEED))
 
 func _mode_Swap(is_3D_mode):
 	
 	velocity = Vector3.ZERO
 	if !is_3D_mode:
-		position = Vector3(position.x,_3d_vec_pos.y, position.z)
-	else:
-		position = Vector3(position.x,position.y, _3d_vec_pos.z)
+		position = Vector3(position.x,_3d_vec_pos.y, 46)
 
 func _trans_complete():
+	if GameManager.is_3D_mode:
+		position = Vector3(position.x,position.y, _3d_vec_pos.z)
 	pass

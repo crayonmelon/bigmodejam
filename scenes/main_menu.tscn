@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcywoy6adp0bp"]
+[gd_scene load_steps=8 format=3 uid="uid://bcywoy6adp0bp"]
 
 [ext_resource type="Theme" uid="uid://s7pty4gf0702" path="res://menu_ui_theme.tres" id="1_bd4h3"]
-[ext_resource type="Texture2D" uid="uid://1n2wgx6gejo4" path="res://splash_screen.png" id="1_yagi5"]
+[ext_resource type="Texture2D" uid="uid://d2bnlhyj8fix5" path="res://splash_screen.png" id="1_yagi5"]
 [ext_resource type="Script" path="res://scripts/mainMenu.gd" id="3_21nbp"]
-[ext_resource type="AudioStream" uid="uid://5hi603qgpup8" path="res://Audio/Music/A Worthy Challenge (LOOP).wav" id="4_iw886"]
-[ext_resource type="Script" path="res://scenes/Settings.gd" id="4_kamyk"]
+[ext_resource type="Script" path="res://scenes/button.gd" id="4_c3b4h"]
+[ext_resource type="AudioStream" uid="uid://crrc2e6wfp23p" path="res://Audio/Music/A Worthy Challenge (LOOP).wav" id="4_iw886"]
+[ext_resource type="Script" path="res://scenes/VolumeControl.gd" id="4_mgd7h"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_118li"]
 texture = ExtResource("1_yagi5")
@@ -64,7 +65,7 @@ anchor_right = 0.731027
 anchor_bottom = 0.8375
 offset_left = 1.54401
 offset_top = -2.0
-offset_right = -18.0002
+offset_right = 47.9998
 offset_bottom = 3.0
 grow_vertical = 2
 alignment = 1
@@ -77,20 +78,13 @@ size_flags_vertical = 6
 theme = ExtResource("1_bd4h3")
 text = "Start"
 alignment = 0
+script = ExtResource("4_c3b4h")
 
-[node name="Settings Button" type="MenuButton" parent="VBoxContainer"]
+[node name="HSlider" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 6
-theme = ExtResource("1_bd4h3")
-text = "Settings"
-alignment = 0
-item_count = 1
-popup/item_0/text = "Show Player Hitbox"
-popup/item_0/checkable = 1
-popup/item_0/checked = true
-popup/item_0/id = 0
-script = ExtResource("4_kamyk")
+max_value = 1.0
+step = 0.001
+script = ExtResource("4_mgd7h")
 
 [node name="Quit Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2

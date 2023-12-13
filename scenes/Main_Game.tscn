@@ -1,26 +1,26 @@
 [gd_scene load_steps=43 format=3 uid="uid://cipvv00ugvtnm"]
 
 [ext_resource type="PackedScene" uid="uid://cpnbohmnn2bop" path="res://scenes/player.tscn" id="1_j12px"]
-[ext_resource type="Texture2D" uid="uid://bo5shm58y1cku" path="res://sprites/bg.png" id="1_rithy"]
+[ext_resource type="Texture2D" uid="uid://di0uxqeqtxb1i" path="res://sprites/bg.png" id="1_rithy"]
 [ext_resource type="Script" path="res://scripts/CameraAngle.gd" id="3_0fdpl"]
 [ext_resource type="Script" path="res://scripts/TextureScroll.gd" id="3_q0y32"]
-[ext_resource type="Texture2D" uid="uid://ch6cd47nam5ay" path="res://sprites/Cloud_layer_002.png" id="4_5jvtx"]
-[ext_resource type="Texture2D" uid="uid://x4dvcqh5ugfd" path="res://sprites/Cloud_layer_001.png" id="4_kgx1p"]
+[ext_resource type="Texture2D" uid="uid://cbl4b722hcnew" path="res://sprites/Cloud_layer_002.png" id="4_5jvtx"]
+[ext_resource type="Texture2D" uid="uid://jvhec3shcns7" path="res://sprites/Cloud_layer_001.png" id="4_kgx1p"]
 [ext_resource type="Material" uid="uid://dtol571qbvgjn" path="res://scenes/THED.tres" id="4_nxwuk"]
-[ext_resource type="Texture2D" uid="uid://cj1e75x0nnc3r" path="res://sprites/Grass_23-128x128.png" id="6_4gx01"]
-[ext_resource type="FontFile" uid="uid://b015fxhu4htvp" path="res://font/Starting Machine.ttf" id="8_8aska"]
+[ext_resource type="Texture2D" uid="uid://rtxm5alurm01" path="res://sprites/Grass_23-128x128.png" id="6_4gx01"]
+[ext_resource type="FontFile" uid="uid://c2esusx06bivb" path="res://font/Starting Machine.ttf" id="8_8aska"]
 [ext_resource type="Shader" path="res://scenes/effect.gdshader" id="8_v3mxf"]
 [ext_resource type="Script" path="res://scripts/UpdateHealthScreenEffect.gd" id="9_68x4j"]
 [ext_resource type="Script" path="res://scripts/Update_coin_text.gd" id="10_ktp1n"]
-[ext_resource type="Texture2D" uid="uid://bwsgn2omx1keb" path="res://sprites/Player_Health_Sprites.png" id="11_g27pf"]
+[ext_resource type="Texture2D" uid="uid://w7wlapy6jgq5" path="res://sprites/Player_Health_Sprites.png" id="11_g27pf"]
 [ext_resource type="Script" path="res://scripts/UpdateHealthText.gd" id="11_vu682"]
 [ext_resource type="Script" path="res://scripts/Spawner.gd" id="13_8f20g"]
-[ext_resource type="PackedScene" path="res://scenes/mountain.tscn" id="15_ij244"]
+[ext_resource type="PackedScene" uid="uid://bgamjx3bfb0a2" path="res://scenes/mountain.tscn" id="15_ij244"]
 [ext_resource type="Script" path="res://scenes/DeathBarrier.gd" id="16_pp7co"]
-[ext_resource type="AudioStream" uid="uid://xdnyu77ekg8" path="res://Audio/Sound Effects/die.wav" id="17_4pgf5"]
+[ext_resource type="AudioStream" uid="uid://drqwjx2i3eokb" path="res://Audio/Sound Effects/die.wav" id="17_4pgf5"]
 [ext_resource type="Script" path="res://scripts/PlayerDeathHandler.gd" id="17_vfsf8"]
-[ext_resource type="PackedScene" uid="uid://chp5di6ugghqe" path="res://scenes/pause_menu.tscn" id="20_nq07a"]
-[ext_resource type="AudioStream" uid="uid://blnr2dh1218y6" path="res://Audio/Music/LOOP_Vicious_Vortex.wav" id="21_s0xhx"]
+[ext_resource type="PackedScene" uid="uid://dfnsm5gq5s31r" path="res://scenes/pause_menu.tscn" id="20_nq07a"]
+[ext_resource type="AudioStream" uid="uid://dp3aomw3aaaau" path="res://Audio/Music/LOOP_Vicious_Vortex.wav" id="21_s0xhx"]
 [ext_resource type="Script" path="res://scenes/GameMusicHandler.gd" id="21_t5x15"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_12oqm"]
@@ -295,7 +295,7 @@ size = Vector3(200, 277.219, 10)
 environment = SubResource("Environment_0mt7r")
 
 [node name="player" parent="." instance=ExtResource("1_j12px")]
-transform = Transform3D(1, 0, -1.19209e-07, 3.55271e-15, 1, 0, 1.19209e-07, 0, 1, -0.396, 10.45, 38)
+transform = Transform3D(1, 0, -1.19209e-07, 3.55271e-15, 1, 0, 1.19209e-07, 0, 1, -0.396, 10, 38)
 
 [node name="SubViewport" type="SubViewport" parent="."]
 canvas_item_default_texture_filter = 0
@@ -316,6 +316,8 @@ libraries = {
 }
 
 [node name="Scenery" type="Node3D" parent="."]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.90735e-06, 0)
 
 [node name="Area3D" type="StaticBody3D" parent="Scenery"]
 transform = Transform3D(1.62921e-07, 8.74226e-08, -1, 1.50996e-07, -1, -8.74226e-08, -1, -1.50996e-07, -1.62921e-07, -5.36285e-06, -9.47278, 38)

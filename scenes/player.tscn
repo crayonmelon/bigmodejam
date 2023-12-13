@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cpnbohmnn2bop"]
+[gd_scene load_steps=45 format=3 uid="uid://cpnbohmnn2bop"]
 
 [ext_resource type="Script" path="res://scripts/PlayerController.gd" id="1_0vmp4"]
 [ext_resource type="Shader" path="res://Enemies/outline.gdshader" id="2_bwubw"]
@@ -8,17 +8,17 @@
 [ext_resource type="Animation" uid="uid://ns2rrrgfvfkw" path="res://models/Ship/animations/ship_move_forward.res" id="4_hhb6c"]
 [ext_resource type="Animation" uid="uid://ea4s7on7db2r" path="res://models/Ship/animations/ship_move_left.res" id="5_5x55n"]
 [ext_resource type="Animation" uid="uid://cmb6wbvje4s5n" path="res://models/Ship/animations/ship_move_right.res" id="6_0ifs6"]
-[ext_resource type="Animation" path="res://hurt.res" id="9_s7iud"]
+[ext_resource type="Animation" uid="uid://dw2bohj7c8s66" path="res://hurt.res" id="9_s7iud"]
 [ext_resource type="Script" path="res://scripts/HitArea.gd" id="10_im4wi"]
-[ext_resource type="Texture2D" uid="uid://beyo71hxll2j8" path="res://sprites/center_ship.png" id="10_iwsjk"]
-[ext_resource type="Texture2D" uid="uid://cp5mmt6k5ru1b" path="res://sprites/circle.png" id="11_r5yi7"]
+[ext_resource type="Texture2D" uid="uid://dev3wmoou33gb" path="res://sprites/center_ship.png" id="10_iwsjk"]
+[ext_resource type="Texture2D" uid="uid://bvrfcoryrh8ol" path="res://sprites/circle.png" id="11_r5yi7"]
 [ext_resource type="Script" path="res://scripts/CloseArea.gd" id="12_4ofub"]
-[ext_resource type="AudioStream" uid="uid://cbk0724ime6so" path="res://Audio/Sound Effects/hurt.wav" id="12_fjnku"]
+[ext_resource type="AudioStream" uid="uid://c5ojiikeuvkg3" path="res://Audio/Sound Effects/hurt.wav" id="12_fjnku"]
 [ext_resource type="Script" path="res://scripts/AGUN.gd" id="14_i8pxy"]
-[ext_resource type="AudioStream" uid="uid://bdibxv2xt43i8" path="res://Audio/Sound Effects/close_to_bullets.wav" id="15_nawu7"]
+[ext_resource type="AudioStream" uid="uid://xwia7kehbu6i" path="res://Audio/Sound Effects/close_to_bullets.wav" id="15_nawu7"]
 [ext_resource type="Script" path="res://scenes/ShadowRaycast.gd" id="15_ntcbj"]
-[ext_resource type="AudioStream" uid="uid://b1oue8tm2nigx" path="res://Audio/Sound Effects/shoot.wav" id="15_oxw54"]
-[ext_resource type="Texture2D" uid="uid://bmvi7vvr77bk4" path="res://sprites/shadow.png" id="16_se82c"]
+[ext_resource type="AudioStream" uid="uid://djhc868ealcja" path="res://Audio/Sound Effects/shoot.wav" id="15_oxw54"]
+[ext_resource type="Texture2D" uid="uid://bu5pxrwilesrx" path="res://sprites/shadow.png" id="16_se82c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3trem"]
 resource_name = "Material"
@@ -384,8 +384,6 @@ blend_point_3/pos = Vector2(-1, 0)
 blend_point_4/node = SubResource("AnimationNodeAnimation_kauae")
 blend_point_4/pos = Vector2(1, 0)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_ui5nb"]
-
 [sub_resource type="Animation" id="Animation_dlhll"]
 length = 0.001
 
@@ -400,7 +398,7 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fk7ki"]
-radius = 0.319042
+radius = 0.296305
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_x0vo6"]
 radius = 1.5
@@ -442,13 +440,14 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
+collision_mask = 2
 script = ExtResource("1_0vmp4")
 
 [node name="ship_idle" type="Node3D" parent="."]
 transform = Transform3D(-3.61999e-07, 0, 0.1, 0, 0.1, 0, -0.1, 0, -3.61999e-07, 0, -0.25, 0)
 
 [node name="plane_2" type="MeshInstance3D" parent="ship_idle"]
-transform = Transform3D(-2.99999, 0.00914593, 0, -0.00914594, -2.99998, -0.00509181, 1.55231e-05, 0.00509178, -3, 3.05291, 2.9999, 7.3415e-07)
+transform = Transform3D(-2.99988, 0.0267821, 0, -0.0267821, -2.99988, -0.00424543, 3.79005e-05, 0.00424525, -3, 3.05291, 2.9999, 7.3415e-07)
 mesh = SubResource("ArrayMesh_xo1ur")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_8x2mv")
@@ -480,7 +479,7 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(1, -4.96308e-23, -4.96308e-23, -4.96308e-23, -1, 2.1467e-07, -4.96308e-23, -2.1467e-07, -1, 0, 0.337975, 0.0458548)
 bones/0/enabled = true
 bones/0/position = Vector3(0, 0.337975, 0.0458548)
-bones/0/rotation = Quaternion(-0.949525, 0.312475, 0.010475, 0.033475)
+bones/0/rotation = Quaternion(0.951409, -0.306009, -0.010346, -0.0327525)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "hip.L"
 bones/1/parent = 0
@@ -494,14 +493,14 @@ bones/2/parent = 1
 bones/2/rest = Transform3D(0.996264, 0.0863613, -3.01246e-05, -0.0649133, 0.74907, 0.659303, 0.0569608, -0.656838, 0.751877, 4.76837e-07, 0.848528, 0)
 bones/2/enabled = true
 bones/2/position = Vector3(4.76837e-07, 0.848528, 0)
-bones/2/rotation = Quaternion(0.188475, -0.409525, -0.449525, 0.771475)
+bones/2/rotation = Quaternion(0.182041, -0.407803, -0.447474, 0.774807)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "shin.L"
 bones/3/parent = 2
 bones/3/rest = Transform3D(0.987062, -0.160239, -0.00562314, 0.160262, 0.984918, 0.0652175, -0.00491204, -0.065275, 0.997855, 5.89527e-07, 1.89069, -1.03464e-08)
 bones/3/enabled = true
 bones/3/position = Vector3(5.89527e-07, 1.89069, -1.03464e-08)
-bones/3/rotation = Quaternion(-0.414525, -0.065525, 0.693475, 0.585475)
+bones/3/rotation = Quaternion(-0.41114, -0.063941, 0.689811, 0.592482)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "foot.L"
 bones/4/parent = 3
@@ -515,7 +514,7 @@ bones/5/parent = 0
 bones/5/rest = Transform3D(1, -7.10543e-15, -2.38419e-07, 1.68587e-07, 0.707107, 0.707107, 1.68587e-07, -0.707107, 0.707107, 0, 0.8, 1.52454e-10)
 bones/5/enabled = true
 bones/5/position = Vector3(0, 0.8, 1.52454e-10)
-bones/5/rotation = Quaternion(-0.371525, 0.242475, -0.052525, 0.894475)
+bones/5/rotation = Quaternion(-0.370941, 0.243352, -0.0500712, 0.894805)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "thigh.R"
 bones/6/parent = 5
@@ -557,7 +556,7 @@ bones/11/parent = -1
 bones/11/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.337975, 0.0458548)
 bones/11/enabled = true
 bones/11/position = Vector3(0, 0.337975, 0.0458548)
-bones/11/rotation = Quaternion(-0.060829, -0.296095, -0.205096, 0.930894)
+bones/11/rotation = Quaternion(0.0121683, -0.264698, -0.17354, 0.94851)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "upTorso"
 bones/12/parent = 11
@@ -578,7 +577,7 @@ bones/14/parent = 13
 bones/14/rest = Transform3D(1, 2.37262e-07, 2.14963e-07, -2.37262e-07, 0.0983797, 0.995149, 2.14963e-07, -0.995149, 0.0983797, 1.34327e-07, 1.51327, 1.09032e-07)
 bones/14/enabled = true
 bones/14/position = Vector3(1.34327e-07, 1.51327, 1.09032e-07)
-bones/14/rotation = Quaternion(-0.569649, 0.0500082, 0.129071, 0.810148)
+bones/14/rotation = Quaternion(-0.49412, 0.0372154, 0.160351, 0.853667)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "foreArm.L"
 bones/15/parent = 14
@@ -599,7 +598,7 @@ bones/17/parent = 16
 bones/17/rest = Transform3D(1, -1.1863e-06, 1.07482e-06, 1.18631e-06, 0.0983797, -0.995149, 1.07481e-06, 0.995149, 0.0983797, 2.85238e-07, 1.51327, 1.30517e-06)
 bones/17/enabled = true
 bones/17/position = Vector3(2.85238e-07, 1.51327, 1.30517e-06)
-bones/17/rotation = Quaternion(0.409216, 0.130291, -0.0137947, 0.902982)
+bones/17/rotation = Quaternion(0.423254, 0.169287, -0.049071, 0.888701)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "foreArm.R"
 bones/18/parent = 17
@@ -638,9 +637,6 @@ tree_root = SubResource("AnimationNodeBlendSpace2D_7ealj")
 anim_player = NodePath("..")
 active = true
 parameters/blend_position = Vector2(-0.00135136, 0.0127877)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_ui5nb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -715,3 +711,4 @@ transform = Transform3D(-3, 9.05975e-07, -9.90035e-15, 0, -2.62268e-07, -1.5, -4
 texture = ExtResource("16_se82c")
 
 [connection signal="area_entered" from="HitArea" to="HitArea" method="_on_area_entered"]
+[connection signal="area_entered" from="NearHitArea" to="NearHitArea" method="_on_area_entered"]

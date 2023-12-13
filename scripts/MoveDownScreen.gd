@@ -8,8 +8,6 @@ var y_original
 func _ready():
 	
 	y_original = collision_shape_3d.global_position.y
-		
-	_mode_swap(GameManager.is_3D_mode)
 	
 	if GameManager.is_3D_mode:
 		var player_pos = get_tree().get_nodes_in_group("Player")[0].position
@@ -17,7 +15,11 @@ func _ready():
 	
 	GameManager.Swap_Mode.connect(_mode_swap)
 	GameManager.player_dead.connect(_destroy)
-
+	
+	await get_tree().create_timer(.1).timeout
+	
+	_mode_swap(GameManager.is_3D_mode)
+	
 func _process(delta):
 	
 
@@ -32,8 +34,9 @@ func _mode_swap(is_3D_mode):
 		collision_shape_3d.position.y = 0
 	
 	else: 
-		collision_shape_3d.global_position.y = GameManager.WORLD_HEIGHT
-
+		collision_shape_3d.position.y = GameManager.WORLD_HEIGHT
+		print(collision_shape_3d.global_position)		
+		
 func _on_timer_timeout():
 	$".".queue_free()
 

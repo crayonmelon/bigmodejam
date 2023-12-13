@@ -163,7 +163,7 @@ curve = SubResource("Curve3D_osler")
 script = ExtResource("1_xma28")
 
 [node name="snakebody2" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.555524, -0.0657693, 0.828881, 0.239224, 0.942065, 0.23508, -0.79633, 0.328885, -0.507612, 4.81361, -5.66286, -3.87051)
+transform = Transform3D(-0.555525, -0.065772, 0.82888, 0.239219, 0.942066, 0.235081, -0.796331, 0.328881, -0.507613, 4.81356, -5.66287, -3.8705)
 progress = 86.2023
 
 [node name="enemy_shoot_loop" type="Area3D" parent="Path3D/snakebody2"]
@@ -201,7 +201,7 @@ one_shot = true
 autostart = true
 
 [node name="snakebody3" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.501712, -0.0741838, -0.861841, 0, 0.996313, -0.0857581, 0.86503, 0.0430262, 0.499863, -18.8737, -4.76093, -6.68419)
+transform = Transform3D(0.501711, -0.074184, -0.861842, -3.72527e-09, 0.996313, -0.0857581, 0.865031, 0.0430261, 0.499861, -18.8737, -4.76093, -6.68419)
 
 [node name="enemy_shoot_loop" type="Area3D" parent="Path3D/snakebody3"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -246,7 +246,7 @@ one_shot = true
 autostart = true
 
 [node name="snakebody4" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.501712, -0.0741838, -0.861841, 0, 0.996313, -0.0857581, 0.86503, 0.0430262, 0.499863, -18.8737, -4.76093, -6.68419)
+transform = Transform3D(0.501711, -0.074184, -0.861842, -3.72527e-09, 0.996313, -0.0857581, 0.865031, 0.0430261, 0.499861, -18.8737, -4.76093, -6.68419)
 
 [node name="enemy_shoot_loop" type="Area3D" parent="Path3D/snakebody4"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -291,7 +291,7 @@ one_shot = true
 autostart = true
 
 [node name="snakebody5" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.50171, -0.0741835, -0.861839, 0, 0.996309, -0.0857578, 0.865027, 0.043026, 0.499861, -18.8737, -4.76093, -6.68419)
+transform = Transform3D(0.501709, -0.0741837, -0.86184, -3.72526e-09, 0.996309, -0.0857579, 0.865028, 0.0430259, 0.49986, -18.8737, -4.76093, -6.68419)
 
 [node name="enemy_shoot_loop" type="Area3D" parent="Path3D/snakebody5"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -336,7 +336,7 @@ one_shot = true
 autostart = true
 
 [node name="snakebody6" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.50171, -0.0741835, -0.861839, 0, 0.996309, -0.0857578, 0.865027, 0.043026, 0.499861, -18.8737, -4.76093, -6.68419)
+transform = Transform3D(0.501709, -0.0741837, -0.86184, -3.72526e-09, 0.996309, -0.0857579, 0.865028, 0.0430259, 0.49986, -18.8737, -4.76093, -6.68419)
 
 [node name="enemy_shoot_loop" type="Area3D" parent="Path3D/snakebody6"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -381,7 +381,7 @@ one_shot = true
 autostart = true
 
 [node name="snakebody7" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.50171, -0.0741835, -0.861839, 0, 0.996309, -0.0857578, 0.865027, 0.043026, 0.499861, -18.8737, -4.76093, -6.68419)
+transform = Transform3D(0.501709, -0.0741837, -0.86184, -3.72526e-09, 0.996309, -0.0857579, 0.865028, 0.0430259, 0.49986, -18.8737, -4.76093, -6.68419)
 
 [node name="enemy_shoot_loop" type="Area3D" parent="Path3D/snakebody7"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -426,7 +426,7 @@ one_shot = true
 autostart = true
 
 [node name="snakebody8" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.50171, -0.0741835, -0.861839, 0, 0.996309, -0.0857578, 0.865027, 0.043026, 0.499861, -18.8737, -4.76093, -6.68419)
+transform = Transform3D(0.501709, -0.0741837, -0.86184, -3.72526e-09, 0.996309, -0.0857579, 0.865028, 0.0430259, 0.49986, -18.8737, -4.76093, -6.68419)
 
 [node name="enemy_shoot_loop" type="Area3D" parent="Path3D/snakebody8"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -471,7 +471,7 @@ one_shot = true
 autostart = true
 
 [node name="snakebody9" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.50171, -0.0741835, -0.861839, 0, 0.996309, -0.0857578, 0.865027, 0.043026, 0.499861, -18.8737, -4.76093, -6.68419)
+transform = Transform3D(0.501709, -0.0741837, -0.86184, -3.72526e-09, 0.996309, -0.0857579, 0.865028, 0.0430259, 0.49986, -18.8737, -4.76093, -6.68419)
 
 [node name="enemy_shoot_loop" type="Area3D" parent="Path3D/snakebody9"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -516,7 +516,7 @@ one_shot = true
 autostart = true
 
 [node name="snakebody10" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.50171, -0.0741835, -0.861839, 0, 0.996309, -0.0857578, 0.865027, 0.043026, 0.499861, -18.8737, -4.76093, -6.68419)
+transform = Transform3D(0.501709, -0.0741837, -0.86184, -3.72526e-09, 0.996309, -0.0857579, 0.865028, 0.0430259, 0.49986, -18.8737, -4.76093, -6.68419)
 
 [node name="enemy_shoot_loop" type="Area3D" parent="Path3D/snakebody10"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -561,7 +561,7 @@ one_shot = true
 autostart = true
 
 [node name="snakebody11" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.50171, -0.0741835, -0.861839, 0, 0.996309, -0.0857578, 0.865027, 0.043026, 0.499861, -18.8737, -4.76093, -6.68419)
+transform = Transform3D(0.501709, -0.0741837, -0.86184, -3.72526e-09, 0.996309, -0.0857579, 0.865028, 0.0430259, 0.49986, -18.8737, -4.76093, -6.68419)
 
 [node name="enemy_shoot_loop" type="Area3D" parent="Path3D/snakebody11"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -606,7 +606,7 @@ one_shot = true
 autostart = true
 
 [node name="snakebody12" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.501712, -0.0741838, -0.861842, 0, 0.996313, -0.0857581, 0.86503, 0.0430262, 0.499863, -18.8737, -4.76093, -6.68419)
+transform = Transform3D(0.501711, -0.074184, -0.861843, -3.72527e-09, 0.996313, -0.0857582, 0.865031, 0.0430261, 0.499862, -18.8737, -4.76093, -6.68419)
 
 [node name="enemy_shoot_loop" type="Area3D" parent="Path3D/snakebody12"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
