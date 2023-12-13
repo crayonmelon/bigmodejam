@@ -4,13 +4,15 @@ var new_score_text = preload("res://scenes/score_text.tscn")
 @onready var v_box_container = $VBoxContainer
 var raw_score
 
+var words = ["cool guy", "gnarly", "femur", "radical"]
+
 
 func _ready():
 	update_text()
 	GameManager.Score_Updated.connect(update_text)
 	GameManager.enemy_killed.connect(add_kill_text)
 	GameManager.near_miss.connect(add_near_miss_text)
-	add_score_text("cool guy", 900)
+	add_score_text(words.pick_random(), 100)
 
 func update_text():
 	text = str(GameManager.score)
