@@ -98,6 +98,7 @@ mesh = SubResource("ArrayMesh_vjv52")
 skeleton = NodePath("")
 
 [node name="DeathTimer" type="Timer" parent="."]
+wait_time = 8.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
