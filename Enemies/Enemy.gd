@@ -10,9 +10,12 @@ extends Area3D
 
 
 func _ready():
-	_mode_swap(GameManager.is_3D_mode)
 	GameManager.Swap_Mode.connect(_mode_swap)
-
+	
+	await get_tree().create_timer(.1).timeout
+	
+	_mode_swap(GameManager.is_3D_mode)
+	
 func _process(delta):
 	if move_z:
 		global_position.z = position.z + speed * delta
