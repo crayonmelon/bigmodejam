@@ -34,6 +34,7 @@ func _hurt():
 		_die()
 		
 func _die():
+	GameManager.enemy_killed.emit()
 	queue_free()
 
 func _mode_swap(is_3D_mode):

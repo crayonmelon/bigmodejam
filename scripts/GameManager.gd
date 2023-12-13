@@ -2,16 +2,21 @@ extends Node3D
 
 signal Swap_Mode
 
-signal Coin_Updated
+signal Score_Updated
 signal Health_Updated
 signal Charge_Updated
 signal Trans_Complete
 signal player_dead
 signal game_paused
+signal near_miss
+signal enemy_killed
 
 var max_health = 3
 var health = max_health
-var coin = 0 
+
+var score = 0 
+const KILL_VALUE = 500
+const NEAR_MISS_VALUE = 100
 
 var max_charge = 300
 var charge = 100000
@@ -48,11 +53,11 @@ func _swap_mode(value = null):
 	is_3D_mode = !is_3D_mode
 	Swap_Mode.emit(is_3D_mode)
 
-func _chainge_coin_val(value):
-	coin += value
-	Coin_Updated.emit()
+func _change_score_val(value):
+	score += value
+	#Score_Updated.emit()
 
-func _chainge_health_val(value):
+func _change_health_val(value):
 	health += value
 	Health_Updated.emit()
 
@@ -60,9 +65,9 @@ func _set_health(value):
 	health = value
 	Health_Updated.emit()
 
-func _set_coin(value):
-	coin = value
-	Coin_Updated.emit()
+func _set_score(value):
+	score = value
+	Score_Updated.emit()
 
 func _change_charge_val(value):
 	charge += value
@@ -84,5 +89,5 @@ func _Charge_count_down():
 
 func _reset_game():
 	_set_health(3)
-	_set_coin(0)
+	_set_score(0)
 	_swap_mode(false)

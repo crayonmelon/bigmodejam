@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bwd0plrjj3gc5"]
 
-[ext_resource type="Texture2D" uid="uid://b282n846usqle" path="res://sprites/icon.svg" id="2_d70fu"]
+[ext_resource type="Texture2D" uid="uid://b1wm2silwpsuw" path="res://sprites/icon.svg" id="2_d70fu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nfr4e"]
 shading_mode = 2

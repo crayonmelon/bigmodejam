@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dtol571qbvgjn"]
 
-[ext_resource type="Texture2D" uid="uid://vgcsyub7lo3s" path="res://sprites/Path_23-128x128.png" id="1_8ys4m"]
+[ext_resource type="Texture2D" uid="uid://boxmf3vpq1b1x" path="res://sprites/Path_23-128x128.png" id="1_8ys4m"]
 
 [resource]
 resource_local_to_scene = true

@@ -1,11 +1,11 @@
 [gd_scene load_steps=40 format=3 uid="uid://ckalp8n0jp0h7"]
 
 [ext_resource type="Script" path="res://Enemies/Enemy.gd" id="1_mchb5"]
-[ext_resource type="Texture2D" uid="uid://do6jkd6vp742o" path="res://sprites/icon.svg" id="2_syryw"]
+[ext_resource type="Texture2D" uid="uid://b1wm2silwpsuw" path="res://sprites/icon.svg" id="2_syryw"]
 [ext_resource type="Material" uid="uid://m0i0k4hkxlh8" path="res://models/skellyladder.tres" id="3_cw70w"]
 [ext_resource type="ArrayMesh" uid="uid://d0y8rc1wvmpcx" path="res://models/skellyModel.tres" id="4_21ixh"]
 [ext_resource type="Script" path="res://scripts/Gun.gd" id="5_45euc"]
-[ext_resource type="Material" uid="uid://cms5jlhxpw323" path="res://hurt.tres" id="5_qs500"]
+[ext_resource type="Material" path="res://hurt.tres" id="5_qs500"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bfjf6"]
 size = Vector3(5, 40, 5)

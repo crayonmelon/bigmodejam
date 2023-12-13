@@ -2,8 +2,13 @@ extends Area3D
 @onready var sprite_3d = $Sprite3D
 @onready var near_hit_area_audio_stream_player = $"NearHitArea AudioStreamPlayer"
 
-func _on_area_entered(area):
+func _ready():
+	connect("area_exited", check_area)
+
+
+func check_area(area):
 	
 	if area.collision_layer == 2:
+		GameManager.near_miss.emit()
 		$AnimationPlayer.play("fade_in")
 		near_hit_area_audio_stream_player.play(0)

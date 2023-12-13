@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://m0i0k4hkxlh8"]
 
-[ext_resource type="Texture2D" uid="uid://2h12qibov378" path="res://sprites/skullhead.png" id="1_4v101"]
+[ext_resource type="Texture2D" uid="uid://o7wq5beek2kr" path="res://sprites/skullhead.png" id="1_4v101"]
 
 [resource]
 shading_mode = 0

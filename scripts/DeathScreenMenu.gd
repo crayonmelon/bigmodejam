@@ -1,13 +1,14 @@
-extends HBoxContainer
+extends Control
 
-@onready var retry_button = $"Retry Button"
-@onready var quit_button = $"Quit Button"
+@onready var retry_button = $"VBoxContainer/HBoxContainer/Retry Button"
+@onready var quit_button = $"VBoxContainer/HBoxContainer/Quit Button"
+@onready var score_label = $"VBoxContainer/Score Label"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	retry_button.button_down.connect(retry)
 	quit_button.button_down.connect(quit)
-	pass # Replace with function body.
+	score_label.text = str(int(GameManager.score)) + " souls saved"
 
 
 func retry():
