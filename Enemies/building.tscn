@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://tllcfj2kwpad"]
+[gd_scene load_steps=12 format=3 uid="uid://tllcfj2kwpad"]
 
 [ext_resource type="Script" path="res://Enemies/Enemy.gd" id="1_0782j"]
 [ext_resource type="Texture2D" uid="uid://dya7wd13jmrev" path="res://models/building1_building1.png" id="2_qpkng"]
 [ext_resource type="Material" uid="uid://cms5jlhxpw323" path="res://hurt.tres" id="3_085wo"]
+[ext_resource type="AudioStream" uid="uid://bmah23quplb50" path="res://Audio/Sound Effects/enemy_hit_1.wav" id="4_4hr6d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idjpc"]
 resource_name = "Material"
@@ -60,6 +61,21 @@ tracks/0/keys = {
 "update": 1,
 "values": [SubResource("StandardMaterial3D_idjpc"), ExtResource("3_085wo"), SubResource("StandardMaterial3D_idjpc")]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_4hr6d")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_jek48"]
 length = 0.001
@@ -83,7 +99,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jrjge"]
-size = Vector3(13.8805, 23.6316, 13.2733)
+size = Vector3(13.5622, 23.7805, 10.8841)
 
 [node name="Wall" type="Area3D"]
 collision_layer = 2
@@ -102,7 +118,9 @@ libraries = {
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.2117, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.155788, 12.2117, 0)
 shape = SubResource("BoxShape3D_jrjge")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

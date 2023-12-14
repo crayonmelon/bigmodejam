@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://rhgeituvif86"]
+
+[ext_resource type="Script" path="res://scenes/Audio_screams.gd" id="1_yurbs"]
+
+[node name="Audio_screams" type="Node3D"]
+script = ExtResource("1_yurbs")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+attenuation_model = 2
+unit_size = 39.0

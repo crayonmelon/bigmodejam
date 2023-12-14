@@ -1,6 +1,4 @@
-[gd_resource type="ArrayMesh" load_steps=3 format=3 uid="uid://d0y8rc1wvmpcx"]
-
-[ext_resource type="Texture2D" uid="uid://075r48xe06ao" path="res://models/skelly_skele.png" id="1_1yl5j"]
+[gd_resource type="ArrayMesh" load_steps=2 format=3 uid="uid://d0y8rc1wvmpcx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6sf3a"]
 resource_name = "Material"
@@ -9,7 +7,6 @@ vertex_color_use_as_albedo = true
 albedo_color = Color(0, 0, 0, 1)
 metallic = 1.0
 emission_enabled = true
-emission_texture = ExtResource("1_1yl5j")
 
 [resource]
 resource_name = "skelly_Cube_016"

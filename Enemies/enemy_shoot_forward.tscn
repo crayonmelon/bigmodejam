@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cc8laiw7b6k73"]
+[gd_scene load_steps=18 format=3 uid="uid://cc8laiw7b6k73"]
 
 [ext_resource type="Script" path="res://Enemies/Enemy.gd" id="1_vifc0"]
 [ext_resource type="Material" uid="uid://m0i0k4hkxlh8" path="res://models/skellyladder.tres" id="2_8260p"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://scripts/Gun.gd" id="3_7wf0t"]
 [ext_resource type="Script" path="res://Enemies/change_anim_on_mode_change.gd" id="3_fjont"]
 [ext_resource type="Material" uid="uid://cms5jlhxpw323" path="res://hurt.tres" id="4_77i3b"]
+[ext_resource type="AudioStream" uid="uid://nvojf4fq4rke" path="res://Audio/Sound Effects/enemy_die_1.wav" id="7_cs11k"]
+[ext_resource type="PackedScene" uid="uid://rhgeituvif86" path="res://scenes/Audio_screams.tscn" id="8_uoj2y"]
+[ext_resource type="Script" path="res://scenes/Audio_Scream.gd" id="9_05m07"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sl05b"]
 size = Vector3(1, 1.10761, 1)
@@ -66,6 +69,21 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("2_8260p"), ExtResource("4_77i3b"), ExtResource("2_8260p")]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_cs11k")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_65h3k"]
 length = 0.001
@@ -130,6 +148,13 @@ libraries = {
 wait_time = 8.0
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Audio_screams" parent="." instance=ExtResource("8_uoj2y")]
+
+[node name="Scream" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("9_05m07")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Gun/Timer" to="Gun" method="_on_timer_timeout"]

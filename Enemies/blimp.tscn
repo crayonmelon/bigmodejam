@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkf02q6mwe8c"]
+[gd_scene load_steps=12 format=3 uid="uid://bkf02q6mwe8c"]
 
 [ext_resource type="Script" path="res://Enemies/Enemy.gd" id="2_s782u"]
 [ext_resource type="Texture2D" uid="uid://cp72axuhsaojk" path="res://models/blimp_blimp.png" id="3_047ea"]
 [ext_resource type="Material" uid="uid://cms5jlhxpw323" path="res://hurt.tres" id="4_7bg7n"]
+[ext_resource type="AudioStream" uid="uid://bmah23quplb50" path="res://Audio/Sound Effects/enemy_hit_1.wav" id="4_xymp2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_btb5f"]
 radius = 1.41541
@@ -32,6 +33,21 @@ tracks/0/keys = {
 "update": 1,
 "values": [SubResource("StandardMaterial3D_arnyf"), ExtResource("4_7bg7n"), SubResource("StandardMaterial3D_arnyf")]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_xymp2")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_puv2l"]
 length = 0.001
@@ -110,6 +126,8 @@ mesh = SubResource("ArrayMesh_nhmxm")
 skeleton = NodePath("")
 
 [node name="DeathTimer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

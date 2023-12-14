@@ -1,11 +1,14 @@
-[gd_scene load_steps=40 format=3 uid="uid://ckalp8n0jp0h7"]
+[gd_scene load_steps=43 format=3 uid="uid://ckalp8n0jp0h7"]
 
 [ext_resource type="Script" path="res://Enemies/Enemy.gd" id="1_mchb5"]
-[ext_resource type="Texture2D" uid="uid://b1wm2silwpsuw" path="res://sprites/icon.svg" id="2_syryw"]
+[ext_resource type="Texture2D" uid="uid://do6jkd6vp742o" path="res://sprites/icon.svg" id="2_syryw"]
 [ext_resource type="Material" uid="uid://m0i0k4hkxlh8" path="res://models/skellyladder.tres" id="3_cw70w"]
 [ext_resource type="ArrayMesh" uid="uid://d0y8rc1wvmpcx" path="res://models/skellyModel.tres" id="4_21ixh"]
 [ext_resource type="Script" path="res://scripts/Gun.gd" id="5_45euc"]
-[ext_resource type="Material" path="res://hurt.tres" id="5_qs500"]
+[ext_resource type="Material" uid="uid://cms5jlhxpw323" path="res://hurt.tres" id="5_qs500"]
+[ext_resource type="AudioStream" uid="uid://d33hk5writdll" path="res://Audio/Sound Effects/enemy_die_3.wav" id="6_v0227"]
+[ext_resource type="AudioStream" uid="uid://se2as87j0wjw" path="res://Audio/crushedAudio/heyyou.ogg" id="8_e4aum"]
+[ext_resource type="Script" path="res://scenes/Audio_Scream.gd" id="8_ultrp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bfjf6"]
 size = Vector3(5, 40, 5)
@@ -838,6 +841,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [SubResource("StandardMaterial3D_fxe4e"), ExtResource("5_qs500"), SubResource("StandardMaterial3D_fxe4e")]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_v0227")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_tytop"]
 length = 0.001
@@ -1556,6 +1574,14 @@ autoplay = "gun_rotate"
 libraries = {
 "": SubResource("AnimationLibrary_vv2yq")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Scream" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_e4aum")
+autoplay = true
+max_polyphony = 2
+script = ExtResource("8_ultrp")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

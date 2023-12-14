@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cipvv00ugvtnm"]
+[gd_scene load_steps=45 format=3 uid="uid://cipvv00ugvtnm"]
 
 [ext_resource type="PackedScene" uid="uid://cpnbohmnn2bop" path="res://scenes/player.tscn" id="1_j12px"]
 [ext_resource type="Texture2D" uid="uid://di0uxqeqtxb1i" path="res://sprites/bg.png" id="1_rithy"]
@@ -16,12 +16,14 @@
 [ext_resource type="Script" path="res://scripts/UpdateHealthText.gd" id="11_vu682"]
 [ext_resource type="Script" path="res://scripts/Spawner.gd" id="13_8f20g"]
 [ext_resource type="PackedScene" uid="uid://bgamjx3bfb0a2" path="res://scenes/mountain.tscn" id="15_ij244"]
+[ext_resource type="Script" path="res://scenes/nearMissCode.gd" id="16_35veh"]
 [ext_resource type="Script" path="res://scenes/DeathBarrier.gd" id="16_pp7co"]
 [ext_resource type="AudioStream" uid="uid://drqwjx2i3eokb" path="res://Audio/Sound Effects/die.wav" id="17_4pgf5"]
 [ext_resource type="Script" path="res://scripts/PlayerDeathHandler.gd" id="17_vfsf8"]
 [ext_resource type="PackedScene" uid="uid://dfnsm5gq5s31r" path="res://scenes/pause_menu.tscn" id="20_nq07a"]
 [ext_resource type="AudioStream" uid="uid://dp3aomw3aaaau" path="res://Audio/Music/LOOP_Vicious_Vortex.wav" id="21_s0xhx"]
 [ext_resource type="Script" path="res://scenes/GameMusicHandler.gd" id="21_t5x15"]
+[ext_resource type="PackedScene" uid="uid://rhgeituvif86" path="res://scenes/Audio_screams.tscn" id="24_buf5b"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_12oqm"]
 night_sky = ExtResource("1_rithy")
@@ -295,7 +297,7 @@ size = Vector3(200, 277.219, 10)
 environment = SubResource("Environment_0mt7r")
 
 [node name="player" parent="." instance=ExtResource("1_j12px")]
-transform = Transform3D(1, 0, -1.19209e-07, 3.55271e-15, 1, 0, 1.19209e-07, 0, 1, -0.396, 10, 38)
+transform = Transform3D(1, 0, -1.19209e-07, 3.55271e-15, 1, 0, 1.19209e-07, 0, 1, -0.514036, 10, 38.0098)
 
 [node name="SubViewport" type="SubViewport" parent="."]
 canvas_item_default_texture_filter = 0
@@ -494,6 +496,24 @@ script = ExtResource("11_vu682")
 
 [node name="pause_menu" parent="CanvasLayer" instance=ExtResource("20_nq07a")]
 
+[node name="nearmiss" type="Label" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 1.0
+offset_top = 23.0
+offset_right = 25.0
+offset_bottom = 39.0
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.847656, 0.339844, 0.386719, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/line_spacing = 2
+theme_override_fonts/font = ExtResource("8_8aska")
+theme_override_font_sizes/font_size = 16
+text = "0"
+vertical_alignment = 1
+script = ExtResource("16_35veh")
+
 [node name="Spawner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2038, 0, -9.9895)
 script = ExtResource("13_8f20g")
@@ -542,6 +562,9 @@ stream = ExtResource("21_s0xhx")
 volume_db = -10.0
 autoplay = true
 script = ExtResource("21_t5x15")
+
+[node name="Audio_screams" parent="." instance=ExtResource("24_buf5b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0611792)
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
 [connection signal="timeout" from="Spawner/LevelUpTimer" to="Spawner" method="_on_level_up_timer_timeout"]

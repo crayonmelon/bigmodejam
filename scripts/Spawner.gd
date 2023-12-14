@@ -64,7 +64,7 @@ func _spawn_obstacle():
 		to_spend -= obstacle.cost
 
 func _on_timer_timeout():
-	#_spawn_enemy()
+	_spawn_enemy()
 	_spawn_obstacle()
 
 func _on_level_up_timer_timeout():

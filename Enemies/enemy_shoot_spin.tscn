@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cs1qpk275qe5m"]
+[gd_scene load_steps=21 format=3 uid="uid://cs1qpk275qe5m"]
 
 [ext_resource type="Script" path="res://Enemies/Enemy.gd" id="1_jm4j6"]
 [ext_resource type="ArrayMesh" uid="uid://crajulmirhshb" path="res://models/skull.tres" id="2_hbcnp"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://Enemies/change_anim_on_mode_change.gd" id="3_6lixr"]
 [ext_resource type="Script" path="res://scripts/Gun.gd" id="4_vnji0"]
 [ext_resource type="Material" uid="uid://cms5jlhxpw323" path="res://hurt.tres" id="5_hvh26"]
+[ext_resource type="AudioStream" uid="uid://opiopgucoh7a" path="res://Audio/Sound Effects/enemy_die_2.wav" id="7_np6pl"]
+[ext_resource type="PackedScene" uid="uid://rhgeituvif86" path="res://scenes/Audio_screams.tscn" id="8_nq22l"]
+[ext_resource type="Script" path="res://scenes/Audio_Scream.gd" id="9_mfwy6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sl05b"]
 size = Vector3(1, 1.10131, 1.04699)
@@ -104,6 +107,21 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("2_tvu3g"), ExtResource("5_hvh26"), ExtResource("2_tvu3g")]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_np6pl")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_65h3k"]
 length = 0.001
@@ -174,6 +192,13 @@ libraries = {
 wait_time = 8.0
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Audio_screams" parent="." instance=ExtResource("8_nq22l")]
+
+[node name="Scream" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("9_mfwy6")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Skull/Gun/Timer" to="Skull/Gun" method="_on_timer_timeout"]

@@ -87,6 +87,19 @@ func _Charge_count_down():
 		_change_charge_val(-1)
 		$Timer.start()
 
+var near_miss_val = 0
+var near_miss_max = 10
+
+
+func _change_near_miss(value):
+	print("va")
+	near_miss_val += value
+	
+	if near_miss_val >= near_miss_max:
+		near_miss_val = 0
+		_change_health_val(1)
+	
+	
 func _reset_game():
 	_set_health(3)
 	_set_score(0)
