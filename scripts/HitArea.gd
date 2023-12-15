@@ -15,6 +15,7 @@ func _on_area_entered(area):
 func Hurt():
 	
 	GameManager.invincible = true
+	GameManager._set_near_miss(0)
 	GameManager._change_health_val(-1)
 	collision_layer = 0
 	animation_tree.active = false

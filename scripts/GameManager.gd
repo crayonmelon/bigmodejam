@@ -90,6 +90,9 @@ func _Charge_count_down():
 var near_miss_val = 0
 var near_miss_max = 10
 
+func _set_near_miss(value):
+	near_miss_val = value
+	near_miss.emit()
 
 func _change_near_miss(value):
 	print("va")
@@ -99,8 +102,8 @@ func _change_near_miss(value):
 		near_miss_val = 0
 		_change_health_val(1)
 	
-	
 func _reset_game():
 	_set_health(3)
 	_set_score(0)
 	_swap_mode(false)
+	_set_near_miss(0)
