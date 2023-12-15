@@ -5,4 +5,6 @@ func _ready():
 	GameManager.game_paused.connect(_lower_music)
 
 func _lower_music(isPaused):
-	set_bus("Low_Pass" if isPaused else "Music")
+	
+	var effect = AudioEffectLowPassFilter
+	AudioServer.set_bus_effect_enabled(AudioServer.get_bus_index("Master"), 0, isPaused)
