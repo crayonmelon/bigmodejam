@@ -208,10 +208,10 @@ libraries = {
 }
 
 [node name="LoopAnim" type="AnimationPlayer" parent="Skull"]
-autoplay = "spin"
 libraries = {
 "": SubResource("AnimationLibrary_2usu1")
 }
+autoplay = "spin"
 
 [node name="Gun" type="Node3D" parent="Skull"]
 transform = Transform3D(0.00353307, -2.60929e-13, -0.999994, -0.000785137, 1, -2.77397e-06, 0.999993, 0.000785142, 0.00353307, 0, 0, 0)
@@ -222,10 +222,10 @@ wait_time = 0.4
 autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "drop_in"
 libraries = {
 "": SubResource("AnimationLibrary_gfsvv")
 }
+autoplay = "drop_in"
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 8.0

@@ -15,7 +15,7 @@ func _process(delta):
 	pass
 
 func playGame():
-	get_tree().change_scene_to_file("res://scenes/Main_Game.tscn")
+	get_tree().change_scene_to_file("res://scenes/loading.tscn")
 
 func quitGame():
 	get_tree().quit()
