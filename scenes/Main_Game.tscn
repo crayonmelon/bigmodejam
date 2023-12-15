@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cipvv00ugvtnm"]
+[gd_scene load_steps=44 format=3 uid="uid://cipvv00ugvtnm"]
 
 [ext_resource type="PackedScene" uid="uid://cpnbohmnn2bop" path="res://scenes/player.tscn" id="1_j12px"]
 [ext_resource type="Texture2D" uid="uid://di0uxqeqtxb1i" path="res://sprites/bg.png" id="1_rithy"]
@@ -23,7 +23,6 @@
 [ext_resource type="PackedScene" uid="uid://dfnsm5gq5s31r" path="res://scenes/pause_menu.tscn" id="20_nq07a"]
 [ext_resource type="AudioStream" uid="uid://dp3aomw3aaaau" path="res://Audio/Music/LOOP_Vicious_Vortex.wav" id="21_s0xhx"]
 [ext_resource type="Script" path="res://scenes/GameMusicHandler.gd" id="21_t5x15"]
-[ext_resource type="PackedScene" uid="uid://rhgeituvif86" path="res://scenes/Audio_screams.tscn" id="24_buf5b"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_12oqm"]
 night_sky = ExtResource("1_rithy")
@@ -62,35 +61,23 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath(".:size")
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(5, 1),
 "update": 0,
-"values": [40.377, 30.0]
+"values": [Vector3(0, 35, 34.366), Vector3(0, 10, 40)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
+tracks/2/path = NodePath(".:projection")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(5, 1),
-"update": 0,
-"values": [Vector3(0, 35, 34.366), Vector3(0, 10, 40)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:projection")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0.4, 0.45),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -115,35 +102,23 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath(".:size")
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(5),
 "update": 0,
-"values": [40.377]
+"values": [Vector3(0, 35, 34.366)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
+tracks/2/path = NodePath(".:projection")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(5),
-"update": 0,
-"values": [Vector3(0, 35, 34.366)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:projection")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -167,34 +142,22 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:size")
+tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [40.377]
+"values": [Vector3(0, 35, 34.366)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
+tracks/2/path = NodePath(".:projection")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 35, 34.366)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:projection")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -296,11 +259,9 @@ size = Vector3(200, 277.219, 10)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0mt7r")
 
-[node name="player" parent="." instance=ExtResource("1_j12px")]
-transform = Transform3D(1, 0, -1.19209e-07, 3.55271e-15, 1, 0, 1.19209e-07, 0, 1, -0.514036, 10, 38.0098)
-
 [node name="SubViewport" type="SubViewport" parent="."]
 canvas_item_default_texture_filter = 0
+audio_listener_enable_3d = true
 canvas_cull_mask = 4294967294
 size = Vector2i(224, 320)
 
@@ -316,6 +277,12 @@ autoplay = "Default"
 libraries = {
 "": SubResource("AnimationLibrary_cgv0q")
 }
+
+[node name="player" parent="SubViewport" instance=ExtResource("1_j12px")]
+transform = Transform3D(1, 0, -1.19209e-07, 3.55271e-15, 1, 0, 1.19209e-07, 0, 1, -0.514036, 10, 38.0098)
+
+[node name="AudioListener3D" type="AudioListener3D" parent="SubViewport/player"]
+current = true
 
 [node name="Scenery" type="Node3D" parent="."]
 process_mode = 3
@@ -554,6 +521,7 @@ shape = SubResource("BoxShape3D_nny0j")
 
 [node name="Death AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_4pgf5")
+bus = &"Music"
 script = ExtResource("17_vfsf8")
 
 [node name="Music AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -561,10 +529,8 @@ process_mode = 3
 stream = ExtResource("21_s0xhx")
 volume_db = -10.0
 autoplay = true
+bus = &"Music"
 script = ExtResource("21_t5x15")
-
-[node name="Audio_screams" parent="." instance=ExtResource("24_buf5b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0611792)
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
 [connection signal="timeout" from="Spawner/LevelUpTimer" to="Spawner" method="_on_level_up_timer_timeout"]

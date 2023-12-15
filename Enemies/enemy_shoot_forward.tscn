@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cc8laiw7b6k73"]
+[gd_scene load_steps=17 format=3 uid="uid://cc8laiw7b6k73"]
 
 [ext_resource type="Script" path="res://Enemies/Enemy.gd" id="1_vifc0"]
 [ext_resource type="Material" uid="uid://m0i0k4hkxlh8" path="res://models/skellyladder.tres" id="2_8260p"]
@@ -8,7 +8,6 @@
 [ext_resource type="Material" uid="uid://cms5jlhxpw323" path="res://hurt.tres" id="4_77i3b"]
 [ext_resource type="AudioStream" uid="uid://nvojf4fq4rke" path="res://Audio/Sound Effects/enemy_die_1.wav" id="7_cs11k"]
 [ext_resource type="PackedScene" uid="uid://rhgeituvif86" path="res://scenes/Audio_screams.tscn" id="8_uoj2y"]
-[ext_resource type="Script" path="res://scenes/Audio_Scream.gd" id="9_05m07"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sl05b"]
 size = Vector3(1, 1.10761, 1)
@@ -119,6 +118,8 @@ speed = 15
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("BoxShape3D_sl05b")
 
+[node name="Audio_screams" parent="CollisionShape3D" instance=ExtResource("8_uoj2y")]
+
 [node name="Skull" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.8, 0, 0, 0, 1.381, 0, 0, 0, 0.8, 0, -0.113073, 0)
 mesh = ExtResource("2_ke0lv")
@@ -150,11 +151,7 @@ one_shot = true
 autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
-[node name="Audio_screams" parent="." instance=ExtResource("8_uoj2y")]
-
-[node name="Scream" type="AudioStreamPlayer3D" parent="."]
-script = ExtResource("9_05m07")
+bus = &"SoundEffects"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Gun/Timer" to="Gun" method="_on_timer_timeout"]

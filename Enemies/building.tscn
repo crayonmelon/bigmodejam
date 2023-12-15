@@ -122,5 +122,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.155788, 12.2117, 0)
 shape = SubResource("BoxShape3D_jrjge")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SoundEffects"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

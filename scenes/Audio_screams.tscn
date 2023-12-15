@@ -5,6 +5,7 @@
 [node name="Audio_screams" type="Node3D"]
 script = ExtResource("1_yurbs")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-attenuation_model = 2
-unit_size = 39.0
+[node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="."]
+volume_db = 10.0
+max_distance = 10.0
+bus = &"Screams"

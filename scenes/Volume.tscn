@@ -1,0 +1,143 @@
+[gd_scene load_steps=5 format=3 uid="uid://iohvhyevgmbm"]
+
+[ext_resource type="Script" path="res://scenes/VolumeMenu.gd" id="1_greiv"]
+[ext_resource type="FontFile" uid="uid://c2esusx06bivb" path="res://font/Starting Machine.ttf" id="1_nrmab"]
+[ext_resource type="Script" path="res://scenes/VolumeControl.gd" id="2_dck1o"]
+[ext_resource type="Theme" uid="uid://s7pty4gf0702" path="res://menu_ui_theme.tres" id="3_q4441"]
+
+[node name="Volume" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_greiv")
+
+[node name="Panel" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.215686, 0.215686, 0.215686, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.5
+offset_top = -72.0
+offset_right = 55.5
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_nrmab")
+theme_override_font_sizes/font_size = 24
+text = "Volume"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="master" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.847656, 0.339844, 0.386719, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/line_spacing = 2
+theme_override_fonts/font = ExtResource("1_nrmab")
+theme_override_font_sizes/font_size = 16
+text = "master"
+vertical_alignment = 1
+
+[node name="HSliderMaster" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("2_dck1o")
+bus_name = "Master"
+
+[node name="music" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.847656, 0.339844, 0.386719, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/line_spacing = 2
+theme_override_fonts/font = ExtResource("1_nrmab")
+theme_override_font_sizes/font_size = 16
+text = "music"
+vertical_alignment = 1
+
+[node name="HSliderMusic" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("2_dck1o")
+bus_name = "Music"
+
+[node name="Scream" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.847656, 0.339844, 0.386719, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/line_spacing = 2
+theme_override_fonts/font = ExtResource("1_nrmab")
+theme_override_font_sizes/font_size = 16
+text = "Screams"
+vertical_alignment = 1
+
+[node name="HSliderScream" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("2_dck1o")
+bus_name = "Scream"
+
+[node name="other" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.847656, 0.339844, 0.386719, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/line_spacing = 2
+theme_override_fonts/font = ExtResource("1_nrmab")
+theme_override_font_sizes/font_size = 16
+text = "\"Other\""
+vertical_alignment = 1
+
+[node name="HSliderother" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("2_dck1o")
+bus_name = "SoundEffects"
+
+[node name="Continue Button" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+theme = ExtResource("3_q4441")
+text = "back"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="VBoxContainer/Continue Button" to="." method="_on_continue_button_pressed"]

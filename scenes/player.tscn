@@ -556,7 +556,7 @@ bones/11/parent = -1
 bones/11/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.337975, 0.0458548)
 bones/11/enabled = true
 bones/11/position = Vector3(0, 0.337975, 0.0458548)
-bones/11/rotation = Quaternion(0.0360105, -0.246402, -0.113754, 0.961795)
+bones/11/rotation = Quaternion(0.0190224, -0.247969, -0.10201, 0.963195)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "upTorso"
 bones/12/parent = 11
@@ -577,7 +577,7 @@ bones/14/parent = 13
 bones/14/rest = Transform3D(1, 2.37262e-07, 2.14963e-07, -2.37262e-07, 0.0983797, 0.995149, 2.14963e-07, -0.995149, 0.0983797, 1.34327e-07, 1.51327, 1.09032e-07)
 bones/14/enabled = true
 bones/14/position = Vector3(1.34327e-07, 1.51327, 1.09032e-07)
-bones/14/rotation = Quaternion(-0.501606, -0.058029, 0.152854, 0.849506)
+bones/14/rotation = Quaternion(-0.504114, -0.0795158, 0.145524, 0.847567)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "foreArm.L"
 bones/15/parent = 14
@@ -598,7 +598,7 @@ bones/17/parent = 16
 bones/17/rest = Transform3D(1, -1.1863e-06, 1.07482e-06, 1.18631e-06, 0.0983797, -0.995149, 1.07481e-06, 0.995149, 0.0983797, 2.85238e-07, 1.51327, 1.30517e-06)
 bones/17/enabled = true
 bones/17/position = Vector3(2.85238e-07, 1.51327, 1.30517e-06)
-bones/17/rotation = Quaternion(0.484593, 0.223378, -0.121107, 0.837021)
+bones/17/rotation = Quaternion(0.493403, 0.218669, -0.123393, 0.832774)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "foreArm.R"
 bones/18/parent = 17
@@ -616,7 +616,7 @@ bones/19/rotation = Quaternion(-0.127973, 0.208827, 0.0520269, 0.968146)
 bones/19/scale = Vector3(1, 1, 1)
 
 [node name="plane_2" type="BoneAttachment3D" parent="ship_idle/Armature/Skeleton3D"]
-transform = Transform3D(-2.41377, -1.78149, 0.00308113, 1.77728, -2.40771, 0.210252, 0.122381, -0.170992, -2.99262, -0.415272, -11.9496, -0.807376)
+transform = Transform3D(-2.43751, -1.74887, 0.00107526, 1.7448, -2.43172, 0.205961, 0.119195, -0.167969, -2.99292, -0.249609, -11.9553, -0.789728)
 bone_name = "plane_2"
 bone_idx = 10
 
@@ -662,6 +662,7 @@ texture = ExtResource("11_r5yi7")
 
 [node name="HitArea AudioStreamPlayer" type="AudioStreamPlayer" parent="HitArea"]
 stream = ExtResource("12_fjnku")
+bus = &"SoundEffects"
 
 [node name="NearHitArea" type="Area3D" parent="."]
 collision_layer = 16
@@ -687,6 +688,7 @@ libraries = {
 
 [node name="NearHitArea AudioStreamPlayer" type="AudioStreamPlayer" parent="NearHitArea"]
 stream = ExtResource("15_nawu7")
+bus = &"SoundEffects"
 
 [node name="AGUN" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
@@ -698,6 +700,7 @@ one_shot = true
 
 [node name="AGUN AudioStreamPlayer" type="AudioStreamPlayer" parent="AGUN"]
 stream = ExtResource("15_oxw54")
+bus = &"SoundEffects"
 
 [node name="ShadowRaycast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

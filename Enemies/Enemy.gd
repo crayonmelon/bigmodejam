@@ -13,7 +13,6 @@ var explo = preload("res://scenes/Explosion.tscn")
 func _ready():
 	
 	GameManager.Swap_Mode.connect(_mode_swap)
-	
 	await get_tree().create_timer(.1).timeout
 	
 	_mode_swap(GameManager.is_3D_mode)

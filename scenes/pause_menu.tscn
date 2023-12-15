@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfnsm5gq5s31r"]
+[gd_scene load_steps=7 format=3 uid="uid://dfnsm5gq5s31r"]
 
 [ext_resource type="FontFile" uid="uid://c2esusx06bivb" path="res://font/Starting Machine.ttf" id="1_gris5"]
 [ext_resource type="Script" path="res://scenes/pause_menu.gd" id="2_vdgxm"]
 [ext_resource type="Theme" uid="uid://s7pty4gf0702" path="res://menu_ui_theme.tres" id="3_62nmf"]
 [ext_resource type="Script" path="res://scenes/button.gd" id="4_73p3o"]
-[ext_resource type="Script" path="res://scenes/VolumeControl.gd" id="4_wxmeq"]
+[ext_resource type="Script" path="res://scenes/pausemenuvolume.gd" id="5_irwxj"]
+[ext_resource type="PackedScene" uid="uid://iohvhyevgmbm" path="res://scenes/Volume.tscn" id="5_psqt8"]
 
 [node name="pause_menu" type="Control"]
 process_mode = 3
@@ -77,19 +78,15 @@ theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Label2" type="Label" parent="Background Panel/VBoxContainer"]
+[node name="volume" type="Button" parent="Background Panel/VBoxContainer"]
+custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("1_gris5")
-theme_override_font_sizes/font_size = 24
-text = "Volume"
-horizontal_alignment = 1
-uppercase = true
+theme = ExtResource("3_62nmf")
+text = "Volume settings"
+script = ExtResource("5_irwxj")
 
-[node name="HSlider" type="HSlider" parent="Background Panel/VBoxContainer"]
-layout_mode = 2
-max_value = 1.0
-step = 0.001
-script = ExtResource("4_wxmeq")
+[node name="Volume" parent="." instance=ExtResource("5_psqt8")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="Background Panel/VBoxContainer/volume" to="Background Panel/VBoxContainer/volume" method="_on_pressed"]

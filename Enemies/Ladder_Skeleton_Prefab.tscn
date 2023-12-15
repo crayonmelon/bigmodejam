@@ -1,20 +1,20 @@
-[gd_scene load_steps=43 format=3 uid="uid://ckalp8n0jp0h7"]
+[gd_scene load_steps=45 format=3 uid="uid://ckalp8n0jp0h7"]
 
 [ext_resource type="Script" path="res://Enemies/Enemy.gd" id="1_mchb5"]
-[ext_resource type="Texture2D" uid="uid://do6jkd6vp742o" path="res://sprites/icon.svg" id="2_syryw"]
+[ext_resource type="PackedScene" uid="uid://rhgeituvif86" path="res://scenes/Audio_screams.tscn" id="2_17rh5"]
+[ext_resource type="Texture2D" uid="uid://cdrhite8cweck" path="res://models/skellyladders2_ladder.png" id="2_477ri"]
+[ext_resource type="Texture2D" uid="uid://ca3576l2h1xb7" path="res://models/skellyladders2_gun.png" id="3_7irey"]
 [ext_resource type="Material" uid="uid://m0i0k4hkxlh8" path="res://models/skellyladder.tres" id="3_cw70w"]
 [ext_resource type="ArrayMesh" uid="uid://d0y8rc1wvmpcx" path="res://models/skellyModel.tres" id="4_21ixh"]
 [ext_resource type="Script" path="res://scripts/Gun.gd" id="5_45euc"]
 [ext_resource type="Material" uid="uid://cms5jlhxpw323" path="res://hurt.tres" id="5_qs500"]
 [ext_resource type="AudioStream" uid="uid://d33hk5writdll" path="res://Audio/Sound Effects/enemy_die_3.wav" id="6_v0227"]
-[ext_resource type="AudioStream" uid="uid://se2as87j0wjw" path="res://Audio/crushedAudio/heyyou.ogg" id="8_e4aum"]
-[ext_resource type="Script" path="res://scenes/Audio_Scream.gd" id="8_ultrp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bfjf6"]
 size = Vector3(5, 40, 5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fxe4e"]
-albedo_texture = ExtResource("2_syryw")
+albedo_texture = ExtResource("2_477ri")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhrrr"]
 
@@ -46,8 +46,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0d23l")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vrc0r"]
-albedo_texture = ExtResource("2_syryw")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f78io"]
+albedo_texture = ExtResource("3_7irey")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ex50n"]
 
@@ -162,6 +162,9 @@ bind/18/name = &"FOOT.R"
 bind/18/bone = -1
 bind/18/pose = Transform3D(0.109486, -0.621142, -0.156012, -0.640044, -0.111656, -0.00462729, -0.022387, 0.154467, -0.630701, 2.40366, 1.15352, 0.444363)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bkwhc"]
+albedo_texture = ExtResource("3_7irey")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6tgdf"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_lmdmy"]
@@ -254,6 +257,9 @@ bind/17/pose = Transform3D(0.649221, 0.0256144, 2.10046e-07, 0.0256144, -0.64922
 bind/18/name = &"FOOT.R"
 bind/18/bone = -1
 bind/18/pose = Transform3D(0.106814, -0.640886, -6.68497e-08, -0.640886, -0.106814, -6.43191e-09, -7.68019e-09, 4.60811e-08, -0.649727, -8.54742, -0.261244, -2.84299)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4a0xq"]
+albedo_texture = ExtResource("3_7irey")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7k2d7"]
 
@@ -1203,7 +1209,7 @@ bone_name = "Cube"
 bone_idx = 8
 
 [node name="Cube" type="MeshInstance3D" parent="SkellyModel/Armature/Skeleton3D/Cube"]
-material_override = SubResource("StandardMaterial3D_vrc0r")
+material_override = SubResource("StandardMaterial3D_f78io")
 mesh = SubResource("ArrayMesh_o1fw7")
 skeleton = NodePath("")
 
@@ -1364,6 +1370,7 @@ bone_name = "Cube.002"
 bone_idx = 8
 
 [node name="SkellyBod" type="MeshInstance3D" parent="SkellyModel/Armature_001/Skeleton3D/Cube_002"]
+material_override = SubResource("StandardMaterial3D_bkwhc")
 mesh = SubResource("ArrayMesh_o2ksf")
 skeleton = NodePath("")
 
@@ -1372,6 +1379,8 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 mesh = ExtResource("4_21ixh")
 skin = SubResource("Skin_3506q")
 surface_material_override/0 = ExtResource("3_cw70w")
+
+[node name="Audio_screams" parent="SkellyModel/Armature_001" instance=ExtResource("2_17rh5")]
 
 [node name="Armature_002" type="Node3D" parent="SkellyModel"]
 transform = Transform3D(1.53911, 0, 0, 0, 1.53911, 0, 0, 0, 1.53911, 0.286863, -16.2863, 4.33229)
@@ -1524,6 +1533,7 @@ bone_name = "Cube.004"
 bone_idx = 8
 
 [node name="Cube_004" type="MeshInstance3D" parent="SkellyModel/Armature_002/Skeleton3D/Cube_004"]
+material_override = SubResource("StandardMaterial3D_4a0xq")
 mesh = SubResource("ArrayMesh_18dom")
 skeleton = NodePath("")
 
@@ -1531,6 +1541,8 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_pi65x")
 skin = SubResource("Skin_pvbyp")
 surface_material_override/0 = ExtResource("3_cw70w")
+
+[node name="Audio_screams" parent="SkellyModel/Armature_002" instance=ExtResource("2_17rh5")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SkellyModel"]
 autoplay = "ArmatureAction"
@@ -1576,12 +1588,7 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
-[node name="Scream" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("8_e4aum")
-autoplay = true
-max_polyphony = 2
-script = ExtResource("8_ultrp")
+bus = &"SoundEffects"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

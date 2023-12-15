@@ -6,8 +6,8 @@ func _ready():
 	_scream() 
 
 func _scream():
-	print("ran")
 	stream = audio_source.pick_random()
+	
 	play()
 	
 	await finished

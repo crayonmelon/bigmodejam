@@ -5,11 +5,9 @@ func _ready():
 	GameManager.Health_Updated.connect(_die)
 	finished.connect(_death_menu)
 
-
 func _die():
 	if GameManager.health == -1:
 		play(0)
-	
 	
 func _death_menu():
 	GameManager.player_dead.emit()

@@ -1,6 +1,6 @@
 extends HSlider
 
-@export var bus_name = "Master"
+@export var bus_name = "Screams"
 
 var bus_index=0
 
