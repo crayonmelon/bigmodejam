@@ -13,32 +13,21 @@ script = ExtResource("1_0gr50")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ofg57")
 
-[node name="Sprite3D2" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 0, 0, 0)
-offset = Vector2(0, 7)
-modulate = Color(0, 0, 0, 1)
-billboard = 1
-texture_filter = 0
-render_priority = -1
-sprite_frames = ExtResource("2_ksh7s")
-animation = &"new_animation"
-autoplay = "new_animation"
-
 [node name="Sprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
-offset = Vector2(0, 7)
+offset = Vector2(1, 7)
 billboard = 1
 texture_filter = 0
 sprite_frames = ExtResource("2_ksh7s")
 animation = &"new_animation"
 autoplay = "new_animation"
+frame = 32
+frame_progress = 0.00829999
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 8.0
 one_shot = true
 autostart = true
-
-[node name="Node3D" type="Node3D" parent="."]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

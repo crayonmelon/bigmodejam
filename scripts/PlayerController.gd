@@ -36,6 +36,12 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _process(delta):
+	
+	if Input.is_action_pressed("SLOW"):
+		SLOWED = true
+	else: 
+		SLOWED = false
+	
 	position.x = max(position.x, GameManager.WORLD_BORDER_X_MIN)
 	position.x = min(position.x, GameManager.WORLD_BORDER_X_MAX)
 	
@@ -45,11 +51,6 @@ func _process(delta):
 	position.y = max(position.y, GameManager.WORLD_BORDER_Y_MIN)
 	position.y = min(position.y, GameManager.WORLD_BORDER_Y_MAX)
 
-func _input(event):
-	if event.is_action_pressed("SLOW"):
-		SLOWED = true
-	if event.is_action_released("SLOW"):
-		SLOWED = false
 
 func heaven_control(delta, direction): 
 

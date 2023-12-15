@@ -556,7 +556,7 @@ bones/11/parent = -1
 bones/11/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.337975, 0.0458548)
 bones/11/enabled = true
 bones/11/position = Vector3(0, 0.337975, 0.0458548)
-bones/11/rotation = Quaternion(0.0190224, -0.247969, -0.10201, 0.963195)
+bones/11/rotation = Quaternion(0.00619104, -0.2742, -0.114944, 0.954759)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "upTorso"
 bones/12/parent = 11
@@ -577,7 +577,7 @@ bones/14/parent = 13
 bones/14/rest = Transform3D(1, 2.37262e-07, 2.14963e-07, -2.37262e-07, 0.0983797, 0.995149, 2.14963e-07, -0.995149, 0.0983797, 1.34327e-07, 1.51327, 1.09032e-07)
 bones/14/enabled = true
 bones/14/position = Vector3(1.34327e-07, 1.51327, 1.09032e-07)
-bones/14/rotation = Quaternion(-0.504114, -0.0795158, 0.145524, 0.847567)
+bones/14/rotation = Quaternion(-0.513154, -0.026261, 0.149466, 0.844774)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "foreArm.L"
 bones/15/parent = 14
@@ -598,7 +598,7 @@ bones/17/parent = 16
 bones/17/rest = Transform3D(1, -1.1863e-06, 1.07482e-06, 1.18631e-06, 0.0983797, -0.995149, 1.07481e-06, 0.995149, 0.0983797, 2.85238e-07, 1.51327, 1.30517e-06)
 bones/17/enabled = true
 bones/17/position = Vector3(2.85238e-07, 1.51327, 1.30517e-06)
-bones/17/rotation = Quaternion(0.493403, 0.218669, -0.123393, 0.832774)
+bones/17/rotation = Quaternion(0.526259, 0.100648, -0.0780247, 0.840734)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "foreArm.R"
 bones/18/parent = 17
@@ -666,7 +666,7 @@ bus = &"SoundEffects"
 
 [node name="NearHitArea" type="Area3D" parent="."]
 collision_layer = 16
-collision_mask = 6
+collision_mask = 2
 script = ExtResource("12_4ofub")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NearHitArea"]

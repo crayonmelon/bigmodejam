@@ -8,9 +8,16 @@ extends Area3D
 @export var move_x = false
 @export var speed_x = -10
 
+var collider_3d_origin
+
 var explo = preload("res://scenes/Explosion.tscn")
 
 func _ready():
+	collider_3d_origin = $CollisionShape3D.position.y
+	
+	if $AnimationPlayer.get_animation("drop_in") != null:
+		$AnimationPlayer.play("drop_in")
+		await $AnimationPlayer.animation_finished
 	
 	GameManager.Swap_Mode.connect(_mode_swap)
 	await get_tree().create_timer(.1).timeout
@@ -48,6 +55,6 @@ func _die():
 
 func _mode_swap(is_3D_mode):
 	if is_3D_mode:
-		$CollisionShape3D.position.y = 0
+		$CollisionShape3D.position.y = collider_3d_origin
 	else: 
 		$CollisionShape3D.global_position.y = GameManager.WORLD_HEIGHT

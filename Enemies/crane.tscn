@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cod4pbvhdy2lr"]
+[gd_scene load_steps=13 format=3 uid="uid://cod4pbvhdy2lr"]
 
 [ext_resource type="Script" path="res://Enemies/Enemy.gd" id="1_crhek"]
 [ext_resource type="Texture2D" uid="uid://s8wenm1jaxsd" path="res://models/crane_crane.png" id="2_0yunc"]
@@ -76,6 +76,18 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0)
 }
 tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("crane_mesh:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-5.44398e-07, -2.78213, -8)]
+}
 
 [sub_resource type="Animation" id="Animation_tmjoo"]
 length = 0.001
@@ -91,11 +103,40 @@ tracks/0/keys = {
 "update": 1,
 "values": [SubResource("StandardMaterial3D_w7wh5")]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("crane_mesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-5.44398e-07, -2.78213, -8)]
+}
+
+[sub_resource type="Animation" id="Animation_t2n6n"]
+resource_name = "drop_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("crane_mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.217638, 1),
+"update": 0,
+"values": [Vector3(0, -40, -8), Vector3(-5.44398e-07, -2.78213, -8)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8jy7i"]
 _data = {
 "Hurt": SubResource("Animation_02m63"),
-"RESET": SubResource("Animation_tmjoo")
+"RESET": SubResource("Animation_tmjoo"),
+"drop_in": SubResource("Animation_t2n6n")
 }
 
 [node name="crane" type="Area3D"]

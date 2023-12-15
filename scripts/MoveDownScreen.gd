@@ -19,7 +19,8 @@ func _ready():
 	await get_tree().create_timer(.1).timeout
 	
 	_mode_swap(GameManager.is_3D_mode)
-	
+
+
 func _process(delta):
 	
 
@@ -34,7 +35,7 @@ func _mode_swap(is_3D_mode):
 		collision_shape_3d.position.y = 0
 	
 	else: 
-		collision_shape_3d.position.y = GameManager.WORLD_HEIGHT
+		collision_shape_3d.global_position.y = GameManager.WORLD_HEIGHT
 		print(collision_shape_3d.global_position)		
 		
 func _on_timer_timeout():

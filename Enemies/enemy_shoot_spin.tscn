@@ -9,8 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://opiopgucoh7a" path="res://Audio/Sound Effects/enemy_die_2.wav" id="7_np6pl"]
 [ext_resource type="PackedScene" uid="uid://rhgeituvif86" path="res://scenes/Audio_screams.tscn" id="8_nq22l"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_sl05b"]
-size = Vector3(1, 1.10131, 1.04699)
+[sub_resource type="SphereShape3D" id="SphereShape3D_dtlam"]
+radius = 0.7
 
 [sub_resource type="Animation" id="Animation_oufvk"]
 length = 0.001
@@ -87,9 +87,6 @@ _data = {
 "spin": SubResource("Animation_y6m4k")
 }
 
-[sub_resource type="Animation" id="Animation_vpox6"]
-resource_name = "Drop_In"
-
 [sub_resource type="Animation" id="Animation_msgou"]
 resource_name = "Hurt"
 length = 0.1
@@ -121,6 +118,18 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0)
 }
 tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skull:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.8, 1.373, 0.8)]
+}
 
 [sub_resource type="Animation" id="Animation_65h3k"]
 length = 0.001
@@ -136,12 +145,40 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("2_tvu3g")]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skull:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.8, 1.373, 0.8)]
+}
+
+[sub_resource type="Animation" id="Animation_g150v"]
+resource_name = "drop_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skull:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.164939, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.8, 1.373, 0.8)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gfsvv"]
 _data = {
-"Drop_In": SubResource("Animation_vpox6"),
 "Hurt": SubResource("Animation_msgou"),
-"RESET": SubResource("Animation_65h3k")
+"RESET": SubResource("Animation_65h3k"),
+"drop_in": SubResource("Animation_g150v")
 }
 
 [node name="enemy_shoot_loop" type="Area3D"]
@@ -154,7 +191,7 @@ speed = 15
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.000864506, 0.70486, -0.157533)
-shape = SubResource("BoxShape3D_sl05b")
+shape = SubResource("SphereShape3D_dtlam")
 
 [node name="Audio_screams" parent="CollisionShape3D" instance=ExtResource("8_nq22l")]
 
@@ -185,6 +222,7 @@ wait_time = 0.4
 autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "drop_in"
 libraries = {
 "": SubResource("AnimationLibrary_gfsvv")
 }

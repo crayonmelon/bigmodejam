@@ -87,7 +87,7 @@ vertical_alignment = 1
 [node name="HSliderMusic" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
 max_value = 1.0
-step = 0.001
+step = 0.01
 script = ExtResource("2_dck1o")
 bus_name = "Music"
 
