@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cipvv00ugvtnm"]
+[gd_scene load_steps=49 format=3 uid="uid://cipvv00ugvtnm"]
 
 [ext_resource type="PackedScene" uid="uid://cpnbohmnn2bop" path="res://scenes/player.tscn" id="1_j12px"]
 [ext_resource type="Texture2D" uid="uid://di0uxqeqtxb1i" path="res://sprites/bg.png" id="1_rithy"]
@@ -20,9 +20,14 @@
 [ext_resource type="Script" path="res://scenes/DeathBarrier.gd" id="16_pp7co"]
 [ext_resource type="AudioStream" uid="uid://drqwjx2i3eokb" path="res://Audio/Sound Effects/die.wav" id="17_4pgf5"]
 [ext_resource type="Script" path="res://scripts/PlayerDeathHandler.gd" id="17_vfsf8"]
+[ext_resource type="Texture2D" uid="uid://cufgfofn2kuun" path="res://sprites/tutorial/wasd.png" id="18_s167d"]
+[ext_resource type="Theme" uid="uid://s7pty4gf0702" path="res://menu_ui_theme.tres" id="18_srfqp"]
+[ext_resource type="Texture2D" uid="uid://cecavy5f3x25x" path="res://sprites/tutorial/x_space.png" id="20_33pk8"]
 [ext_resource type="PackedScene" uid="uid://dfnsm5gq5s31r" path="res://scenes/pause_menu.tscn" id="20_nq07a"]
 [ext_resource type="AudioStream" uid="uid://dp3aomw3aaaau" path="res://Audio/Music/LOOP_Vicious_Vortex.wav" id="21_s0xhx"]
 [ext_resource type="Script" path="res://scenes/GameMusicHandler.gd" id="21_t5x15"]
+[ext_resource type="Texture2D" uid="uid://dy5y3xkwkbu6o" path="res://sprites/tutorial/shift_c.png" id="21_xdf0g"]
+[ext_resource type="Texture2D" uid="uid://vax8v7851ekb" path="res://sprites/tutorial/ez.png" id="22_k8yoi"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_12oqm"]
 night_sky = ExtResource("1_rithy")
@@ -45,7 +50,7 @@ fog_height = -26.51
 
 [sub_resource type="Animation" id="Animation_xqb6q"]
 resource_name = "ChangeAngle"
-length = 0.5
+length = 0.2
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -54,7 +59,7 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(5, 3.605),
 "update": 0,
 "values": [Vector3(-1.5708, 0, 0), Vector3(0, 0, 0)]
@@ -66,7 +71,7 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(5, 1),
 "update": 0,
 "values": [Vector3(0, 35, 34.366), Vector3(0, 10, 40)]
@@ -78,7 +83,7 @@ tracks/2/path = NodePath(".:projection")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.4, 0.45),
+"times": PackedFloat32Array(0.1, 0.15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [1, 0]
@@ -404,6 +409,16 @@ scrollSpeed = 0.5
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Scenery"]
 visible = false
 
+[node name="Spawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2038, 0, -9.9895)
+script = ExtResource("13_8f20g")
+
+[node name="Timer" type="Timer" parent="Spawner"]
+wait_time = 6.0
+
+[node name="LevelUpTimer" type="Timer" parent="Spawner"]
+wait_time = 15.0
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
@@ -481,17 +496,166 @@ text = "0"
 vertical_alignment = 1
 script = ExtResource("16_35veh")
 
-[node name="Spawner" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2038, 0, -9.9895)
-script = ExtResource("13_8f20g")
+[node name="TutorialCanvas" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
 
-[node name="Timer" type="Timer" parent="Spawner"]
-wait_time = 5.0
-autostart = true
+[node name="tutorial_one" type="Panel" parent="CanvasLayer/TutorialCanvas"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.23
+anchor_top = 0.355
+anchor_right = 0.773
+anchor_bottom = 0.629
+offset_left = -0.0800018
+offset_top = -0.400024
+offset_right = 0.391968
+offset_bottom = -0.119995
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="LevelUpTimer" type="Timer" parent="Spawner"]
-wait_time = 10.0
-autostart = true
+[node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer/TutorialCanvas/tutorial_one"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -25.5
+offset_right = 57.0
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TutorialCanvas/tutorial_one/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("18_s167d")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/TutorialCanvas/tutorial_one/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("18_srfqp")
+text = "To move"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tutorial_two" type="Panel" parent="CanvasLayer/TutorialCanvas"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.23
+anchor_top = 0.298
+anchor_right = 0.773
+anchor_bottom = 0.698
+offset_left = -0.0800018
+offset_top = 0.559998
+offset_right = 0.391968
+offset_bottom = 0.559998
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer/TutorialCanvas/tutorial_two"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -17.5
+offset_right = 32.0
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TutorialCanvas/tutorial_two/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("20_33pk8")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/TutorialCanvas/tutorial_two/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("18_srfqp")
+text = "To shoot
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/TutorialCanvas/tutorial_two/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("18_srfqp")
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/TutorialCanvas/tutorial_two/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("21_xdf0g")
+stretch_mode = 3
+
+[node name="Label2" type="Label" parent="CanvasLayer/TutorialCanvas/tutorial_two/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("18_srfqp")
+text = "To SLowdown
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tutorial_three" type="Panel" parent="CanvasLayer/TutorialCanvas"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.23
+anchor_top = 0.355
+anchor_right = 0.773
+anchor_bottom = 0.629
+offset_left = -0.0800018
+offset_top = -0.400024
+offset_right = 0.391968
+offset_bottom = -0.119995
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer/TutorialCanvas/tutorial_three"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -18.0
+offset_right = 48.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("18_srfqp")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TutorialCanvas/tutorial_three/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("22_k8yoi")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/TutorialCanvas/tutorial_three/HBoxContainer"]
+layout_mode = 2
+text = "To modeshift"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="mountain" parent="." instance=ExtResource("15_ij244")]
 transform = Transform3D(-0.865761, 0.000580561, 0.500457, 0.000517933, 1, -0.000264067, -0.500457, 3.05743e-05, -0.865761, -217.138, -5.63776, -75.7892)

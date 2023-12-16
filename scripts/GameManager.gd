@@ -11,6 +11,8 @@ signal game_paused
 signal near_miss
 signal enemy_killed
 
+var scoreboard = [["Kev", 10000], ["Osc", 2], ["Cra", 30000], ["bef", 5000], ["kaz", 1000]] 
+
 var max_health = 3
 var health = max_health
 
@@ -34,6 +36,8 @@ const WORLD_HEIGHT = 10
 
 var is_3D_mode = false
 var invincible = false
+
+var tutorial_done = false
 
 func _process(delta):
 	if is_3D_mode:

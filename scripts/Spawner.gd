@@ -16,11 +16,27 @@ extends Node3D
 	preload("res://Enemies/crane.tres"),
 ]
 
+@export var tutorial : Array[Enemy_Resource] = [
+	
+]
+
 var budget = 1
 
+var spawn_enemies = []
+
 func _ready():
-	_spawn_enemy()
-	_spawn_obstacle()
+	
+	if !GameManager.tutorial_done:
+		_tutorial()
+	else:
+		$LevelUpTimer.start()
+		$Timer.start()
+		
+		_spawn_enemy()
+		_spawn_obstacle()
+		
+func _process(delta):
+	print("enemy count: ",spawn_enemies.size())
 
 func _spawn_enemy():
 	
@@ -41,6 +57,7 @@ func _spawn_enemy():
 		enemy_inst.global_position.x = randi_range(enemy.x_range.x, enemy.x_range.y)
 		enemy_inst.global_position.y = randi_range(enemy.y_range.x, enemy.y_range.y)
 		to_spend -= enemy.cost
+		spawn_enemies.append(enemy_inst)
 		
 func _spawn_obstacle():
 	
@@ -62,6 +79,48 @@ func _spawn_obstacle():
 		obstacle_inst.global_position.y = randi_range(obstacle.y_range.x, obstacle.y_range.y)
 		
 		to_spend -= obstacle.cost
+
+@onready var tutorial_canvas = $"../CanvasLayer/TutorialCanvas"
+@onready var tutorial_one = $"../CanvasLayer/TutorialCanvas/tutorial_one"
+@onready var tutorial_two = $"../CanvasLayer/TutorialCanvas/tutorial_two"
+@onready var tutorial_three = $"../CanvasLayer/TutorialCanvas/tutorial_three"
+@onready var tutorial_crane = preload("res://Enemies/crane.tres")
+func _tutorial():
+	
+	tutorial_canvas.visible = true
+	
+	await get_tree().create_timer(1).timeout
+	
+	tutorial_one.visible = true
+	
+	await get_tree().create_timer(3).timeout
+	
+	tutorial_one.visible = false
+	tutorial_two.visible = true
+	
+	await get_tree().create_timer(3).timeout
+	
+	tutorial_two.visible = false
+	tutorial_three.visible = true
+	
+	var obstacle = tutorial_crane
+	var obstacle_inst = obstacle.prefab.instantiate()
+	get_tree().root.get_node_or_null("Main_Game").add_child(obstacle_inst)
+	obstacle_inst.global_position = global_position
+	obstacle_inst.global_position.x = randi_range(obstacle.x_range.x, obstacle.x_range.y)
+	obstacle_inst.global_position.y = randi_range(obstacle.y_range.x, obstacle.y_range.y)
+
+	await get_tree().create_timer(4).timeout
+	
+	tutorial_canvas.visible = false
+	tutorial_three.visible = false
+	GameManager.tutorial_done = true
+	
+	$LevelUpTimer.start()
+	$Timer.start()
+	
+	_spawn_enemy()
+	_spawn_obstacle()
 
 func _on_timer_timeout():
 	_spawn_enemy()
