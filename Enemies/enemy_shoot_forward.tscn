@@ -178,10 +178,10 @@ wait_time = 0.4
 autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "drop_in"
 libraries = {
 "": SubResource("AnimationLibrary_gfsvv")
 }
+autoplay = "drop_in"
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 8.0

@@ -5,7 +5,8 @@ extends Node3D
 @export var enemies : Array[Enemy_Resource] = [
 	preload("res://Enemies/Enemy_Skull_Forward.tres"), 
 	preload("res://Enemies/Ladder_Skeleton.tres"), 
-	preload("res://Enemies/enemy_skull_spin.tres"), 
+	preload("res://Enemies/enemy_skull_spin.tres"),
+	preload("res://Enemies/snake.tres")
 ]
 	
 @export var obstacles : Array[Enemy_Resource] = [
@@ -14,10 +15,6 @@ extends Node3D
 	preload("res://Enemies/Sign.tres"),
 	preload("res://Enemies/blimp.tres"),
 	preload("res://Enemies/crane.tres"),
-]
-
-@export var tutorial : Array[Enemy_Resource] = [
-	
 ]
 
 var budget = 1
@@ -107,8 +104,8 @@ func _tutorial():
 	var obstacle_inst = obstacle.prefab.instantiate()
 	get_tree().root.get_node_or_null("Main_Game").add_child(obstacle_inst)
 	obstacle_inst.global_position = global_position
-	obstacle_inst.global_position.x = randi_range(obstacle.x_range.x, obstacle.x_range.y)
-	obstacle_inst.global_position.y = randi_range(obstacle.y_range.x, obstacle.y_range.y)
+	obstacle_inst.global_position.x = 0
+	obstacle_inst.global_position.y = 15
 
 	await get_tree().create_timer(4).timeout
 	

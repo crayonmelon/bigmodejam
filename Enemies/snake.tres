@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Enemy_Resource" load_steps=3 format=3 uid="uid://orglo5prf3p2"]
+
+[ext_resource type="PackedScene" uid="uid://cqjk8uithrxtq" path="res://Enemies/snake.tscn" id="1_i5y0k"]
+[ext_resource type="Script" path="res://Enemies/enemy_resource.gd" id="1_p8rhd"]
+
+[resource]
+script = ExtResource("1_p8rhd")
+cost = 5
+level = 0
+prefab = ExtResource("1_i5y0k")
+x_range = Vector2(0, 0)
+y_range = Vector2(10, 10)

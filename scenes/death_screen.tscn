@@ -46,7 +46,7 @@ theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("1_di021")
 theme_override_font_sizes/font_size = 24
-text = "end of the line"
+text = "ENd of the line"
 horizontal_alignment = 1
 uppercase = true
 
@@ -61,21 +61,34 @@ text = "end of the line"
 horizontal_alignment = 1
 uppercase = true
 
+[node name="Spacer2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_di021")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+uppercase = true
+
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
 [node name="Retry Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+modulate = Color(1, 1, 0, 1)
 custom_minimum_size = Vector2(72, 0)
+layout_direction = 1
 layout_mode = 2
 theme = ExtResource("2_c8ntd")
-text = "Give up"
+text = "continue?"
 
 [node name="Quit Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+modulate = Color(1, 0.647059, 0, 1)
 custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
 theme = ExtResource("2_c8ntd")
-text = "Die"
+text = "or Die"
 
 [node name="Spacer" type="Label" parent="VBoxContainer"]
 layout_mode = 2

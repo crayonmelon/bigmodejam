@@ -21,8 +21,6 @@ func Hurt():
 	animation_tree.active = false
 	animation_player.play("hurt")
 	
-	hit_area_audio_stream_player.play(0)
-	
 	var explode = explo.instantiate()
 	explode.position = global_position
 	explode.rotation = global_rotation	
